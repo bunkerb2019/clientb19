@@ -28,6 +28,12 @@ import HotDrinks from "./pages/drink/HotDrinks";
 // ICONS
 import { Icons } from "./components/Icons.tsx";
 
+
+
+
+// TG SETTINGS 
+import FullScreenComponent from "./components/FullScreenComponent";
+
 const NavLinks = () => {
   const location = useLocation();
 
@@ -99,6 +105,7 @@ const App = () => {
   return (
     <Router>
       <div className="app">
+      <FullScreenComponent />
         <LanguageSwitcher />
         <div className="content">
           <Routes>
