@@ -2,181 +2,181 @@
  
   "cocktail": [
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "GIN-TONIC 0%",
       "price": 130,
       "description": "gordon's 0%/Botanical tonic"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "VIBRANTE SPRITZ 0%",
       "price": 130,
       "description": "Martini vibrante 0%/Cordial pomegranate/Soda water"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "CREEME DE LE BATON",
       "price": 130,
       "description": "Infusion creamy vodka/Frangelico/Cordial pineapple/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "BASIL SMASH",
       "price": 130,
       "description": "Beefeater/Liquor elderflower/Lemon juice/Syrup basil"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "SAKURA",
       "price": 140,
       "description": "Fujimi/Liquor rose/Martini riserva rubino/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PINEAPPLE SPLASH",
       "price": 140,
       "description": "Chateau du breuil/Liquor peach/Cordial pineapple/Soda water"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "SOJU PALOMA",
       "price": 140,
       "description": "Rooster blanco/Soju grapefruit/Cordial grapefruit/Tonic"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PIMM'S CUP",
       "price": 155,
       "description": "Pimm's/Liquor sour apple/Cordial chamomile/Ginger ale"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PEACH BLOOMING",
       "price": 155,
       "description": "Beefeater/Soju peach/Cordial peach/Botanical tonic"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "APPLE FIZZ",
       "price": 155,
       "description": "Becherovka/Cynar/Cordial apple/Grapefruit tonic"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PANCHING BAG",
       "price": 155,
       "description": "Diplomatico reserva/Amaro montenegro/Cordial honeybush/Ginger ale"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PURPLE HAZE",
       "price": 155,
       "description": "Beefeater/Carpano bianco/Cordial aloe&bergamot/Botanical tonic"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "BLOSSOM BELLINI",
       "price": 130,
       "description": "Carpano Bianco/Cordial Peach/Liquor peach/Sparkling wine"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "LYCHEE SPRITZ",
       "price": 130,
       "description": "Kwaiten lychee/Raspberry cordial/Sparkling wine"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "NECTARINE SPRITZ",
       "price": 130,
       "description": "Liquor mango/Carpano bianco/Liquor passionfruit/Cordial peach/Sparkling wine"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PASSION APEROL",
       "price": 140,
       "description": "Negroni Bitter/Negroni Sixteen/Cordial Orange & Passion/Sparkling wine"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "ROSERITA",
       "price": 150,
       "description": "Liquor rose/Cordial strawberry/Rose wine"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "ALOE GIN-TONIC",
       "price": 150,
       "description": "Beefeater/Liquor grapefruit/Cordial aloe & bergamot/Tonic"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "ELVEN GARDEN",
       "price": 130,
       "description": "Plantation 3 stars/Liquor elderflower/Syrup matcha/Lemon juice/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "BUBBLE GUM",
       "price": 140,
       "description": "Bombay sapphire/Liquor lychee/Syrup bubblegum/Cordial grape"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "GRAPE BLAZE",
       "price": 140,
       "description": "Bombay sapphire/Cordial aloe & bergamot/Liquor coconut"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "1920",
       "price": 140,
       "description": "Infusion pedro cherry/Rooster blanco/Cordial pomegranate"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PORTBERRY BLISS",
       "price": 130,
       "description": "Infusion creamy vodka/Liquor passionfruit/Cordial passionfruit/Egg foam/Sparkling wine shot"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PORN STAR IN PUER",
       "price": 140,
       "description": "Clarified creamy vodka/Liquor Passao/Cordial Passionfruit/Egg foam/Sparkling wine shot"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "RASPBERRY FUSHION",
       "price": 140,
       "description": "Beefeater/Cordial raspberry/Syrup basil/Liquor lychee/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "COCO & BERRY",
       "price": 140,
       "description": "Angostura reserva/Liquor coconut/Cordial strawberry/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "PINETROPICAL",
       "price": 140,
       "description": "Bacardi spiced/Cordial pineapple/Liquor mango/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "MAGIC CLUB AGAIN",
       "price": 150,
       "description": "Beefeater/Chambord/Cordial raspberry/Syrup bubblegum/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "COCO PORN TINI",
       "price": 150,
       "description": "Infusion creamy vodka/Liquor coconut/Cordial coco & passion/Egg foam"
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "SEDUCTION",
       "price": 155,
       "description": "Whitley Neil Quince/Liquor elderflower/Cordial honeybush/Egg foam"
@@ -185,133 +185,133 @@
 
   "champanewine": [
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Alb Chardonnay",
       "description": "Вино",
       "weight": "0.75",
       "price": 320
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Alb Fetească Regală",
       "description": "Вино",
       "weight": "0.75",
       "price": 320
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Rosé Pinot Noir",
       "description": "Вино",
       "weight": "0.75",
       "price": 350
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Rosu Cabernet Sauvignon",
       "description": "Вино",
       "weight": "0.75",
       "price": 400
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Rosu Secret Blend",
       "description": "Вино",
       "weight": "0.75",
       "price": 500
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Rosu Patru in Rosu",
       "description": "Вино",
       "weight": "0.75",
       "price": 500
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Chateau Cristi Alb Riesling",
       "description": "Вино",
       "weight": "0.75",
       "price": 320
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Chateau Cristi Rosu Malbec Saperavi",
       "description": "Вино",
       "weight": "0.75",
       "price": 500
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Chateau Cristi Alb/Rosé",
       "description": "Вино",
       "weight": "0.75",
       "price": 700
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Late Harvest Cabernet Sauvignon",
       "description": "Вино",
       "weight": "0.75",
       "price": 700
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Moet Chandon Brut Imperial",
       "description": "Шампанское",
       "weight": "0.75",
       "price": 2600
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Martini Asti",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 650
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Cuvée de Purcari Brut Alb",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 550
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Cuvée de Purcari Brut Rose",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 550
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Prosecco Brut",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 300
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Prosecco Extra Dry",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 300
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Suave Rosé Dulce",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 320
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Maestro Prosecco DOCG",
       "description": "Игристое вино",
       "weight": "0.75",
       "price": 400
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Mondoro Asti Dolce",
       "description": "Игристое вино",
       "weight": "0.75",
@@ -321,504 +321,504 @@
 
   "alcohol": [
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Tanqueray 10 V.O.",
       "description": "Gin",
       "weight": "40",
       "price": 120
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Hendrick's",
       "description": "Gin",
       "weight": "40",
       "price": 100
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Ukiyo Yuzu Japanese",
       "description": "Gin",
       "weight": "40",
       "price": 145
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Roku Japanese",
       "description": "Gin",
       "weight": "40",
       "price": 145
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Nikka Coffey Gin",
       "description": "Gin",
       "weight": "40",
       "price": 145
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Whitley Neil Quince",
       "description": "Gin",
       "weight": "40",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Monkey 47 Dry Gin",
       "description": "Gin",
       "weight": "40",
       "price": 160
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Knut Hansen Dry",
       "description": "Gin",
       "weight": "40",
       "price": 160
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Beefeater",
       "description": "Gin",
       "weight": "40",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bombay Sapphire",
       "description": "Gin",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "KAH Anejo",
       "description": "Tequila",
       "weight": "40",
       "price": 155
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "KAH Reposado",
       "description": "Tequila",
       "weight": "40",
       "price": 135
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Rooster Ahumado",
       "description": "Tequila",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Rooster Rojo Blanco",
       "description": "Tequila",
       "weight": "40",
       "price": 85
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Rooster Rojo Reposado",
       "description": "Tequila",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Rooster Rojo Smoked Pineapple",
       "description": "Tequila",
       "weight": "40",
       "price": 110
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Absolut",
       "description": "Vodka",
       "weight": "40",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Grey Goose",
       "description": "Vodka",
       "weight": "40",
       "price": 110
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Titos Handmade",
       "description": "Vodka",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Hennessy V.S.O.P.",
       "description": "Cognac",
       "weight": "40",
       "price": 165
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Hennessy V.S.",
       "description": "Cognac",
       "weight": "40",
       "price": 130
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bucuria 10 Y.O.",
       "description": "Divin",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Speranta 9 Y.O.",
       "description": "Divin",
       "weight": "40",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Leffe blonde",
       "description": "Beer",
       "weight": "0.331l",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Leffe brune",
       "description": "Beer",
       "weight": "0.331l",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Corona Extra",
       "description": "Beer",
       "weight": "0.331l",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Corona Extra Cero 0%",
       "description": "Beer",
       "weight": "0.331l",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Franziskaner Weissbier",
       "description": "Beer",
       "weight": "0.5l",
       "price": 85
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Brandy Sandeman Imperial",
       "description": "Brandy/Pisco",
       "weight": "40",
       "price": 50
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Pisco Demonio de los Andes",
       "description": "Brandy/Pisco",
       "weight": "40",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Campari",
       "description": "Аперитив",
       "weight": "40",
       "price": 50
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Amaro Cynar",
       "description": "Дижестив",
       "weight": "40",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Amaro Montenegro",
       "description": "Дижестив",
       "weight": "40",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Vermouth Punt e Mes",
       "description": "Верму́т",
       "weight": "40",
       "price": 50
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Vermouth Antica Formula",
       "description": "Верму́т",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Vermouth Carpano Bianco/Rosso",
       "description": "Верму́т",
       "weight": "40",
       "price": 50
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Amaro Fernet Branca/Menta",
       "description": "Дижестив",
       "weight": "40",
       "price": 55
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Vecchio Amaro Del Capo",
       "description": "Дижестив",
       "weight": "40",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bigallet China-China",
       "description": "Ликёр",
       "weight": "40",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Martini Riserva Ambrato/Rubino",
       "description": "Верму́т",
       "weight": "40",
       "price": 65
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Becherovka",
       "description": "Дижестив",
       "weight": "40",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Frangelico",
       "description": "Ликёр",
       "weight": "40",
       "price": 90
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Luxardo Absinthe Fata Verde",
       "description": "Абсент",
       "weight": "40",
       "price": 100
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Ballantine's Finest",
       "description": "Блендированный виски",
       "weight": "40",
       "price": 65
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Tullamore D.E.W.",
       "description": "Ирландский виски",
       "weight": "40",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Elijah Craig",
       "description": "Бурбон",
       "weight": "40",
       "price": 120
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Fuyu Japanese",
       "description": "Японский виски",
       "weight": "40",
       "price": 120
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Glenlivet Single Malt 1824",
       "description": "Шотландский односолодовый виски",
       "weight": "40",
       "price": 130
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Glenlivet 18 Y.O.",
       "description": "Шотландский односолодовый виски",
       "weight": "40",
       "price": 300
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "The Macallan 12 Y.O.",
       "description": "Шотландский односолодовый виски",
       "weight": "40",
       "price": 320
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Woodford Reserve",
       "description": "Бурбон",
       "weight": "40",
       "price": 120
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Royal Salute 21 Y.O.",
       "description": "Шотландский виски премиум-класса",
       "weight": "40",
       "price": 460
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Glenfiddich 12 Y.O.",
       "description": "Шотландский односолодовый виски",
       "weight": "40",
       "price": 120
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Fujimi Japanese",
       "description": "Японский виски",
       "weight": "40",
       "price": 135
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Nikka Japanese",
       "description": "Японский виски",
       "weight": "40",
       "price": 145
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Aberlour",
       "description": "Шотландский односолодовый виски",
       "weight": "40",
       "price": 150
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Jameson Irish",
       "description": "Ирландский виски",
       "weight": "40",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Pogues Irish",
       "description": "Ирландский виски",
       "weight": "40",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Glenmorangie 10 Y.O.",
       "description": "Шотландский односолодовый виски",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Chivas Regal 12 Y.O.",
       "description": "Шотландский блендированный виски",
       "weight": "40",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Chivas Regal 18 Y.O.",
       "description": "Шотландский блендированный виски",
       "weight": "40",
       "price": 155
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Monkey Shoulder",
       "description": "Шотландский блендированный виски",
       "weight": "40",
       "price": 90
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Angostura Reserva White 3 Y.O.",
       "description": "Белый ром",
       "weight": "40",
       "price": 65
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Don Papa MassKara",
       "description": "Филиппинский ром",
       "weight": "40",
       "price": 160
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Diplomatico Reserva Exclusiva",
       "description": "Венесуэльский ром",
       "weight": "40",
       "price": 90
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Diplomatico Planas Blue",
       "description": "Венесуэльский белый ром",
       "weight": "40",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Rum Bumbu",
       "description": "Карибский ром",
       "weight": "40",
       "price": 115
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Rum Canerock",
       "description": "Пряный ром",
       "weight": "40",
       "price": 100
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Plantation 3 Stars",
       "description": "Белый ром",
       "weight": "40",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Plantation Original Dark",
       "description": "Тёмный ром",
       "weight": "40",
       "price": 70
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Plantation Pineapple",
       "description": "Ананасовый ром",
       "weight": "40",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bacardi Spiced",
       "description": "Пряный ром",
       "weight": "40",
@@ -828,56 +828,56 @@
 
   "drinks": [
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bucovina",
       "description": "Soft drink",
       "weight": "0.33L",
       "price": 30
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bucovina",
       "description": "Soft drink",
       "weight": "0.75L",
       "price": 55
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Borjomi",
       "description": "Mineral water",
       "weight": "0.5L",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Coca-cola",
       "description": "Soft drink",
       "weight": "0.25L",
       "price": 35
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Juice Rich in asort",
       "description": "Juice",
       "weight": "0.25L",
       "price": 35
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Juice Rich in asort",
       "description": "Juice",
       "weight": "1L",
       "price": 95
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Juice Granini",
       "description": "Juice",
       "weight": "0.25L",
       "price": 30
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Thomas Henry in asort",
       "description": "Soft drink",
       "weight": "0.2L",
@@ -885,84 +885,84 @@
     },
 
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Orange Fresh Juice",
       "description": "Fresh juice",
       "weight": "0.35L",
       "price": 85
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Grapefruit Fresh Juice",
       "description": "Fresh juice",
       "weight": "0.35L",
       "price": 85
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Classic Lemonade",
       "description": "Honey water, lemon juice, Soda Water",
       "weight": "350",
       "price": 75
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Orange Lemonade",
       "description": "Cordial Passion & Orange, Soda water",
       "weight": "350",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Grapefruit Lemonade",
       "description": "Cordial Grapefruit & Cranberry, Schweppes",
       "weight": "350",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Grape Lemonade",
       "description": "Cordial Grape & Bubblegum, Soda water",
       "weight": "350",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Pomegranate Lemonade",
       "description": "Cordial Pomegranate & Raspberry, Schweppes",
       "weight": "350",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Apple Lemonade",
       "description": "Cordial Apple & Cherry, Schweppes",
       "weight": "350",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Pineapple Lemonade",
       "description": "Cordial Pineapple, Soda water",
       "weight": "350",
       "price": 80
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Strawberry Lemonade",
       "description": "Cordial Strawberry, Soda water",
       "weight": "350",
       "price": 85
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Raspberry Lemonade",
       "description": "Cordial Raspberry, Schweppes",
       "weight": "350",
       "price": 85
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Bergamot Lemonade",
       "description": "Cordial Aloe & Bergamot, Soda water",
       "weight": "350",
@@ -972,119 +972,119 @@
 
   "hotdrinks": [
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Espresso",
       "description": "Strong coffee",
       "weight": "30",
       "price": 30
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Espresso Macchiato",
       "description": "Espresso with a dash of milk",
       "weight": "30",
       "price": 35
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Americano",
       "description": "Espresso with hot water",
       "weight": "120",
       "price": 30
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Doppio",
       "description": "Double espresso",
       "weight": "60",
       "price": 45
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Cappuccino",
       "description": "Espresso with steamed milk and foam",
       "weight": "200",
       "price": 40
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Latte Macchiato",
       "description": "Espresso with steamed milk",
       "weight": "250",
       "price": 45
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Cacao Classic",
       "description": "Classic hot chocolate",
       "weight": "250",
       "price": 45
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Flat White",
       "description": "Espresso with steamed milk",
       "weight": "250",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Tea in Assortment",
       "description": "Assorted teas",
       "weight": "0.5L",
       "price": 60
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Tea in Assortment",
       "description": "Assorted teas",
       "weight": "0.5L / 1L",
       "price": 110
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "China Tea in Assortment",
       "description": "Assorted China teas",
       "weight": "500",
       "price": 120
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "SeaBuckthorn & Orange Homemade Tea",
       "description": "Puree seabuckthorn, orange, lemon, mint",
       "weight": "1000",
       "price": 130
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Raspberry & Grapefruit Homemade Tea",
       "description": "Puree raspberry, grapefruit, lemon, mint",
       "weight": "1000",
       "price": 130
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Ginger & Honey Homemade Tea",
       "description": "Puree ginger, lemon, honey water, mint",
       "weight": "1000",
       "price": 130
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Blackcurrant & Hibiscus Homemade Tea",
       "description": "Puree blackcurrant, orange, hibiscus tea, mint",
       "weight": "1000",
       "price": 130
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Cherry & Cinnamon Homemade Tea",
       "description": "Puree cherry, cinnamon, lime",
       "weight": "1000",
       "price": 140
     },
     {
-      "image": "/src/assets/puerlogo.svg",
+      "image": "/puerlogo.svg",
       "name": "Aloe & Bergamot Homemade Tea",
       "description": "Cordial aloe & bergamot, lime, mint",
       "weight": "1000",
