@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.scss";
-import FullScreenComponent from "./components/FullScreenComponent.tsx";
+
 
 // OTHER
 import Welcome from "./pages/Welcome";
@@ -105,7 +105,6 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-        <FullScreenComponent/>
         <LanguageSwitcher />
         <div className="content">
           <Routes>
