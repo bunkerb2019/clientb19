@@ -96,9 +96,6 @@ const NavLinks = () => {
 };
 
 const App = () => {
- 
- 
-
   return (
     <Router>
       <div className="app">
