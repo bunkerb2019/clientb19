@@ -2,12 +2,14 @@ import { useState } from "react";
 import "./ProductCard.scss";
 
 interface ProductProps {
-  image?: string;
+  image: string;
   name: string;
   description: string;
   weight?: string; // Теперь это необязательное поле
   price: number;
 }
+
+const getImagePath = (image: string) => new URL(`/src/assets/${image}`, import.meta.url).href;
 
 const BarCard = ({ image, name, description, weight, price }: ProductProps) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -24,7 +26,7 @@ const BarCard = ({ image, name, description, weight, price }: ProductProps) => {
   return (
     <>
       <div className="product-card" onClick={openPopup}>
-      {image && <img src={image} alt={name} className="product-image" />}  {/* Показывать картинку, если она есть */}
+      <img src={getImagePath(image)} alt={name} className="product-image" />
         <h3 className="product-name">{name}</h3>
         <p className="product-description">{description}</p>
         {weight && <p className="product-weight">Объем: {weight} ml</p>} {/* Показываем вес, если он есть */}
@@ -37,7 +39,7 @@ const BarCard = ({ image, name, description, weight, price }: ProductProps) => {
             <button className="close-button" onClick={closePopup}>
               &times;
             </button>
-            {image && <img src={image} alt={name} className="popup-image" />}  {/* Показывать картинку в попапе, если есть */}
+            <img src={getImagePath(image)} alt={name} className="product-image" />
             <h3 className="popup-name">{name}</h3>
             <p className="popup-description">{description}</p>
             {weight && <p className="popup-weight">Объем: {weight} ml</p>} {/* Показываем вес в попапе, если он есть */}

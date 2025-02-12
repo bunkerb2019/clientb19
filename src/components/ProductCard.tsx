@@ -9,6 +9,9 @@ interface ProductProps {
   price: number;
 }
 
+
+const getImagePath = (image: string) => new URL(`/src/assets/${image}`, import.meta.url).href;
+
 const ProductCard = ({ image, name, description, weight, price }: ProductProps) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -24,7 +27,7 @@ const ProductCard = ({ image, name, description, weight, price }: ProductProps) 
   return (
     <>
       <div className="product-card" onClick={openPopup}>
-        <img src={image} alt={name} className="product-image" />
+      <img src={getImagePath(image)} alt={name} className="product-image" />
         <h3 className="product-name">{name}</h3>
         <p className="product-description">{description}</p>
         <p className="product-weight">Вес: {weight} g</p>
@@ -35,7 +38,7 @@ const ProductCard = ({ image, name, description, weight, price }: ProductProps) 
         <div className="popup-overlay" onClick={closePopup}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={closePopup}>&times;</button>
-            <img src={image} alt={name} className="popup-image" />
+            <img src={getImagePath(image)} alt={name} className="product-image" />
             <h3 className="popup-name">{name}</h3>
             <p className="popup-description">{description}</p>
             <p className="popup-weight">Вес: {weight}</p>
