@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Welcome.scss";
-import Logo from "../assets/whitepuer.svg";
+import Logo from "../assets/whitelogo.svg";
 
 const Welcome = () => {
   const [showLogo, setShowLogo] = useState(false);
