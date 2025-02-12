@@ -6,6 +6,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.scss";
+import FullScreenComponent from "./components/FullScreenComponent.tsx";
+
 // OTHER
 import Welcome from "./pages/Welcome";
 import Random from "./pages/Random";
@@ -31,8 +33,6 @@ import { Icons } from "./components/Icons.tsx";
 
 
 
-// TG SETTINGS 
-import FullScreenComponent from "./components/FullScreenComponent";
 
 const NavLinks = () => {
   const location = useLocation();
@@ -105,7 +105,7 @@ const App = () => {
   return (
     <Router>
       <div className="app">
-      <FullScreenComponent />
+        <FullScreenComponent/>
         <LanguageSwitcher />
         <div className="content">
           <Routes>
