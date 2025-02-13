@@ -1,74 +1,70 @@
-.language-switcher-container {
+$size: 40px;
+$border: 1px solid rgba(255, 255, 255, 0.3);
+
+.lang-container {
   position: fixed;
   top: 20px;
   right: 20px;
   z-index: 1000;
-
-  button {
-    background: transparent;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.537); /* Белая рамка */
-  }
-  button:hover {
-    color: aliceblue;
-  }
 }
 
-.language-switcher {
-  color: #fff;
-  padding: 10px 15px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  border: 1px solid rgba(255, 255, 255, 0.537); /* Добавляем рамку */
-
-  &.open {
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-  }
-}
-
-.language-dropdown {
-  position: absolute;
-  top: 29.7px;
-  right: -10px;
-  padding: 1px;
-  border: 1px solid rgba(255, 255, 255, 0.537);
-  border-radius: 5px;
+.main-lang {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: $border;
   display: flex;
-  flex-direction: column;
-  background: rgba(0, 0, 0, 0.8); /* Для наглядности */
-
-  /* Начальное состояние: скрыто и выше кнопки */
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.2s ease;
-
-  &.open {
-    border-top: none; /* Убираем верхнюю границу у дропдауна */
-    border-radius: 0 0 5px 5px;
-    opacity: 1;
-    max-height: 200px; /* Достаточно, чтобы вместить все элементы */
-    transform: translateY(0);
-    pointer-events: all;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &.active {
+    background: rgba(255, 255, 255, 0.2);
+    z-index: -1;
   }
 }
 
-.language-dropdown button {
-  background: none;
-  border: none;
-  color: white;
-  padding: 13px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.lang-list {
+  position: absolute;
+  top: 10px;
+  left: 1px;
+  width: $size;
+  padding-top: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
+  &.open {
+    transform: scaleY(1.1);
+    z-index: -1;
+  }
+
+  .lang-item {
+    width: $size;
+    height: $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    
+    &:not(:last-child) {
+      border-bottom: $border;
+    }
   }
 }

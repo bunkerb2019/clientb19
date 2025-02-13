@@ -1,37 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./LanguageSwitcher.scss";
 
-const languages = ["EN", "RU", "RO"];
+const languages = ["RU", "RO", "EN"];
 
 const LanguageSwitcher = () => {
-  const [language, setLanguage] = useState("EN");
+  const [currentLang, setCurrentLang] = useState(() => {
+    return localStorage.getItem("lang") || "RU";
+  });
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
+  useEffect(() => {
+    localStorage.setItem("lang", currentLang);
+  }, [currentLang]);
 
-  const changeLanguage = (lang: string) => {
-    setLanguage(lang);
-    setIsOpen(false); // Закрыть меню после выбора
-  };
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <div className="language-switcher-container">
-      <button
-        className={`language-switcher ${isOpen ? "open" : ""}`}
-        onClick={toggleDropdown}
+    <div className="lang-container" ref={containerRef}>
+      <div 
+        className={`main-lang ${isOpen ? "active" : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
       >
-        {language}
-      </button>
-      <div className={`language-dropdown ${isOpen ? "open" : ""}`}>
-        {languages
-          .filter((lang) => lang !== language)
-          .map((lang) => (
-            <button key={lang} onClick={() => changeLanguage(lang)}>
-              {lang}
-            </button>
-          ))}
+        {currentLang}
+      </div>
+      
+      <div className={`lang-list ${isOpen ? "open" : ""}`}>
+        {languages.filter(l => l !== currentLang).map((lang) => (
+          <div
+            key={lang}
+            className="lang-item"
+            onClick={() => {
+              setCurrentLang(lang);
+              setIsOpen(false);
+            }}
+          >
+            {lang}
+          </div>
+        ))}
       </div>
     </div>
   );
