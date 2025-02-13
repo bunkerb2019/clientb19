@@ -1,12 +1,14 @@
 import ProductCard from "../../components/ProductCard";
 import products from "../../data/products.json";
+import { Icons } from "../../components/Icons";
 
-const Salate = () => {
+
+const Salad = () => {
   return (
     <div>
-      <h1>🥗 SALATE</h1>
+      <span className="category-header"><img src={Icons.salad} alt="Salad" className="icon" /> Salad</span>
       <div className="product-container">
-      {products.salate.map((dish, index) => (
+      {products.salad.map((dish, index) => (
         <ProductCard key={index} {...dish} />
       ))}
       </div>
@@ -14,4 +16,4 @@ const Salate = () => {
   );
 };
 
-export default Salate;
+export default Salad;

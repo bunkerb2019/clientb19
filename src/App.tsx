@@ -5,6 +5,7 @@ import {
   NavLink,
   useLocation,
 } from "react-router-dom";
+import { useEffect } from "react";
 import "./App.scss";
 
 
@@ -15,7 +16,7 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 // FOOD
 import Breakfast from "./pages/food/Breakfast";
 import Hot from "./pages/food/Hot";
-import Salate from "./pages/food/Salate";
+import Salad from "./pages/food/Salad.tsx";
 import Soup from "./pages/food/Soup";
 import Asia from "./pages/food/Asia";
 import Rolls from "./pages/food/Rolls";
@@ -30,7 +31,15 @@ import HotDrinks from "./pages/drink/HotDrinks";
 // ICONS
 import { Icons } from "./components/Icons.tsx";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+};
 
 
 
@@ -55,9 +64,9 @@ const NavLinks = () => {
             <img src={Icons.hot} alt="Hot" className="icon" />
             Hot
           </NavLink>
-          <NavLink to="/food/salate" className="nav-item">
-            <img src={Icons.salate} alt="Salate" className="icon" />
-            Salate
+          <NavLink to="/food/salad" className="nav-item">
+            <img src={Icons.salad} alt="Salad" className="icon" />
+            Salad
           </NavLink>
           <NavLink to="/food/soup" className="nav-item">
             <img src={Icons.soup} alt="Soup" className="icon" />
@@ -104,6 +113,7 @@ const NavLinks = () => {
 const App = () => {
   return (
     <Router>
+        <ScrollToTop />
       <div className="app">
         <LanguageSwitcher />
         <div className="content">
@@ -116,7 +126,7 @@ const App = () => {
               <Route path="/food/rolls" element={<Rolls />} />
               <Route path="/food/breakfast" element={<Breakfast />} />
               <Route path="/food/hot" element={<Hot />} />
-              <Route path="/food/salate" element={<Salate />} />
+              <Route path="/food/salad" element={<Salad />} />
               <Route path="/food/soup" element={<Soup />} />
               <Route path="/food/dessert" element={<Dessert />} />
               {/* BAR  */}

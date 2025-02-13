@@ -1,10 +1,11 @@
 import ProductCard from "../../components/ProductCard";
 import products from "../../data/products.json";
+import { Icons } from "../../components/Icons";
 
 const Dessert = () => {
   return (
     <div>
-      <h1>🍰 Dessert</h1>
+      <span className="category-header"><img src={Icons.dessert} alt="Dessert" className="icon" /> Dessert</span>
       <div className="product-container">
       {products.dessert.map((dish, index) => (
         <ProductCard key={index} {...dish} />

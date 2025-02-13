@@ -8,7 +8,7 @@ const barItems = BarJson.cocktail;
 const foodItems = [
   ...Products.asia,
   ...Products.rolls,
-  ...Products.salate,
+  ...Products.salad,
 ];
 const hookahItems = Hookah.flavour;
 
@@ -105,6 +105,7 @@ const Random = () => {
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
             <h2>{selectedItem.name}</h2>
             <p>{selectedItem.description}</p>
+
             <button onClick={() => setSelectedItem(null)}>Close</button>
           </div>
         </div>
