@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { useTelegram } from "./components/useTelegram";
 import "./App.scss";
 
 
@@ -111,6 +112,8 @@ const NavLinks = () => {
 };
 
 const App = () => {
+  const tg = useTelegram();
+  console.log(tg); 
   return (
     <Router>
         <ScrollToTop />
