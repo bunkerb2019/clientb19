@@ -1,42 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
 .welcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: #000000;
-    text-align: center;
-    
-    
-    // SVG-анимация написания текста
-    .welcome-text {
-      font-size: 50px;
-      font-weight: bold;
-      font-family: "Arial", sans-serif;
-      fill: transparent;
-      stroke: rgb(250, 250, 250);
-      stroke-width: 2;
-      stroke-dasharray: 500;
-      stroke-dashoffset: 500;
-      animation: drawText 2s linear forwards;
-    }
-  
-    img {
-      width: 400px;
-      opacity: 0;
-      transform: translateX(-50px) blur(10px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-  
-    .slide-in {
-      opacity: 1;
-      transform: translateX(0) blur(0);
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  text-align: center;
+
+  // Анимация текста
+  .hello-text {
+    font-size: 64px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    fill: transparent;
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: drawText 3s ease-in-out forwards, fadeText 1s ease-in-out 2.5s forwards;
   }
-  
-  // Анимация рисования текста
-  @keyframes drawText {
-    to {
-      stroke-dashoffset: 0;
-    }
+
+  img {
+    width: 400px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
   }
+
+  .slide-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Анимация написания текста
+@keyframes drawText {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+// Плавное исчезновение обводки и появление заливки
+@keyframes fadeText {
+  0% {
+    fill: transparent;
+    stroke: white;
+  }
+  100% {
+    fill: white;
+    stroke: transparent;
+  }
+}
