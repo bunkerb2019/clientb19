@@ -9,6 +9,10 @@ import { useEffect } from "react";
 import { useTelegram } from "./components/useTelegram";
 import "./App.scss";
 
+// language 
+import './utils/i18n';
+import { useTranslation } from 'react-i18next';
+
 
 // OTHER
 import Welcome from "./pages/Welcome";
@@ -46,37 +50,39 @@ const ScrollToTop = () => {
 
 const NavLinks = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const getNavLinks = () => {
     if (location.pathname.startsWith("/food")) {
       return (
         <>
           <NavLink to="/food/asia" className="nav-item">
-            <img src={Icons.asia} alt="Asia" className="icon" /> Asia
+            <img src={Icons.asia} alt="Asia" className="icon" /> 
+            {t('navigation.asia')}
           </NavLink>
           <NavLink to="/food/rolls" className="nav-item">
-            <img src={Icons.rolls} alt="Rolls" className="icon" /> Rolls
+            <img src={Icons.rolls} alt="Rolls" className="icon" /> 
+            {t('navigation.rolls')}
           </NavLink>
           <NavLink to="/food/breakfast" className="nav-item">
-            <img src={Icons.breakfast} alt="Breakfast" className="icon" />{" "}
-            Breakfast
+            <img src={Icons.breakfast} alt="Breakfast" className="icon" /> 
+            {t('navigation.breakfast')}
           </NavLink>
           <NavLink to="/food/hot" className="nav-item">
             <img src={Icons.hot} alt="Hot" className="icon" />
-            Hot
+            {t('navigation.hot')}
           </NavLink>
           <NavLink to="/food/salad" className="nav-item">
             <img src={Icons.salad} alt="Salad" className="icon" />
-            Salad
+            {t('navigation.salad')}
           </NavLink>
           <NavLink to="/food/soup" className="nav-item">
             <img src={Icons.soup} alt="Soup" className="icon" />
-            Soup
+            {t('navigation.soup')}
           </NavLink>
-
           <NavLink to="/food/dessert" className="nav-item">
             <img src={Icons.dessert} alt="Dessert" className="icon" />
-            Dessert
+            {t('navigation.dessert')}
           </NavLink>
         </>
       );
@@ -85,23 +91,23 @@ const NavLinks = () => {
         <>
           <NavLink to="/bar/cocktail" className="nav-item">
             <img src={Icons.cocktail} alt="Cocktail" className="icon" />
-            Cocktail
+            {t('navigation.cocktail')}
           </NavLink>
           <NavLink to="/bar/champagne" className="nav-item">
             <img src={Icons.champagne} alt="Champagne&Wine" className="icon" />
-            Champagne & Wine
+            {t('navigation.champagne')}
           </NavLink>
           <NavLink to="/bar/alcohol" className="nav-item">
             <img src={Icons.alcohol} alt="Alcohol" className="icon" />
-            Alcohol
+            {t('navigation.alcohol')}
           </NavLink>
           <NavLink to="/bar/drinks" className="nav-item">
             <img src={Icons.drinks} alt="Drinks" className="icon" />
-            Drinks
+            {t('navigation.drinks')}
           </NavLink>
           <NavLink to="/bar/hotdrinks" className="nav-item">
-            <img src={Icons.hotdrinks} alt="Hot Drinks" className="icon" /> Hot
-            Drinks
+            <img src={Icons.hotdrinks} alt="Hot Drinks" className="icon" /> 
+            {t('navigation.hotdrinks')}
           </NavLink>
         </>
       );
@@ -114,6 +120,7 @@ const NavLinks = () => {
 const App = () => {
   const tg = useTelegram();
   console.log(tg); 
+  const { t } = useTranslation(); 
   return (
     <Router>
         <ScrollToTop />
@@ -145,18 +152,18 @@ const App = () => {
         </div>
 
         <>
-          <nav className="bottom-nav">
+        <nav className="bottom-nav">
             <NavLink to="/food/hot" className="nav-item">
               <img src={Icons.food} alt="Food" className="icon" />
-              FOOD
+              {t('navigation.food')}
             </NavLink>
             <NavLink to="/bar/cocktail" className="nav-item">
               <img src={Icons.bar} alt="Bar" className="icon" />
-              BAR
+              {t('navigation.bar')}
             </NavLink>
             <NavLink to="/random" className="nav-item">
               <img src={Icons.random} alt="Random" className="icon" />
-              RANDOM
+              {t('navigation.random')}
             </NavLink>
           </nav>
           <NavLinks />

@@ -1,0 +1,32 @@
+{
+  "product": {
+    "weight": "Вес",
+    "price": "Цена",
+    "gram": "г",
+    "currency": "лей"
+  },
+
+    "navigation": {
+      "food": "Еда",
+      "bar": "Бар",
+      "random": "Случайное",
+      "asia": "Азия",
+      "rolls": "Роллы",
+      "breakfast": "Завтрак",
+      "hot": "Горячее",
+      "salad": "Салаты",
+      "soup": "Супы",
+      "dessert": "Десерты",
+      "cocktail": "Коктейли",
+      "champagne": "Шампанское и Вино",
+      "alcohol": "Алкоголь",
+      "drinks": "Напитки",
+      "hotdrinks": "Горячие напитки",
+        "hookah":"Кальян"
+    },
+    "random": {
+        "slotmachine": "Игровой автомат",
+        "rules":"Правила: Нажмите кнопку, чтобы получить случайный продукт в Puer Lounge",
+         "spin": "Вращать"
+    }
+  }

@@ -1,0 +1,32 @@
+{
+  "product": {
+    "weight": "Greutate",
+    "price": "Preț",
+    "gram": "g",
+    "currency": "Lei"
+  },
+
+    "navigation": {
+      "food": "Mâncare",
+      "bar": "Bar",
+      "random": "Aleatoriu",
+      "asia": "Asia",
+      "rolls": "Rulouri",
+      "breakfast": "Mic dejun",
+      "hot": "Feluri calde",
+      "salad": "Salate",
+      "soup": "Supe",
+      "dessert": "Deserturi",
+      "cocktail": "Cocktailuri",
+      "champagne": "Șampanie și Vin",
+      "alcohol": "Alcool",
+      "drinks": "Băuturi",
+      "hotdrinks": "Băuturi calde",
+        "hookah":"narghilea"
+    },
+    "random": {
+        "slotmachine": "slot machine",
+        "rules":"Reguli: Faceți clic pe butonul pentru a obține un produs aleatoriu în Puer Lounge",
+        "spin": "Rotire"
+    }
+  }

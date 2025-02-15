@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import "./LanguageSwitcher.scss";
+import { useTranslation } from 'react-i18next';
 
-const languages = ["RU", "RO", "EN"];
+const languages = ["ru", "ro", "en"];
 
 const LanguageSwitcher = () => {
+  const { i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState(() => {
-    return localStorage.getItem("lang") || "RU";
+    return localStorage.getItem("lang") || "ru";
   });
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,6 +15,12 @@ const LanguageSwitcher = () => {
   useEffect(() => {
     localStorage.setItem("lang", currentLang);
   }, [currentLang]);
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem("lang") || "ru";
+    i18n.changeLanguage(savedLang); // Устанавливаем язык в i18n
+    setCurrentLang(savedLang);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -24,6 +32,13 @@ const LanguageSwitcher = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang); // Это самое важное изменение!
+    setCurrentLang(lang);
+    localStorage.setItem('lang', lang);
+  };
 
   return (
     <div className="lang-container" ref={containerRef}>
@@ -42,6 +57,7 @@ const LanguageSwitcher = () => {
             onClick={() => {
               setCurrentLang(lang);
               setIsOpen(false);
+              changeLanguage(lang);
             }}
           >
             {lang}

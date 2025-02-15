@@ -3,6 +3,7 @@ import "./Random.scss";
 import BarJson from "../../src/data/bar.json";
 import Products from "../../src/data/products.json";
 import Hookah from "../../src/data/hookah.json";
+import { useTranslation } from 'react-i18next';
 
 const barItems = BarJson.cocktail;
 const foodItems = [
@@ -13,6 +14,7 @@ const foodItems = [
 const hookahItems = Hookah.flavour;
 
 const Random = () => {
+  const { t } = useTranslation();
   const [positions, setPositions] = useState([-1, -1, -1]);
   const [selectedItem, setSelectedItem] = useState<{ name: string; description: string } | null>(null);
   const [hasSpun, setHasSpun] = useState([false, false, false]);
@@ -32,13 +34,13 @@ const Random = () => {
 
   return (
     <div className="slot-machine">
-      <h1>🎰 SLOT MACHINE </h1>
-      <p>Rules: click the spin button for a random product at the Puer Lounge</p>
+      <h1>🎰  {t('random.slotmachine')} </h1>
+      <p> {t('random.rules')}</p>
 
       <div className="slots">
         {/* BAR Slot */}
         <div className="slot">
-          <h2 className="slot-title">BAR</h2>
+          <h2 className="slot-title"> {t('navigation.bar')}</h2>
           <div className="slot-row">
             <div className="reel">
               {!hasSpun[0] && <div className="question-mark">?</div>}
@@ -53,13 +55,13 @@ const Random = () => {
                 ))}
               </div>
             </div>
-            <button onClick={() => spinSingle(0, "bar")}>SPIN 🎲</button>
+            <button onClick={() => spinSingle(0, "bar")}> {t('random.spin')} 🎲</button>
           </div>
         </div>
 
         {/* FOOD Slot */}
         <div className="slot">
-          <h2 className="slot-title">FOOD</h2>
+          <h2 className="slot-title">{t('navigation.food')}</h2>
           <div className="slot-row">
             <div className="reel">
               {!hasSpun[1] && <div className="question-mark">?</div>}
@@ -74,13 +76,13 @@ const Random = () => {
                 ))}
               </div>
             </div>
-            <button onClick={() => spinSingle(1, "food")}>SPIN 🎲</button>
+            <button onClick={() => spinSingle(1, "food")}> {t('random.spin')} 🎲</button>
           </div>
         </div>
 
         {/* HOOKAH Slot */}
         <div className="slot">
-          <h2 className="slot-title">HOOKAH</h2>
+          <h2 className="slot-title">{t('navigation.hookah')}</h2>
           <div className="slot-row">
             <div className="reel">
               {!hasSpun[2] && <div className="question-mark">?</div>}
@@ -95,7 +97,7 @@ const Random = () => {
                 ))}
               </div>
             </div>
-            <button onClick={() => spinSingle(2, "hookah")}>SPIN 🎲</button>
+            <button onClick={() => spinSingle(2, "hookah")}> {t('random.spin')} 🎲</button>
           </div>
         </div>
       </div>
