@@ -5,7 +5,7 @@ interface ProductProps {
   image: string;
   name: string;
   description: string;
-  weight?: number;
+  weight?: string;
   price: number;
 }
 
