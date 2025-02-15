@@ -5,6 +5,10 @@
     "gram": "г",
     "currency": "лей"
   },
+  "bar": {
+    "weight": "Объем",
+    "ml":"мл"
+  },
 
     "navigation": {
       "food": "Еда",

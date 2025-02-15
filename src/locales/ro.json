@@ -5,6 +5,10 @@
     "gram": "g",
     "currency": "Lei"
   },
+  "bar": {
+    "weight": "Volum",
+    "ml":"ml"
+  },
 
     "navigation": {
       "food": "Mâncare",

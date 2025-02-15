@@ -1,40 +1,37 @@
-{   
+{
   "product": {
     "weight": "Weight",
     "price": "Price",
     "gram": "g",
     "currency": "Lei"
   },
+  "bar": {
+    "weight": "Volume",
+    "ml":"ml"
+  },
 
-    "navigation": {
-      "food": "Food",
-      "bar": "Bar",
-      "random": "Random",
-      "asia": "Asia",
-      "rolls": "Rolls",
-      "breakfast": "Breakfast",
-      "hot": "Hot",
-      "salad": "Salad",
-      "soup": "Soup",
-      "dessert": "Dessert",
-      "cocktail": "Cocktail",
-      "champagne": "Champagne & Wine",
-      "alcohol": "Alcohol",
-      "drinks": "Drinks",
-      "hotdrinks": "Hot Drinks",
-      "hookah":"hookah"
+  "navigation": {
+    "food": "Food",
+    "bar": "Bar",
+    "random": "Random",
+    "asia": "Asia",
+    "rolls": "Rolls",
+    "breakfast": "Breakfast",
+    "hot": "Hot",
+    "salad": "Salad",
+    "soup": "Soup",
+    "dessert": "Dessert",
+    "cocktail": "Cocktail",
+    "champagne": "Champagne & Wine",
+    "alcohol": "Alcohol",
+    "drinks": "Drinks",
+    "hotdrinks": "Hot Drinks",
+    "hookah": "hookah"
+  },
 
-    },
-
-    "random": {
-        "slotmachine": "slot machine",
-        "rules":"Rules: click the spin button for a random product at the Puer Lounge",
-         "spin": "Spin"
-        
-        
-    }
-  
+  "random": {
+    "slotmachine": "slot machine",
+    "rules": "Rules: click the spin button for a random product at the Puer Lounge",
+    "spin": "Spin"
   }
-  
-
-  
+}
