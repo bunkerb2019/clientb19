@@ -6,19 +6,27 @@ import ru from "../locales/ru.json";
 import ro from "../locales/ro.json";
 import en from "../locales/en.json";
 
+// Проверяем сохранённый язык в localStorage
+const savedLang = localStorage.getItem('i18nextLng');
+
 i18n
-  .use(initReactI18next) // передаем i18next в React
+  .use(initReactI18next)
   .init({
     resources: {
-        ru: { translation: ru },
-        ro: { translation: ro },
-        en: { translation: en }
-      },
-    lng: "ru", // язык по умолчанию
-    fallbackLng: "ru", // язык, если нужный перевод не найден
+      ru: { translation: ru },
+      ro: { translation: ro },
+      en: { translation: en }
+    },
+    lng: savedLang || "ru", // Используем сохранённый язык или русский по умолчанию
+    fallbackLng: "ru",
     interpolation: {
-      escapeValue: false, // не экранировать значения
+      escapeValue: false,
     },
   });
+
+// Сохраняем язык при его изменении
+i18n.on('languageChanged', (lng) => {
+  localStorage.setItem('i18nextLng', lng);
+});
 
 export default i18n;

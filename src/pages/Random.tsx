@@ -1,23 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Random.scss";
-import BarJson from "../../src/data/bar.json";
-import Products from "../../src/data/products.json";
-import Hookah from "../../src/data/hookah.json";
 import { useTranslation } from 'react-i18next';
 
-const barItems = BarJson.cocktail;
-const foodItems = [
-  ...Products.asia,
-  ...Products.rolls,
-  ...Products.salad,
-];
-const hookahItems = Hookah.flavour;
+interface DataType {
+  bar: {
+    cocktail: Array<{ name: string; description: string }>;
+  };
+  product: {
+    asia: Array<{ name: string; description: string }>;
+    rolls: Array<{ name: string; description: string }>;
+    salad: Array<{ name: string; description: string }>;
+  };
+  hookah: {
+    flavour: Array<{ name: string; description: string }>;
+  };
+}
 
 const Random = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [data, setData] = useState<DataType | null>(null);
   const [positions, setPositions] = useState([-1, -1, -1]);
   const [selectedItem, setSelectedItem] = useState<{ name: string; description: string } | null>(null);
   const [hasSpun, setHasSpun] = useState([false, false, false]);
+
+  useEffect(() => {
+    const loadData = async (lang: string) => {
+      try {
+        const localizedData = await import(`../../src/locales/${lang}.json`);
+        setData({
+          bar: localizedData.default.bar,
+          product: localizedData.default.product,
+          hookah: localizedData.default.hookah
+        });
+      } catch (e) {
+        const defaultData = await import(`../../src/locales/en.json`);
+        setData({
+          bar: defaultData.default.bar,
+          product: defaultData.default.product,
+          hookah: defaultData.default.hookah
+        });
+      }
+    };
+
+    loadData(i18n.language);
+  }, [i18n.language]);
+
+  if (!data) return <div>Loading...</div>;
+
+  // Получаем данные из локализованного JSON
+  const barItems = data.bar.cocktail;
+  const foodItems = [
+    ...data.product.asia,
+    ...data.product.rolls,
+    ...data.product.salad,
+  ];
+  const hookahItems = data.hookah.flavour;
 
   const spinSingle = (index: number, category: string) => {
     const items = category === "bar" 

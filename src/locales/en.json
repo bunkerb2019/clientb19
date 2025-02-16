@@ -3,11 +3,1538 @@
     "weight": "Weight",
     "price": "Price",
     "gram": "g",
-    "currency": "Lei"
+    "currency": "Lei",
+
+    "asia": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Bowl with Shrimp and Rice",
+        "description": "Shrimp, avocado, mixed greens, cherry tomatoes, cucumber, rice, mango, lemon, soybeans",
+        "weight": "340",
+        "price": 155
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Salmon Poke Bowl",
+        "description": "Salmon, avocado, cucumber, tomatoes, orange, lime, soybeans",
+        "weight": "280",
+        "price": 250
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chuka Wakame",
+        "description": "Chuka seaweed salad",
+        "weight": "120",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Breaded Shrimp",
+        "description": "Shrimp, panko breadcrumbs, tempura batter, creamy sauce",
+        "weight": "170",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bao Burger with Shrimp",
+        "description": "Bao bun, shrimp, chuka seaweed, tobiko roe, Japanese mayonnaise",
+        "weight": "360",
+        "price": 180
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bao Burger with Chicken",
+        "description": "Bao bun, chicken breast, iceberg lettuce, sweet chili sauce",
+        "weight": "360",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bao Burger with Beef",
+        "description": "Bao bun, beef tenderloin, bell pepper, sweet chili sauce",
+        "weight": "320",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chicken Udon",
+        "description": "Chicken breast, wheat noodles, onion, carrot, California pepper, mushrooms, egg, sesame",
+        "weight": "320",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Shrimp Udon",
+        "description": "Shrimp, wheat noodles, onion, carrot, California pepper, mushrooms, egg, sesame",
+        "weight": "320",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Beef Udon",
+        "description": "Beef, wheat noodles, onion, carrot, California pepper, mushrooms, egg, sesame",
+        "weight": "320",
+        "price": 170
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Thai Vegetable Rice",
+        "description": "Rice, kapia pepper, zucchini, mushrooms, soybeans, egg, pickled daikon, pickled corn",
+        "weight": "320",
+        "price": 100
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Thai Chicken Rice",
+        "description": "Chicken, rice, pineapple, onion, California pepper, broccoli, garlic",
+        "weight": "320",
+        "price": 125
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Thai Shrimp Rice",
+        "description": "Shrimp, zucchini, soy, kapia pepper, egg, garlic, rice, pickled daikon, sesame, Thai sauce",
+        "weight": "320",
+        "price": 145
+      }
+    ],
+    "rolls": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Classic Set",
+        "description": "Philadelphia roll, Philadelphia tempura, California Eel, Red Dragon",
+        "weight": "1000",
+        "price": 790
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Philadelphia Set",
+        "description": "Philadelphia roll, Philadelphia Crunch, Philadelphia Grill, Philadelphia Lux",
+        "weight": "1000",
+        "price": 790
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Eel Gunkan",
+        "description": "Eel, rice, nori",
+        "weight": "45",
+        "price": 40
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Salmon Gunkan",
+        "description": "Salmon, rice, tobiko roe, Japanese mayonnaise, nori",
+        "weight": "45",
+        "price": 40
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Shrimp Gunkan",
+        "description": "Shrimp, rice, tobiko roe, Japanese mayonnaise, nori",
+        "weight": "45",
+        "price": 40
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tuna Roll",
+        "description": "Tuna, rice, avocado, salmon, cream cheese, daikon, nori, Japanese mayonnaise, red caviar, ginger, wasabi",
+        "weight": "250",
+        "price": 250
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bacon Roll",
+        "description": "Bacon, rice, avocado, cucumber, cream cheese, tobiko roe, Japanese mayonnaise, ginger, wasabi",
+        "weight": "250",
+        "price": 195
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tempura Shrimp Roll",
+        "description": "Shrimp, rice, avocado, cucumber, cream cheese, tobiko roe, Japanese mayonnaise, ginger, wasabi",
+        "weight": "250",
+        "price": 190
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Super Philadelphia Roll",
+        "description": "Salmon, eel, rice, avocado, mango, unagi sauce, nori, ginger, wasabi",
+        "weight": "250",
+        "price": 270
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Ebi Roll",
+        "description": "Salmon, shrimp, rice, avocado, cream cheese, tobiko roe, nori, ginger, wasabi",
+        "weight": "250",
+        "price": 270
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pu-erh Roll",
+        "description": "Salmon, avocado, cream cheese, nori, rice, wasabi, ginger, kimchi sauce",
+        "weight": "250",
+        "price": 175
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Kairo Roll",
+        "description": "Salmon, eel, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "270",
+        "price": 215
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Philadelphia Roll",
+        "description": "Salmon, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "260",
+        "price": 195
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Philadelphia Lux",
+        "description": "Salmon, cream cheese, red caviar, avocado, shrimp, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "280",
+        "price": 250
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Red Dragon",
+        "description": "Salmon, eel, Japanese mayonnaise, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "250",
+        "price": 270
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tempura Roll",
+        "description": "Shrimp, eel, cucumber, tempura batter, cream cheese, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "270",
+        "price": 175
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "California Eel",
+        "description": "Eel, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "240",
+        "price": 220
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "California Shrimp",
+        "description": "Shrimp, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "240",
+        "price": 180
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "California Salmon",
+        "description": "Salmon, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "240",
+        "price": 175
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Canada Roll",
+        "description": "Eel, salmon, cream cheese, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "260",
+        "price": 220
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Ebi Tempura",
+        "description": "Shrimp, cream cheese, cucumber, tempura batter, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "270",
+        "price": 150
+      }
+    ],
+    "breakfast": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Eggs Benedict with Salmon and Avocado",
+        "description": "Salmon, avocado, egg, cream cheese, hollandaise sauce, tobiko roe, rye bread",
+        "weight": "280",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Croque Madame",
+        "description": "Bacon, melted cheese, egg, toast, hollandaise sauce, iceberg lettuce",
+        "weight": "260",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "English Breakfast",
+        "description": "Sausages, egg, red beans, mushrooms, tomatoes, mixed greens, rye bread",
+        "weight": "260",
+        "price": 105
+      }
+    ],
+
+    "hot": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Camembert Tempura",
+        "description": "Camembert cheese, panko breadcrumbs, tempura batter, berry sauce",
+        "weight": "200",
+        "price": 160
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chicken Curry",
+        "description": "Chicken breast, basmati rice, coconut milk, curry paste, mushrooms, black sesame",
+        "weight": "390",
+        "price": 160
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grilled Dorade with Vegetables",
+        "description": "Dorade, broccoli, bell pepper, green beans, teriyaki sauce",
+        "weight": "350/150",
+        "price": 295
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grilled Salmon with Orange Sauce",
+        "description": "Salmon, orange sauce, broccoli",
+        "weight": "240/120",
+        "price": 295
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Idaho Potatoes",
+        "description": "Idaho potatoes, ketchup, mayonnaise",
+        "weight": "130/30",
+        "price": 38
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Quesadilla",
+        "description": "Chicken breast, bell pepper, tomatoes, red beans, lavash, Emmental cheese, tzatziki sauce",
+        "weight": "290/30",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Beef Tenderloin Steak",
+        "description": "Beef tenderloin, bell pepper, baby corn, mushrooms, mixed greens, berry sauce",
+        "weight": "250/70/30",
+        "price": 295
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grilled Salmon Steak",
+        "description": "Salmon, basmati rice, tzatziki sauce, hollandaise sauce",
+        "weight": "140/140/60",
+        "price": 295
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chicken Breast Steak",
+        "description": "Chicken breast, cucumbers, tomatoes, feta cheese, sweet chili sauce",
+        "weight": "280/270/30",
+        "price": 190
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pork Steak",
+        "description": "Pork cutlet, Idaho potatoes, mixed greens, cherry tomatoes, mustard, ketchup",
+        "weight": "260/170/40",
+        "price": 190
+      }
+    ],
+    "salad": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Mango and Tuna Salad",
+        "description": "Tuna, mango, avocado, cherry tomatoes, mixed greens, yuzu sauce",
+        "weight": "260",
+        "price": 195
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Greek Salad",
+        "description": "Bell pepper, cucumbers, tomatoes, red onion, Kalamata olives, pita, feta cheese",
+        "weight": "260",
+        "price": 105
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Beef Tagliata",
+        "description": "Beef tenderloin, tomatoes, mixed greens, Parmesan, creamy balsamic",
+        "weight": "300",
+        "price": 230
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Salmon Tartare",
+        "description": "Salmon, avocado, red onion, soy sauce, lime",
+        "weight": "220",
+        "price": 195
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chicken Caesar Salad",
+        "description": "Chicken breast, tomatoes, mixed greens, Parmesan, croutons, sesame, Caesar dressing",
+        "weight": "260",
+        "price": 136
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Shrimp Caesar Salad",
+        "description": "Shrimp, tomatoes, mixed greens, Parmesan, croutons, sesame, Caesar dressing",
+        "weight": "240",
+        "price": 160
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Canned Tuna Caesar Salad",
+        "description": "Tuna, tomatoes, mixed greens, Parmesan, croutons, sesame, Caesar dressing",
+        "weight": "260",
+        "price": 160
+      }
+    ],
+    "soup": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Creamy Sweet Corn Soup",
+        "description": "Basmati rice, chicken breast, tempura batter, panko breadcrumbs, curry paste, coconut milk, mushrooms, sesame",
+        "weight": "350",
+        "price": 135
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tom Yum Soup",
+        "description": "Shrimp, coconut milk, mushrooms, chicken broth, tom yum paste, rice",
+        "weight": "320/60",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Zama Soup",
+        "description": "Chicken meat, carrot, bell pepper, onion, homemade noodles, sour cream, chili pepper, bread",
+        "weight": "350/30",
+        "price": 75
+      }
+    ],
+    "dessert": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Tropical Roll",
+        "description": "Rice paper, cream cheese, banana, orange, kiwi, coconut flakes",
+        "weight": "220",
+        "price": 110
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Cheesecake",
+        "description": "Classic cheesecake",
+        "weight": "160/30/30",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Oatmeal with Fruits",
+        "description": "Oatmeal, milk, banana, orange, kiwi, walnuts, honey",
+        "weight": "300",
+        "price": 55
+      }
+    ]
   },
   "bar": {
     "weight": "Volume",
-    "ml":"ml"
+    "ml": "ml",
+
+    "cocktail": [
+      {
+        "image": "puerlogo.svg",
+        "name": "GIN-TONIC 0%",
+        "price": 130,
+        "description": "Gordon's 0%/Botanical tonic"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "VIBRANTE SPRITZ 0%",
+        "price": 130,
+        "description": "Martini vibrante 0%/Cordial pomegranate/Soda water"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "CREEME DE LE BATON",
+        "price": 130,
+        "description": "Infusion creamy vodka/Frangelico/Cordial pineapple/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "BASIL SMASH",
+        "price": 130,
+        "description": "Beefeater/Elderflower liqueur/Lemon juice/Basil syrup"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "SAKURA",
+        "price": 140,
+        "description": "Fujimi/Rose liqueur/Martini Riserva Rubino/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PINEAPPLE SPLASH",
+        "price": 140,
+        "description": "Chateau du breuil/Peach liqueur/Pineapple cordial/Soda water"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "SOJU PALOMA",
+        "price": 140,
+        "description": "Rooster blanco/Grapefruit soju/Grapefruit cordial/Tonic"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PIMM'S CUP",
+        "price": 155,
+        "description": "Pimm's/Sour apple liqueur/Chamomile cordial/Ginger ale"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PEACH BLOOMING",
+        "price": 155,
+        "description": "Beefeater/Peach soju/Peach cordial/Botanical tonic"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "APPLE FIZZ",
+        "price": 155,
+        "description": "Becherovka/Cynar/Apple cordial/Grapefruit tonic"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PANCHING BAG",
+        "price": 155,
+        "description": "Diplomatico Reserva/Amaro Montenegro/Honeybush cordial/Ginger ale"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PURPLE HAZE",
+        "price": 155,
+        "description": "Beefeater/Carpano Bianco/Aloe & bergamot cordial/Botanical tonic"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "BLOSSOM BELLINI",
+        "price": 130,
+        "description": "Carpano Bianco/Peach cordial/Peach liqueur/Sparkling wine"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "LYCHEE SPRITZ",
+        "price": 130,
+        "description": "Kwaiten lychee/Raspberry cordial/Sparkling wine"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "NECTARINE SPRITZ",
+        "price": 130,
+        "description": "Mango liqueur/Carpano Bianco/Passionfruit liqueur/Peach cordial/Sparkling wine"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PASSION APEROL",
+        "price": 140,
+        "description": "Negroni Bitter/Negroni Sixteen/Orange & Passion cordial/Sparkling wine"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "ROSERITA",
+        "price": 150,
+        "description": "Rose liqueur/Strawberry cordial/Rose wine"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "ALOE GIN-TONIC",
+        "price": 150,
+        "description": "Beefeater/Grapefruit liqueur/Aloe & bergamot cordial/Tonic"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "ELVEN GARDEN",
+        "price": 130,
+        "description": "Plantation 3 Stars/Elderflower liqueur/Matcha syrup/Lemon juice/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "BUBBLE GUM",
+        "price": 140,
+        "description": "Bombay Sapphire/Lychee liqueur/Bubblegum syrup/Grape cordial"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "GRAPE BLAZE",
+        "price": 140,
+        "description": "Bombay Sapphire/Aloe & bergamot cordial/Coconut liqueur"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "1920",
+        "price": 140,
+        "description": "Pedro cherry infusion/Rooster blanco/Pomegranate cordial"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PORTBERRY BLISS",
+        "price": 130,
+        "description": "Creamy vodka infusion/Passionfruit liqueur/Passionfruit cordial/Egg foam/Sparkling wine shot"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PORN STAR IN PUER",
+        "price": 140,
+        "description": "Clarified creamy vodka/Passoa liqueur/Passionfruit cordial/Egg foam/Sparkling wine shot"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "RASPBERRY FUSHION",
+        "price": 140,
+        "description": "Beefeater/Raspberry cordial/Basil syrup/Lychee liqueur/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "COCO & BERRY",
+        "price": 140,
+        "description": "Angostura Reserva/Coconut liqueur/Strawberry cordial/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PINETROPICAL",
+        "price": 140,
+        "description": "Bacardi Spiced/Pineapple cordial/Mango liqueur/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "MAGIC CLUB AGAIN",
+        "price": 150,
+        "description": "Beefeater/Chambord/Raspberry cordial/Bubblegum syrup/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "COCO PORN TINI",
+        "price": 150,
+        "description": "Creamy vodka infusion/Coconut liqueur/Coco & passion cordial/Egg foam"
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "SEDUCTION",
+        "price": 155,
+        "description": "Whitley Neil Quince/Elderflower liqueur/Honeybush cordial/Egg foam"
+      }
+    ],
+
+    "champanewine": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Alb Chardonnay",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 320
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Alb Fetească Regală",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 320
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Rosé Pinot Noir",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 350
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Rosu Cabernet Sauvignon",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 400
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Rosu Secret Blend",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 500
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Rosu Patru in Rosu",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 500
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chateau Cristi Alb Riesling",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 320
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chateau Cristi Rosu Malbec Saperavi",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 500
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chateau Cristi Alb/Rosé",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 700
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Late Harvest Cabernet Sauvignon",
+        "description": "Wine",
+        "weight": "0.75",
+        "price": 700
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Moet Chandon Brut Imperial",
+        "description": "Champagne",
+        "weight": "0.75",
+        "price": 2600
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Martini Asti",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 650
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Cuvée de Purcari Brut Alb",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 550
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Cuvée de Purcari Brut Rose",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 550
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Prosecco Brut",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 300
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Prosecco Extra Dry",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 300
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Suave Rosé Dulce",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 320
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Maestro Prosecco DOCG",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 400
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Mondoro Asti Dolce",
+        "description": "Sparkling wine",
+        "weight": "0.75",
+        "price": 400
+      }
+    ],
+
+    "alcohol": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Tanqueray 10 V.O.",
+        "description": "Gin",
+        "weight": "40",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Hendrick's",
+        "description": "Gin",
+        "weight": "40",
+        "price": 100
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Ukiyo Yuzu Japanese",
+        "description": "Gin",
+        "weight": "40",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Roku Japanese",
+        "description": "Gin",
+        "weight": "40",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Nikka Coffey Gin",
+        "description": "Gin",
+        "weight": "40",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Whitley Neil Quince",
+        "description": "Gin",
+        "weight": "40",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Monkey 47 Dry Gin",
+        "description": "Gin",
+        "weight": "40",
+        "price": 160
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Knut Hansen Dry",
+        "description": "Gin",
+        "weight": "40",
+        "price": 160
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Beefeater",
+        "description": "Gin",
+        "weight": "40",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bombay Sapphire",
+        "description": "Gin",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "KAH Anejo",
+        "description": "Tequila",
+        "weight": "40",
+        "price": 155
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "KAH Reposado",
+        "description": "Tequila",
+        "weight": "40",
+        "price": 135
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Rooster Ahumado",
+        "description": "Tequila",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Rooster Rojo Blanco",
+        "description": "Tequila",
+        "weight": "40",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Rooster Rojo Reposado",
+        "description": "Tequila",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Rooster Rojo Smoked Pineapple",
+        "description": "Tequila",
+        "weight": "40",
+        "price": 110
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Absolut",
+        "description": "Vodka",
+        "weight": "40",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grey Goose",
+        "description": "Vodka",
+        "weight": "40",
+        "price": 110
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Titos Handmade",
+        "description": "Vodka",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Hennessy V.S.O.P.",
+        "description": "Cognac",
+        "weight": "40",
+        "price": 165
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Hennessy V.S.",
+        "description": "Cognac",
+        "weight": "40",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bucuria 10 Y.O.",
+        "description": "Divin",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Speranta 9 Y.O.",
+        "description": "Divin",
+        "weight": "40",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Leffe blonde",
+        "description": "Beer",
+        "weight": "0.331l",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Leffe brune",
+        "description": "Beer",
+        "weight": "0.331l",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Corona Extra",
+        "description": "Beer",
+        "weight": "0.331l",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Corona Extra Cero 0%",
+        "description": "Beer",
+        "weight": "0.331l",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Franziskaner Weissbier",
+        "description": "Beer",
+        "weight": "0.5l",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Brandy Sandeman Imperial",
+        "description": "Brandypisco",
+        "weight": "40",
+        "price": 50
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pisco Demonio de los Andes",
+        "description": "Brandypisco",
+        "weight": "40",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Campari",
+        "description": "Aperitif",
+        "weight": "40",
+        "price": 50
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Amaro Cynar",
+        "description": "Digestif",
+        "weight": "40",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Amaro Montenegro",
+        "description": "Digestif",
+        "weight": "40",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Vermouth Punt e Mes",
+        "description": "Vermouth",
+        "weight": "40",
+        "price": 50
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Vermouth Antica Formula",
+        "description": "Vermouth",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Vermouth Carpano Bianco/Rosso",
+        "description": "Vermouth",
+        "weight": "40",
+        "price": 50
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Amaro Fernet Branca/Menta",
+        "description": "Digestif",
+        "weight": "40",
+        "price": 55
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Vecchio Amaro Del Capo",
+        "description": "Digestif",
+        "weight": "40",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bigallet China-China",
+        "description": "Liqueur",
+        "weight": "40",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Martini Riserva Ambrato/Rubino",
+        "description": "Vermouth",
+        "weight": "40",
+        "price": 65
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Becherovka",
+        "description": "Digestif",
+        "weight": "40",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Frangelico",
+        "description": "Liqueur",
+        "weight": "40",
+        "price": 90
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Luxardo Absinthe Fata Verde",
+        "description": "Absinthe",
+        "weight": "40",
+        "price": 100
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Ballantine's Finest",
+        "description": "Blended whiskey",
+        "weight": "40",
+        "price": 65
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tullamore D.E.W.",
+        "description": "Irish whiskey",
+        "weight": "40",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Elijah Craig",
+        "description": "Bourbon",
+        "weight": "40",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Fuyu Japanese",
+        "description": "Japanese whiskey",
+        "weight": "40",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Glenlivet Single Malt 1824",
+        "description": "Single malt Scotch whiskey",
+        "weight": "40",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Glenlivet 18 Y.O.",
+        "description": "Single malt Scotch whiskey",
+        "weight": "40",
+        "price": 300
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "The Macallan 12 Y.O.",
+        "description": "Single malt Scotch whiskey",
+        "weight": "40",
+        "price": 320
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Woodford Reserve",
+        "description": "Bourbon",
+        "weight": "40",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Royal Salute 21 Y.O.",
+        "description": "Premium Scotch whiskey",
+        "weight": "40",
+        "price": 460
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Glenfiddich 12 Y.O.",
+        "description": "Single malt Scotch whiskey",
+        "weight": "40",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Fujimi Japanese",
+        "description": "Japanese whiskey",
+        "weight": "40",
+        "price": 135
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Nikka Japanese",
+        "description": "Japanese whiskey",
+        "weight": "40",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Aberlour",
+        "description": "Single malt Scotch whiskey",
+        "weight": "40",
+        "price": 150
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Jameson Irish",
+        "description": "Irish whiskey",
+        "weight": "40",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pogues Irish",
+        "description": "Irish whiskey",
+        "weight": "40",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Glenmorangie 10 Y.O.",
+        "description": "Single malt Scotch whiskey",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chivas Regal 12 Y.O.",
+        "description": "Blended Scotch whiskey",
+        "weight": "40",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Chivas Regal 18 Y.O.",
+        "description": "Blended Scotch whiskey",
+        "weight": "40",
+        "price": 155
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Monkey Shoulder",
+        "description": "Blended Scotch whiskey",
+        "weight": "40",
+        "price": 90
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Angostura Reserva White 3 Y.O.",
+        "description": "White rum",
+        "weight": "40",
+        "price": 65
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Don Papa MassKara",
+        "description": "Philippine rum",
+        "weight": "40",
+        "price": 160
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Diplomatico Reserva Exclusiva",
+        "description": "Venezuelan rum",
+        "weight": "40",
+        "price": 90
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Diplomatico Planas Blue",
+        "description": "Venezuelan white rum",
+        "weight": "40",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Rum Bumbu",
+        "description": "Caribbean rum",
+        "weight": "40",
+        "price": 115
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Rum Canerock",
+        "description": "Spiced rum",
+        "weight": "40",
+        "price": 100
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Plantation 3 Stars",
+        "description": "White rum",
+        "weight": "40",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Plantation Original Dark",
+        "description": "Dark rum",
+        "weight": "40",
+        "price": 70
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Plantation Pineapple",
+        "description": "Pineapple rum",
+        "weight": "40",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bacardi Spiced",
+        "description": "Spiced rum",
+        "weight": "40",
+        "price": 70
+      }
+    ],
+
+    "drinks": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Bucovina",
+        "description": "Soft drink",
+        "weight": "0.33L",
+        "price": 30
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bucovina",
+        "description": "Soft drink",
+        "weight": "0.75L",
+        "price": 55
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Borjomi",
+        "description": "Mineral water",
+        "weight": "0.5L",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Coca-cola",
+        "description": "Soft drink",
+        "weight": "0.25L",
+        "price": 35
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Juice Rich in asort",
+        "description": "Juice",
+        "weight": "0.25L",
+        "price": 35
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Juice Rich in asort",
+        "description": "Juice",
+        "weight": "1L",
+        "price": 95
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Juice Granini",
+        "description": "Juice",
+        "weight": "0.25L",
+        "price": 30
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Thomas Henry in asort",
+        "description": "Soft drink",
+        "weight": "0.2L",
+        "price": 55
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Orange Fresh Juice",
+        "description": "Fresh juice",
+        "weight": "0.35L",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grapefruit Fresh Juice",
+        "description": "Fresh juice",
+        "weight": "0.35L",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Classic Lemonade",
+        "description": "Honey water, lemon juice, Soda Water",
+        "weight": "350",
+        "price": 75
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Orange Lemonade",
+        "description": "Passion & Orange cordial, Soda water",
+        "weight": "350",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grapefruit Lemonade",
+        "description": "Grapefruit & Cranberry cordial, Schweppes",
+        "weight": "350",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Grape Lemonade",
+        "description": "Grape & Bubblegum cordial, Soda water",
+        "weight": "350",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pomegranate Lemonade",
+        "description": "Pomegranate & Raspberry cordial, Schweppes",
+        "weight": "350",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Apple Lemonade",
+        "description": "Apple & Cherry cordial, Schweppes",
+        "weight": "350",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pineapple Lemonade",
+        "description": "Pineapple cordial, Soda water",
+        "weight": "350",
+        "price": 80
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Strawberry Lemonade",
+        "description": "Strawberry cordial, Soda water",
+        "weight": "350",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Raspberry Lemonade",
+        "description": "Raspberry cordial, Schweppes",
+        "weight": "350",
+        "price": 85
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bergamot Lemonade",
+        "description": "Aloe & Bergamot cordial, Soda water",
+        "weight": "350",
+        "price": 85
+      }
+    ],
+
+    "hotdrinks": [
+      {
+        "image": "puerlogo.svg",
+        "name": "Espresso",
+        "description": "Strong coffee",
+        "weight": "30",
+        "price": 30
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Espresso Macchiato",
+        "description": "Espresso with a dash of milk",
+        "weight": "30",
+        "price": 35
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Americano",
+        "description": "Espresso with hot water",
+        "weight": "120",
+        "price": 30
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Doppio",
+        "description": "Double espresso",
+        "weight": "60",
+        "price": 45
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Cappuccino",
+        "description": "Espresso with steamed milk and foam",
+        "weight": "200",
+        "price": 40
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Latte Macchiato",
+        "description": "Espresso with steamed milk",
+        "weight": "250",
+        "price": 45
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Cacao Classic",
+        "description": "Classic hot chocolate",
+        "weight": "250",
+        "price": 45
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Flat White",
+        "description": "Espresso with steamed milk",
+        "weight": "250",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tea in Assortment",
+        "description": "Assorted teas",
+        "weight": "0.5L",
+        "price": 60
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Tea in Assortment",
+        "description": "Assorted teas",
+        "weight": "0.5L / 1L",
+        "price": 110
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "China Tea in Assortment",
+        "description": "Assorted Chinese teas",
+        "weight": "500",
+        "price": 120
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "SeaBuckthorn & Orange Homemade Tea",
+        "description": "Sea buckthorn puree, orange, lemon, mint",
+        "weight": "1000",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Raspberry & Grapefruit Homemade Tea",
+        "description": "Raspberry puree, grapefruit, lemon, mint",
+        "weight": "1000",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Ginger & Honey Homemade Tea",
+        "description": "Ginger puree, lemon, honey water, mint",
+        "weight": "1000",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Blackcurrant & Hibiscus Homemade Tea",
+        "description": "Blackcurrant puree, orange, hibiscus tea, mint",
+        "weight": "1000",
+        "price": 130
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Cherry & Cinnamon Homemade Tea",
+        "description": "Cherry puree, cinnamon, lime",
+        "weight": "1000",
+        "price": 140
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Aloe & Bergamot Homemade Tea",
+        "description": "Aloe & Bergamot cordial, lime, mint",
+        "weight": "1000",
+        "price": 150
+      }
+    ]
   },
 
   "navigation": {
@@ -33,5 +1560,154 @@
     "slotmachine": "slot machine",
     "rules": "Rules: click the spin button for a random product at the Puer Lounge",
     "spin": "Spin"
+  },
+
+  "hookah": {
+    "flavour": [
+      {
+        "name": "Tropical Sunrise",
+        "description": "A juicy mix of pineapple, mango, and passion fruit with the bitter freshness of grapefruit. Ideal for morning smoking."
+      },
+      {
+        "name": "Cherry Ecstasy",
+        "description": "Deep cherry with mineral notes and sweet jelly. Reminiscent of cherry pie."
+      },
+      {
+        "name": "Snow Desert",
+        "description": "Icy mint, peach tea, and citrus tang. Refreshing like a winter breeze."
+      },
+      {
+        "name": "Forest Berry",
+        "description": "Tart blueberries, sour barberries, and woody undertones. Like a walk through an autumn forest."
+      },
+      {
+        "name": "Dessert Paradise",
+        "description": "Caramel, almonds, and creamy tea with airy marshmallow. For sweet tooths."
+      },
+      {
+        "name": "Citrus Storm",
+        "description": "A burst of orange, lime, and exotic lychee. Energizing like a sports drink."
+      },
+      {
+        "name": "Oriental Sweets",
+        "description": "Pistachio ice cream, saffron, and spiced tea. Smells like an Istanbul bazaar."
+      },
+      {
+        "name": "Berry Yogurt",
+        "description": "Creamy yogurt with blueberries and raspberries. A light, sugar-free dessert."
+      },
+      {
+        "name": "Wild Honey",
+        "description": "Honey sweetness, tart bergamot, and wild berries. Warm and cozy."
+      },
+      {
+        "name": "Summer Garden",
+        "description": "Peach tea with raspberries and hints of cookies. Like a garden picnic."
+      },
+      {
+        "name": "Exotic Fusion",
+        "description": "Sweet dates, juicy jackfruit, and a touch of cactus astringency. For the bold."
+      },
+      {
+        "name": "Frosty Freshness",
+        "description": "Crunchy waffle with lemon and icy mint. Refreshing even in the heat."
+      },
+      {
+        "name": "Cola Explosion",
+        "description": "Double-fizzy cola with a hint of vanilla foam. Simple and vibrant."
+      },
+      {
+        "name": "Blooming Garden",
+        "description": "A floral bouquet of jasmine, orange, and peonies. Romantic and delicate."
+      },
+      {
+        "name": "Tropical Storm",
+        "description": "Pineapple with a spicy kick and ripe mango. Exotic in every puff."
+      },
+      {
+        "name": "Sweet Frost",
+        "description": "Creamy condensed milk and thick milkshake. A winter delight."
+      },
+      {
+        "name": "Japanese Garden",
+        "description": "Yuzu citrus, green tea, and jasmine blossoms. Minimalist harmony."
+      },
+      {
+        "name": "Sour Worm",
+        "description": "Sweet-and-sour candy with a surprising corn note. Playful and quirky."
+      },
+      {
+        "name": "Coffee Rhythm",
+        "description": "Coffee, marshmallow, and herbal liqueur. For late-night hangs."
+      },
+      {
+        "name": "Wild Herbs",
+        "description": "Tarragon, basil, and wild berries. A spicy, fresh bouquet."
+      },
+      {
+        "name": "Raspberry Heaven",
+        "description": "Triple raspberry: fresh, sweet, and chocolate-dipped. A berry explosion."
+      },
+      {
+        "name": "Smoky East",
+        "description": "Spiced tea with pomegranate, apple, and cardamom. Smoky and warm."
+      },
+      {
+        "name": "Fruit Ice",
+        "description": "Icy citrus and mint freshness. Like fruity sorbet."
+      },
+      {
+        "name": "Salted Caramel",
+        "description": "Creamy cheesecake, caramel, and almonds. A gourmet dessert."
+      },
+      {
+        "name": "Orange Paradise",
+        "description": "Two types of orange—floral and tart. A juicy citrus blend."
+      },
+      {
+        "name": "Green Dragon",
+        "description": "Piney fir, sour berries, and a light smoky haze. Mysterious and fresh."
+      },
+      {
+        "name": "Chocolate Dream",
+        "description": "Warm brownie, peanuts, and cocoa. For deep flavor lovers."
+      },
+      {
+        "name": "Lemon Pie",
+        "description": "Crunchy wafer with lemon and lime. A tangy dessert."
+      },
+      {
+        "name": "Sea Breeze",
+        "description": "Fresh cucumber and creamy sweetness. Surprisingly refreshing."
+      },
+      {
+        "name": "Ripe Pear",
+        "description": "Juicy pear with lemon soda. A fruity fresh twist."
+      },
+      {
+        "name": "Strawberry Pie",
+        "description": "Strawberries, shortbread cookies, and yogurt. A taste of childhood."
+      },
+      {
+        "name": "Wild Flowers",
+        "description": "A floral mix of cosmos and jasmine. Light and airy."
+      },
+      {
+        "name": "Coconut Paradise",
+        "description": "Coconut flakes, pineapple, and papaya. Beach vibes."
+      },
+      {
+        "name": "Pink Sunset",
+        "description": "Sweet melon, watermelon, and bitter grapefruit. A summer sunset in your mouth."
+      },
+      {
+        "name": "Herbal Tea",
+        "description": "Red tea with jasmine and honey. Calming and warming."
+      },
+      {
+        "name": "Juicy Peach",
+        "description": "Ripe peach, apricot, and tea-like tannins. A fruity bouquet."
+      }
+    ]
   }
 }

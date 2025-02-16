@@ -1,10 +1,11 @@
 import BarCard from "../../components/BarCard";
-import products from "../../data/bar.json";
+// import products from "../../data/bar.json";
 import { Icons } from "../../components/Icons";
 import { useTranslation } from "react-i18next";
 
 const Drinks = () => {
   const { t } = useTranslation();
+  const dishes = t('bar.drinks', { returnObjects: true });
   return (
     <div>
       <span className="category-header">
@@ -12,7 +13,7 @@ const Drinks = () => {
         {t("navigation.drinks")}
       </span>
       <div className="product-container">
-        {products.drinks.map((dish, index) => (
+      {Array.isArray(dishes) && dishes.map((dish, index) => (
           <BarCard key={index} {...dish} />
         ))}
       </div>
