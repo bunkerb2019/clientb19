@@ -7,74 +7,82 @@
 
     "asia": [
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3400.jpg",
         "name": "Bowl with Shrimp and Rice",
         "description": "Shrimp, avocado, mixed greens, cherry tomatoes, cucumber, rice, mango, lemon, soybeans",
         "weight": "340",
-        "price": 155
+        "price": 165
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/da36c2e1e785402376be09d767b33dcb5cd23383/asia/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202025-02-17%20%D0%B2%2020.38.08.png",
         "name": "Salmon Poke Bowl",
         "description": "Salmon, avocado, cucumber, tomatoes, orange, lime, soybeans",
         "weight": "280",
         "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3350.jpg",
         "name": "Chuka Wakame",
         "description": "Chuka seaweed salad",
         "weight": "120",
         "price": 95
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3262.jpg",
         "name": "Breaded Shrimp",
         "description": "Shrimp, panko breadcrumbs, tempura batter, creamy sauce",
         "weight": "170",
-        "price": 145
+        "price": 160
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3366.jpg",
         "name": "Bao Burger with Shrimp",
         "description": "Bao bun, shrimp, chuka seaweed, tobiko roe, Japanese mayonnaise",
         "weight": "360",
         "price": 180
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3356.jpg",
         "name": "Bao Burger with Chicken",
         "description": "Bao bun, chicken breast, iceberg lettuce, sweet chili sauce",
         "weight": "360",
-        "price": 120
+        "price": 135
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3375.jpg",
         "name": "Bao Burger with Beef",
         "description": "Bao bun, beef tenderloin, bell pepper, sweet chili sauce",
         "weight": "320",
-        "price": 130
+        "price": 140
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3437.jpg",
         "name": "Chicken Udon",
         "description": "Chicken breast, wheat noodles, onion, carrot, California pepper, mushrooms, egg, sesame",
         "weight": "320",
-        "price": 130
+        "price": 140
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3461.jpg",
         "name": "Shrimp Udon",
         "description": "Shrimp, wheat noodles, onion, carrot, California pepper, mushrooms, egg, sesame",
         "weight": "320",
-        "price": 145
+        "price": 155
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3437.jpg",
         "name": "Beef Udon",
         "description": "Beef, wheat noodles, onion, carrot, California pepper, mushrooms, egg, sesame",
         "weight": "320",
-        "price": 170
+        "price": 175
+      },
+
+      {
+        "image": "puerlogo.svg",
+        "name": "Panco rice with tuna",
+        "description": "Panco rice with tuna",
+        "weight": "320",
+        "price": 210
       },
       {
         "image": "puerlogo.svg",
@@ -84,14 +92,14 @@
         "price": 100
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3451.jpg",
         "name": "Thai Chicken Rice",
         "description": "Chicken, rice, pineapple, onion, California pepper, broccoli, garlic",
         "weight": "320",
         "price": 125
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3472.jpg",
         "name": "Thai Shrimp Rice",
         "description": "Shrimp, zucchini, soy, kapia pepper, egg, garlic, rice, pickled daikon, sesame, Thai sauce",
         "weight": "320",
@@ -101,169 +109,212 @@
     "rolls": [
       {
         "image": "puerlogo.svg",
+        "name": "Tempura Set",
+        "description": "Tempura roll, Ebi Tempura, Philadelphia Tempura, Tortilla Becon roll",
+        "weight": "1100",
+        "price": 950
+      },
+      {
+        "image": "puerlogo.svg",
         "name": "Classic Set",
         "description": "Philadelphia roll, Philadelphia tempura, California Eel, Red Dragon",
-        "weight": "1000",
-        "price": 790
+        "weight": "1010",
+        "price": 950
       },
       {
         "image": "puerlogo.svg",
         "name": "Philadelphia Set",
         "description": "Philadelphia roll, Philadelphia Crunch, Philadelphia Grill, Philadelphia Lux",
-        "weight": "1000",
-        "price": 790
+        "weight": "1050",
+        "price": 950
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Somon SASHIMI",
+        "description": "Somon SASHIMI",
+        "weight": "90/130",
+        "price": 250
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3011.jpg",
+        "name": "Philadelphia Grill",
+        "description": "Salmon, cream cheese, cucumber, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "260",
+        "price": 225
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2996.jpg",
+        "name": "Philadelphia Crunch",
+        "description": "Shrimp, tempura batter, cream cheese, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "250",
+        "price": 245
       },
       {
         "image": "puerlogo.svg",
         "name": "Eel Gunkan",
         "description": "Eel, rice, nori",
         "weight": "45",
-        "price": 40
+        "price": 45
       },
       {
         "image": "puerlogo.svg",
         "name": "Salmon Gunkan",
         "description": "Salmon, rice, tobiko roe, Japanese mayonnaise, nori",
         "weight": "45",
-        "price": 40
+        "price": 45
       },
       {
         "image": "puerlogo.svg",
         "name": "Shrimp Gunkan",
         "description": "Shrimp, rice, tobiko roe, Japanese mayonnaise, nori",
         "weight": "45",
-        "price": 40
+        "price": 45
       },
+
       {
-        "image": "puerlogo.svg",
-        "name": "Tuna Roll",
-        "description": "Tuna, rice, avocado, salmon, cream cheese, daikon, nori, Japanese mayonnaise, red caviar, ginger, wasabi",
-        "weight": "250",
-        "price": 250
-      },
-      {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2898.jpg",
         "name": "Bacon Roll",
         "description": "Bacon, rice, avocado, cucumber, cream cheese, tobiko roe, Japanese mayonnaise, ginger, wasabi",
         "weight": "250",
-        "price": 195
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Tempura Shrimp Roll",
-        "description": "Shrimp, rice, avocado, cucumber, cream cheese, tobiko roe, Japanese mayonnaise, ginger, wasabi",
-        "weight": "250",
-        "price": 190
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Super Philadelphia Roll",
-        "description": "Salmon, eel, rice, avocado, mango, unagi sauce, nori, ginger, wasabi",
-        "weight": "250",
-        "price": 270
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Ebi Roll",
-        "description": "Salmon, shrimp, rice, avocado, cream cheese, tobiko roe, nori, ginger, wasabi",
-        "weight": "250",
-        "price": 270
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Pu-erh Roll",
-        "description": "Salmon, avocado, cream cheese, nori, rice, wasabi, ginger, kimchi sauce",
-        "weight": "250",
-        "price": 175
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Kairo Roll",
-        "description": "Salmon, eel, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
-        "weight": "270",
         "price": 215
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Philadelphia Roll",
-        "description": "Salmon, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
-        "weight": "260",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2882.jpg",
+        "name": "Tempura Shrimp Roll",
+        "description": "Shrimp, rice, avocado, cucumber, cream cheese, tobiko roe, Japanese mayonnaise, ginger, wasabi",
+        "weight": "250",
         "price": 195
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Philadelphia Lux",
-        "description": "Salmon, cream cheese, red caviar, avocado, shrimp, rice, nori, wasabi, pickled ginger, soy sauce",
-        "weight": "280",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2906.jpg",
+        "name": "Super Philadelphia Roll",
+        "description": "Salmon, eel, rice, avocado, mango, unagi sauce, nori, ginger, wasabi",
+        "weight": "250",
+        "price": 290
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3028.jpg",
+        "name": "Ebi Roll",
+        "description": "Salmon, shrimp, rice, avocado, cream cheese, tobiko roe, nori, ginger, wasabi",
+        "weight": "250",
+        "price": 280
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2926.jpg",
+        "name": "Puer Roll",
+        "description": "Salmon, avocado, cream cheese, nori, rice, wasabi, ginger, kimchi sauce",
+        "weight": "250",
+        "price": 185
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2958.jpg",
+        "name": "Keiro Roll",
+        "description": "Salmon, eel, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "270",
         "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2970.jpg",
+        "name": "Philadelphia Roll",
+        "description": "Salmon, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "260",
+        "price": 250
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2991.jpg",
+        "name": "Philadelphia de Lux",
+        "description": "Salmon, cream cheese, red caviar, avocado, shrimp, rice, nori, wasabi, pickled ginger, soy sauce",
+        "weight": "280",
+        "price": 295
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3038.jpg",
         "name": "Red Dragon",
         "description": "Salmon, eel, Japanese mayonnaise, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "250",
-        "price": 270
+        "price": 305
       },
       {
         "image": "puerlogo.svg",
         "name": "Tempura Roll",
         "description": "Shrimp, eel, cucumber, tempura batter, cream cheese, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "270",
-        "price": 175
+        "price": 195
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PHILADELPHIA TEMPURA",
+        "description": "PHILADELPHIA TEMPURA",
+        "weight": "260",
+        "price": 195
       },
       {
         "image": "puerlogo.svg",
         "name": "California Eel",
         "description": "Eel, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "240",
-        "price": 220
+        "price": 250
       },
       {
         "image": "puerlogo.svg",
         "name": "California Shrimp",
         "description": "Shrimp, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "240",
-        "price": 180
+        "price": 230
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3055.jpg",
         "name": "California Salmon",
         "description": "Salmon, cream cheese, cucumber, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "240",
-        "price": 175
+        "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2939.jpg",
         "name": "Canada Roll",
         "description": "Eel, salmon, cream cheese, avocado, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "260",
-        "price": 220
+        "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2918.jpg",
         "name": "Ebi Tempura",
         "description": "Shrimp, cream cheese, cucumber, tempura batter, tobiko roe, rice, nori, wasabi, pickled ginger, soy sauce",
         "weight": "270",
-        "price": 150
+        "price": 170
       }
     ],
     "breakfast": [
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/dessert/IMG_3449.jpg",
+        "name": "Oatmeal with Fruits",
+        "description": "Oatmeal, milk, banana, orange, kiwi, walnuts, honey",
+        "weight": "300",
+        "price": 55
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/dessert/IMG_3449.jpg",
+        "name": "Oatmeal coconut milk with Fruits",
+        "description": "Oatmeal,coconut milk, banana, orange, kiwi, walnuts, honey",
+        "weight": "300",
+        "price": 90
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3412.jpg",
         "name": "Eggs Benedict with Salmon and Avocado",
         "description": "Salmon, avocado, egg, cream cheese, hollandaise sauce, tobiko roe, rye bread",
         "weight": "280",
         "price": 145
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3146.jpg",
         "name": "Croque Madame",
         "description": "Bacon, melted cheese, egg, toast, hollandaise sauce, iceberg lettuce",
         "weight": "260",
         "price": 85
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3163.jpg",
         "name": "English Breakfast",
         "description": "Sausages, egg, red beans, mushrooms, tomatoes, mixed greens, rye bread",
         "weight": "260",
@@ -274,31 +325,67 @@
     "hot": [
       {
         "image": "puerlogo.svg",
-        "name": "Camembert Tempura",
-        "description": "Camembert cheese, panko breadcrumbs, tempura batter, berry sauce",
-        "weight": "200",
-        "price": 160
+        "name": "Fettuccine with Seafood",
+        "description": "Fettuccine with Seafood",
+        "weight": "400",
+        "price": 420
       },
       {
         "image": "puerlogo.svg",
+        "name": "Risotto with Seafood",
+        "description": "Risotto with Seafood",
+        "weight": "350",
+        "price": 360
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Soy Noodles with Vegetables",
+        "description": "Soy Noodles with Vegetables",
+        "weight": "300",
+        "price": 110
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Duck Gyoza",
+        "description": "Duck Gyoza",
+        "weight": "250",
+        "price": 155
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Shrimp Gyoza",
+        "description": "Shrimp Gyoza",
+        "weight": "250",
+        "price": 165
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pasta Pesto",
+        "description": "Pasta Pesto",
+        "weight": "350",
+        "price": 175
+      },
+      
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3340.jpg",
         "name": "Chicken Curry",
         "description": "Chicken breast, basmati rice, coconut milk, curry paste, mushrooms, black sesame",
         "weight": "390",
-        "price": 160
+        "price": 180
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3327.jpg",
         "name": "Grilled Dorade with Vegetables",
         "description": "Dorade, broccoli, bell pepper, green beans, teriyaki sauce",
         "weight": "350/150",
-        "price": 295
+        "price": 320
       },
       {
         "image": "puerlogo.svg",
         "name": "Grilled Salmon with Orange Sauce",
         "description": "Salmon, orange sauce, broccoli",
         "weight": "240/120",
-        "price": 295
+        "price": 360
       },
       {
         "image": "puerlogo.svg",
@@ -308,136 +395,161 @@
         "price": 38
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Quesadilla",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3236.jpg",
+        "name": "KESADILIJA",
         "description": "Chicken breast, bell pepper, tomatoes, red beans, lavash, Emmental cheese, tzatziki sauce",
         "weight": "290/30",
-        "price": 120
+        "price": 130
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Beef Tenderloin Steak",
-        "description": "Beef tenderloin, bell pepper, baby corn, mushrooms, mixed greens, berry sauce",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3294.jpg",
+        "name": "Beef Steak",
+        "description": "Beef, bell pepper, baby corn, mushrooms, mixed greens, berry sauce",
         "weight": "250/70/30",
-        "price": 295
+        "price": 320
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3236.jpg",
         "name": "Grilled Salmon Steak",
         "description": "Salmon, basmati rice, tzatziki sauce, hollandaise sauce",
         "weight": "140/140/60",
-        "price": 295
+        "price": 320
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3309.jpg",
         "name": "Chicken Breast Steak",
         "description": "Chicken breast, cucumbers, tomatoes, feta cheese, sweet chili sauce",
         "weight": "280/270/30",
-        "price": 190
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Pork Steak",
-        "description": "Pork cutlet, Idaho potatoes, mixed greens, cherry tomatoes, mustard, ketchup",
-        "weight": "260/170/40",
-        "price": 190
-      }
-    ],
-    "salad": [
-      {
-        "image": "puerlogo.svg",
-        "name": "Mango and Tuna Salad",
-        "description": "Tuna, mango, avocado, cherry tomatoes, mixed greens, yuzu sauce",
-        "weight": "260",
         "price": 195
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/steak.png",
+        "name": "Pork Steak",
+        "description": "Pork cutlet, Idaho potatoes, mixed greens, cherry tomatoes, mustard, ketchup",
+        "weight": "260/170/40",
+        "price": 205
+      }
+    ],
+    "salad": [
+     
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3153.jpg",
         "name": "Greek Salad",
         "description": "Bell pepper, cucumbers, tomatoes, red onion, Kalamata olives, pita, feta cheese",
         "weight": "260",
         "price": 105
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3171.jpg",
         "name": "Beef Tagliata",
         "description": "Beef tenderloin, tomatoes, mixed greens, Parmesan, creamy balsamic",
         "weight": "300",
         "price": 230
       },
+
       {
-        "image": "puerlogo.svg",
-        "name": "Salmon Tartare",
-        "description": "Salmon, avocado, red onion, soy sauce, lime",
-        "weight": "220",
-        "price": 195
-      },
-      {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3181.jpg",
         "name": "Chicken Caesar Salad",
         "description": "Chicken breast, tomatoes, mixed greens, Parmesan, croutons, sesame, Caesar dressing",
         "weight": "260",
         "price": 136
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3199.jpg",
         "name": "Shrimp Caesar Salad",
         "description": "Shrimp, tomatoes, mixed greens, Parmesan, croutons, sesame, Caesar dressing",
         "weight": "240",
         "price": 160
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3212.jpg",
         "name": "Canned Tuna Caesar Salad",
         "description": "Tuna, tomatoes, mixed greens, Parmesan, croutons, sesame, Caesar dressing",
         "weight": "260",
         "price": 160
       }
     ],
-    "soup": [
+    "snack": [
       {
         "image": "puerlogo.svg",
+        "name": "Salmon Pâté",
+        "description": "Salmon Pâté",
+        "weight": "220",
+        "price": 190
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bruschetta with Roast Beef",
+        "description": "Salmon Pâté",
+        "weight": "250",
+        "price": 180
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bruschetta Caprese",
+        "description": "Bruschetta Caprese",
+        "weight": "250",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Beef Carpaccio",
+        "description": "Beef Carpaccio",
+        "weight": "200",
+        "price": 220
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Salmon Carpaccio",
+        "description": "Beef Carpaccio",
+        "weight": "180",
+        "price": 190
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3191.jpg",
+        "name": "Salmon Tartare",
+        "description": "Salmon, avocado, red onion, soy sauce, lime",
+        "weight": "220",
+        "price": 195
+      }
+    ],
+    "soup": [
+      {
+        "image": "http://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/soup/IMG_3223.jpg",
         "name": "Creamy Sweet Corn Soup",
         "description": "Basmati rice, chicken breast, tempura batter, panko breadcrumbs, curry paste, coconut milk, mushrooms, sesame",
         "weight": "350",
         "price": 135
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/soup/IMG_3242.jpg",
         "name": "Tom Yum Soup",
         "description": "Shrimp, coconut milk, mushrooms, chicken broth, tom yum paste, rice",
         "weight": "320/60",
-        "price": 120
+        "price": 140
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/soup/IMG_3253.jpg",
         "name": "Zama Soup",
         "description": "Chicken meat, carrot, bell pepper, onion, homemade noodles, sour cream, chili pepper, bread",
         "weight": "350/30",
-        "price": 75
+        "price": 85
       }
     ],
     "dessert": [
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/dessert/IMG_3478.jpg",
         "name": "Tropical Roll",
         "description": "Rice paper, cream cheese, banana, orange, kiwi, coconut flakes",
         "weight": "220",
         "price": 110
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/b9624477e5e11c612ae98a6437ee584e2ecc7673/dessert/cheescake.png",
         "name": "Cheesecake",
         "description": "Classic cheesecake",
         "weight": "160/30/30",
-        "price": 80
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Oatmeal with Fruits",
-        "description": "Oatmeal, milk, banana, orange, kiwi, walnuts, honey",
-        "weight": "300",
-        "price": 55
+        "price": 95
       }
     ]
   },
@@ -1546,6 +1658,7 @@
     "breakfast": "Breakfast",
     "hot": "Hot",
     "salad": "Salad",
+    "snack": "Appetizers",
     "soup": "Soup",
     "dessert": "Dessert",
     "cocktail": "Cocktail",

@@ -7,93 +7,101 @@
 
     "asia": [
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3400.jpg",
         "name": "Bol cu creveți și orez",
         "description": "Creveți, avocado, mix salată, roșii cherry, castravete, orez, mango, lămâie, boabe de soia",
         "weight": "340",
-        "price": 155
+        "price": 165
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/da36c2e1e785402376be09d767b33dcb5cd23383/asia/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202025-02-17%20%D0%B2%2020.38.08.png",
         "name": "Poke cu somon",
         "description": "Somon, avocado, castravete, roșii, portocală, lime, boabe de soia",
         "weight": "280",
         "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3350.jpg",
         "name": "Alge Chuka",
         "description": "Alge Chuka",
         "weight": "120",
         "price": 95
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3262.jpg",
         "name": "Creveți în pesmet panko",
         "description": "Creveți, pesmet panko, aluat tempura, sos cremos",
         "weight": "170",
-        "price": 145
+        "price": 160
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3366.jpg",
         "name": "Bao-burger cu creveți",
         "description": "Chiflă Bao, creveți, alge Chuka, icre tobiko, maioneză japoneză",
         "weight": "360",
         "price": 180
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3356.jpg",
         "name": "Bao-burger cu pui",
         "description": "Chiflă Bao, piept de pui, salată iceberg, sos dulce-acrișor",
         "weight": "360",
-        "price": 120
+        "price": 135
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3375.jpg",
         "name": "Bao-burger cu vită",
         "description": "Chiflă Bao, mușchi de vită, ardei gras, sos dulce-acrișor",
         "weight": "320",
-        "price": 130
+        "price": 140
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3437.jpg",
         "name": "Udon cu pui",
         "description": "Piept de pui, tăiței de grâu, ceapă, morcov, ardei California, ciuperci, ou, susan",
         "weight": "320",
-        "price": 130
+        "price": 140
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3461.jpg",
         "name": "Udon cu creveți",
         "description": "Creveți, tăiței de grâu, ceapă, morcov, ardei California, ciuperci, ou, susan",
         "weight": "320",
-        "price": 145
+        "price": 155
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3437.jpg",
         "name": "Udon cu vițel",
         "description": "Carne de vită, tăiței de grâu, ceapă, morcov, ardei California, ciuperci, ou, susan",
         "weight": "320",
-        "price": 170
+        "price": 175
+      },
+
+      {
+        "image": "puerlogo.svg",
+        "name": "Orez panco cu ton",
+        "description": "Orez panco cu ton",
+        "weight": "320",
+        "price": 210
       },
       {
         "image": "puerlogo.svg",
-        "name": "Orez thailandez cu legume",
+        "name": "Orez thai cu legume",
         "description": "Orez, ardei kapia, dovlecel, ciuperci, boabe de soia, ou, ridiche murată, porumb murat",
         "weight": "320",
         "price": 100
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Orez thailandez cu pui",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3451.jpg",
+        "name": "Orez thai cu pui",
         "description": "Pui, orez, ananas, ceapă, ardei California, broccoli, usturoi",
         "weight": "320",
         "price": 125
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Orez thailandez cu creveți",
-        "description": "Creveți, dovlecel, soia, ardei kapia, ou, usturoi, orez, ridiche murată, susan, sos thailandez",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3472.jpg",
+        "name": "Orez thai cu creveți",
+        "description": "Creveți, dovlecel, soia, ardei kapia, ou, usturoi, orez, ridiche murată, susan, sos thai",
         "weight": "320",
         "price": 145
       }
@@ -101,169 +109,213 @@
     "rolls": [
       {
         "image": "puerlogo.svg",
+        "name": "Set Tempura",
+        "description": "Roll Tempura, Ebi Tempura, Philadelphia Tempura, Roll Tortilla cu Bacon",
+        "weight": "1100",
+        "price": 950
+      },
+      {
+        "image": "puerlogo.svg",
         "name": "Set Clasic",
         "description": "Roll Philadelphia, Philadelphia tempura, California Angila, Dragon Roșu",
-        "weight": "1000",
-        "price": 790
+        "weight": "1010",
+        "price": 950
       },
       {
         "image": "puerlogo.svg",
         "name": "Set Philadelphia",
         "description": "Roll Philadelphia, Philadelphia Crunch, Philadelphia Grill, Philadelphia Lux",
-        "weight": "1000",
-        "price": 790
+        "weight": "1050",
+        "price": 950
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Somon SASHIMI",
+        "description": "Somon SASHIMI",
+        "weight": "90/130",
+        "price": 250
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3011.jpg",
+        "name": "Philadelphia Grill",
+        "description": "Somon, brânză cremoasă, castravete, orez, nori, wasabi, ghimbir murat, sos de soia",
+        "weight": "260",
+        "price": 225
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2996.jpg",
+        "name": "Philadelphia Crunch",
+        "description": "Crevete, aluat tempura, brânză cremoasă, orez, nori, wasabi, ghimbir murat, sos de soia",
+        "weight": "250",
+        "price": 245
       },
       {
         "image": "puerlogo.svg",
         "name": "Gunkan Angila",
         "description": "Angilă, orez, nori",
         "weight": "45",
-        "price": 40
+        "price": 45
       },
       {
         "image": "puerlogo.svg",
         "name": "Gunkan cu somon",
         "description": "Somon, orez, icre tobiko, maioneză japoneză, nori",
         "weight": "45",
-        "price": 40
+        "price": 45
       },
       {
         "image": "puerlogo.svg",
         "name": "Gunkan cu creveți",
         "description": "Creveți, orez, icre tobiko, maioneză japoneză, nori",
         "weight": "45",
-        "price": 40
+        "price": 45
       },
+
       {
-        "image": "puerlogo.svg",
-        "name": "Roll cu ton",
-        "description": "Ton, orez, avocado, somon, cremă de brânză, ridiche, nori, maioneză japoneză, icre roșii, ghimbir, wasabi",
-        "weight": "250",
-        "price": 250
-      },
-      {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2898.jpg",
         "name": "Roll cu bacon",
         "description": "Bacon, orez, avocado, castraveți, cremă de brânză, icre tobiko, maioneză japoneză, ghimbir, wasabi",
         "weight": "250",
-        "price": 195
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Roll Tempura cu creveți",
-        "description": "Creveți, orez, avocado, castraveți, cremă de brânză, icre tobiko, maioneză japoneză, ghimbir, wasabi",
-        "weight": "250",
-        "price": 190
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Super Philadelphia Roll",
-        "description": "Somon, angilă, orez, avocado, mango, sos unagi, nori, ghimbir, wasabi",
-        "weight": "250",
-        "price": 270
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Ebi Roll",
-        "description": "Somon, creveți, orez, avocado, cremă de brânză, icre tobiko, nori, ghimbir, wasabi",
-        "weight": "250",
-        "price": 270
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": " Puer Roll",
-        "description": "Somon, avocado, cremă de brânză, nori, orez, wasabi, ghimbir, sos kimchi",
-        "weight": "250",
-        "price": 175
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Kairo Roll",
-        "description": "Somon, angilă, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
-        "weight": "270",
         "price": 215
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Roll Philadelphia",
-        "description": "Somon, cremă de brânză, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
-        "weight": "260",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2882.jpg",
+        "name": "Roll Tempura cu creveți",
+        "description": "Creveți, orez, avocado, castraveți, cremă de brânză, icre tobiko, maioneză japoneză, ghimbir, wasabi",
+        "weight": "250",
         "price": 195
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Philadelphia Lux",
-        "description": "Somon, cremă de brânză, icre roșii, avocado, creveți, orez, nori, wasabi, ghimbir murat, sos de soia",
-        "weight": "280",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2906.jpg",
+        "name": "Super Philadelphia Roll",
+        "description": "Somon, angilă, orez, avocado, mango, sos unagi, nori, ghimbir, wasabi",
+        "weight": "250",
+        "price": 290
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3028.jpg",
+        "name": "Ebi Roll",
+        "description": "Somon, creveți, orez, avocado, cremă de brânză, icre tobiko, nori, ghimbir, wasabi",
+        "weight": "250",
+        "price": 280
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2926.jpg",
+        "name": " Puer Roll",
+        "description": "Somon, avocado, cremă de brânză, nori, orez, wasabi, ghimbir, sos kimchi",
+        "weight": "250",
+        "price": 185
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2958.jpg",
+        "name": "Keiro Roll",
+        "description": "Somon, angilă, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
+        "weight": "270",
         "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2970.jpg",
+        "name": "Roll Philadelphia",
+        "description": "Somon, cremă de brânză, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
+        "weight": "260",
+        "price": 250
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2991.jpg",
+        "name": "Philadelphia de Lux",
+        "description": "Somon, cremă de brânză, icre roșii, avocado, creveți, orez, nori, wasabi, ghimbir murat, sos de soia",
+        "weight": "280",
+        "price": 295
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3038.jpg",
         "name": "Dragon Roșu",
         "description": "Somon, angilă, maioneză japoneză, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "250",
-        "price": 270
+        "price": 305
       },
       {
         "image": "puerlogo.svg",
         "name": "Roll Tempura",
         "description": "Creveți, angilă, castravete, aluat tempura, cremă de brânză, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "270",
-        "price": 175
+        "price": 195
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "PHILADELPHIA TEMPURA",
+        "description": "PHILADELPHIA TEMPURA",
+        "weight": "260",
+        "price": 195
       },
       {
         "image": "puerlogo.svg",
         "name": "California Angila",
         "description": "Angilă, cremă de brânză, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "240",
-        "price": 220
+        "price": 250
       },
       {
         "image": "puerlogo.svg",
         "name": "California cu creveți",
         "description": "Creveți, cremă de brânză, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "240",
-        "price": 180
+        "price": 230
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3055.jpg",
         "name": "California cu somon",
         "description": "Somon, cremă de brânză, castravete, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "240",
-        "price": 175
+        "price": 250
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2939.jpg",
         "name": "Canada Roll",
         "description": "Angilă, somon, cremă de brânză, avocado, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "260",
-        "price": 220
+        "price": 250
       },
+
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_2918.jpg",
         "name": "Ebi Tempura",
         "description": "Creveți, cremă de brânză, castravete, aluat tempura, icre tobiko, orez, nori, wasabi, ghimbir murat, sos de soia",
         "weight": "270",
-        "price": 150
+        "price": 170
       }
     ],
     "breakfast": [
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/dessert/IMG_3449.jpg",
+        "name": "Terci de ovăz cu fructe",
+        "description": "Ovăz, lapte, banană, portocală, kiwi, nuci, miere",
+        "weight": "300",
+        "price": 55
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/dessert/IMG_3449.jpg",
+        "name": "Fulgi de ovaz cu lapte de cocos si fructe",
+        "description": "Ovăz, lapte de cocos, banană, portocală, kiwi, nuci, miere",
+        "weight": "300",
+        "price": 90
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3412.jpg",
         "name": "Ouă Benedict cu somon și avocado",
         "description": "Somon, avocado, ou, cremă de brânză, sos olandez, icre tobiko, pâine neagră",
         "weight": "280 ",
         "price": 145
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3146.jpg",
         "name": "Croque Madame",
         "description": "Bacon, brânză topită, ou, pâine prăjită, sos olandez, salată iceberg",
         "weight": "260",
         "price": 85
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3163.jpg",
         "name": "Mic dejun englezesc",
         "description": "Cârnați de vânătoare, ou, fasole roșie, ciuperci, roșii, mix salată, pâine neagră",
         "weight": "260",
@@ -274,31 +326,69 @@
     "hot": [
       {
         "image": "puerlogo.svg",
-        "name": "Brânză Camembert Tempura",
-        "description": "Brânză Camembert, pesmet panko, aluat tempura, sos de fructe de pădure",
-        "weight": "200",
-        "price": 160
+        "name": "Fettucini cu fructe de mare",
+        "description": "Fettucini cu fructe de mare",
+        "weight": "400",
+        "price": 420
       },
       {
         "image": "puerlogo.svg",
+        "name": "Risotto cu fructe de mare",
+        "description": "Risotto cu fructe de mare",
+        "weight": "350",
+        "price": 360
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Taitei de soia cu legume",
+        "description": "Taitei de soia cu legume",
+        "weight": "300",
+        "price": 110
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Gyoza cu rata",
+        "description": "Gyoza cu rata",
+        "weight": "250",
+        "price": 155
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Gyoza cu creveti",
+        "description": "Gyoza cu creveti",
+        "weight": "250",
+        "price": 165
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Pasta PESTO",
+        "description": "Pasta PESTO",
+        "weight": "350",
+        "price": 175
+      },
+     
+      
+
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/asia/IMG_3340.jpg",
         "name": "Pui curry",
         "description": "Piept de pui, orez basmati, lapte de cocos, pastă curry, ciuperci, susan negru",
         "weight": "390",
-        "price": 160
+        "price": 180
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3327.jpg",
         "name": "Doradă cu legume",
         "description": "Doradă, broccoli, ardei gras, fasole verde, sos teriyaki",
         "weight": "350/150",
-        "price": 295
+        "price": 320
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3236.jpg",
         "name": "Somon la grătar cu sos de portocale",
         "description": "Somon, sos de portocale, broccoli",
         "weight": "240/120",
-        "price": 295
+        "price": 360
       },
       {
         "image": "puerlogo.svg",
@@ -308,143 +398,161 @@
         "price": 38
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Quesadilla",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3236.jpg",
+        "name": "KESADILIJA",
         "description": "Piept de pui, ardei gras, roșii, fasole roșie, lavash, brânză Emmentaler, sos tzatziki",
         "weight": "290/30",
-        "price": 120
+        "price": 130
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Friptură de mușchi de vită",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3294.jpg",
+        "name": "Friptură de vită",
         "description": "Mușchi de vită, ardei gras, porumb baby, ciuperci, mix salată, sos de fructe de pădure",
         "weight": "250/70/30",
-        "price": 295
+        "price": 320
       },
       {
         "image": "puerlogo.svg",
         "name": "Friptură de somon",
         "description": "Somon, orez basmati, sos tzatziki, sos olandez",
         "weight": "140/140/60",
-        "price": 295
+        "price": 320
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Friptură de piept de pui",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/IMG_3309.jpg",
+        "name": "Friptură de pui",
         "description": "Piept de pui, castraveți, roșii, brânză feta, sos dulce-acrișor",
         "weight": "280/270/30",
-        "price": 190
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Friptură de porc",
-        "description": "Cotlet de porc, cartofi Aйдахо, mix salată, roșii cherry, muștar, ketchup",
-        "weight": "260/170/40",
-        "price": 190
-      }
-    ],
-    "salad": [
-      {
-        "image": "puerlogo.svg",
-        "name": "Salată cu mango și ton",
-        "description": "Ton, mango, avocado, roșii cherry, mix salată, sos yuzu",
-        "weight": "260",
         "price": 195
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Греческий",
-        "description": "Сладкий перец, огурцы, помидоры, красный лук, маслины каламата, пита, сыр фета.",
-        "weight": "260",
-        "price": 105
-      },
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/hot/steak.png",
+        "name": "Friptură de porc",
+        "description": "Cotlet de porc, cartofi Aйдахо, mix salată, roșii cherry, muștar, ketchup",
+        "weight": "260/170/40",
+        "price": 205
+      }
+    ],
+    "salad": [
+     
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3153.jpg",
         "name": "Grecească",
         "description": "Ardei gras, castraveți, roșii, ceapă roșie, măsline Kalamata, pita, brânză feta",
         "weight": "260",
         "price": 105
       },
       {
-        "image": "puerlogo.svg",
-        "name": "Tagliata de vită",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3171.jpg",
+        "name": "BEEF TALITA",
         "description": "Mușchi de vită, roșii, mix salată, parmezan, balsamic cremos",
         "weight": "300",
         "price": 230
       },
+
       {
-        "image": "puerlogo.svg",
-        "name": "Tartar cu somon",
-        "description": "Somon, avocado, ceapă roșie, sos de soia, lime",
-        "weight": "220",
-        "price": 195
-      },
-      {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3181.jpg",
         "name": "Caesar cu pui",
         "description": "Piept de pui, roșii, mix salată, parmezan, crutoane, susan, sos Caesar",
         "weight": "260",
         "price": 136
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3199.jpg",
         "name": "Caesar cu creveți",
         "description": "Creveți, roșii, mix salată, parmezan, crutoane, susan, sos Caesar",
         "weight": "240",
         "price": 160
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3212.jpg",
         "name": "Caesar cu ton conservat",
         "description": "Ton, roșii, mix salată, parmezan, crutoane, susan, sos Caesar",
         "weight": "260",
         "price": 160
       }
     ],
-    "soup": [
+    "snack": [
       {
         "image": "puerlogo.svg",
+        "name": "Pate de Somon",
+        "description": "Pate de Somon",
+        "weight": "220",
+        "price": 190
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bruschetta cu Roast Beef",
+        "description": "Pate de Somon",
+        "weight": "250",
+        "price": 180
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Bruschetta Caprese",
+        "description": "Bruschetta Caprese",
+        "weight": "250",
+        "price": 145
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Carpaccio de Vita",
+        "description": "Carpaccio de Vita",
+        "weight": "200",
+        "price": 220
+      },
+      {
+        "image": "puerlogo.svg",
+        "name": "Carpaccio de Somon",
+        "description": "Carpaccio de Vita",
+        "weight": "180",
+        "price": 190
+      },
+      {
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/salate/IMG_3191.jpg",
+        "name": "Tartar cu somon",
+        "description": "Somon, avocado, ceapă roșie, sos de soia, lime",
+        "weight": "220",
+        "price": 195
+      }
+    ],
+    "soup": [
+      {
+        "image": "http://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/soup/IMG_3223.jpg",
         "name": "Supă-cremă de porumb dulce",
         "description": "Orez basmati, piept de pui, aluat tempura, pesmet panko, pastă curry, lapte de cocos, ciuperci, susan",
         "weight": "350",
         "price": 135
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/soup/IMG_3242.jpg",
         "name": "Tom Yam",
         "description": "Creveți, lapte de cocos, ciuperci, supă de pui, pastă Tom Yam, orez",
         "weight": "320/60",
-        "price": 120
+        "price": 140
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/soup/IMG_3253.jpg",
         "name": "Zama",
         "description": "Carne de pui, morcov, ardei gras, ceapă, tăiței caseri, smântână, ardei iute, pâine",
         "weight": "350/30",
-        "price": 75
+        "price": 85
       }
     ],
     "dessert": [
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/refs/heads/main/dessert/IMG_3478.jpg",
         "name": "Roll tropicală",
         "description": "Hârtie de orez, cremă de brânză, banană, portocală, kiwi, fulgi de nucă de cocos",
         "weight": "220",
         "price": 110
       },
       {
-        "image": "puerlogo.svg",
+        "image": "https://raw.githubusercontent.com/KichZero/puerphoto/b9624477e5e11c612ae98a6437ee584e2ecc7673/dessert/cheescake.png",
         "name": "Cheesecake",
         "description": "Cheesecake clasic",
         "weight": "160/30/30",
-        "price": 80
-      },
-      {
-        "image": "puerlogo.svg",
-        "name": "Terci de ovăz cu fructe",
-        "description": "Ovăz, lapte, banană, portocală, kiwi, nuci, miere",
-        "weight": "300",
-        "price": 55
+        "price": 95
       }
     ]
   },
@@ -1552,6 +1660,7 @@
     "breakfast": "Mic dejun",
     "hot": "Feluri calde",
     "salad": "Salate",
+    "snack": "Gustari",
     "soup": "Supe",
     "dessert": "Deserturi",
     "cocktail": "Cocktailuri",
@@ -1566,7 +1675,7 @@
     "rules": "Reguli: Faceți clic pe butonul pentru a obține un produs aleatoriu în Puer Lounge",
     "spin": "Rotire"
   },
-"hookah": {
+  "hookah": {
     "flavour": [
       {
         "name": "Răsărit Tropical",

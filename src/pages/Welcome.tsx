@@ -10,7 +10,7 @@ const Welcome = () => {
   useEffect(() => {
     
     setTimeout(() => setShowLogo(true), 2000); // Логотип появляется через 2 сек
-    setTimeout(() => navigate("/food/hot"), 5000); // Переход через 5 сек
+    setTimeout(() => navigate("/food/rolls"), 5000); // Переход через 5 сек
   }, [navigate]);
 
   return (

@@ -23,6 +23,7 @@ import Breakfast from "./pages/food/Breakfast";
 import Hot from "./pages/food/Hot";
 import Salad from "./pages/food/Salad.tsx";
 import Soup from "./pages/food/Soup";
+import Snack from "./pages/food/Snack.js";
 import Asia from "./pages/food/Asia";
 import Rolls from "./pages/food/Rolls";
 import Dessert from "./pages/food/Dessert";
@@ -75,6 +76,10 @@ const NavLinks = () => {
           <NavLink to="/food/salad" className="nav-item">
             <img src={Icons.salad} alt="Salad" className="icon" />
             {t('navigation.salad')}
+          </NavLink>
+          <NavLink to="/food/snack" className="nav-item">
+            <img src={Icons.snack} alt="Snack" className="icon" />
+            {t('navigation.snack')}
           </NavLink>
           <NavLink to="/food/soup" className="nav-item">
             <img src={Icons.soup} alt="Soup" className="icon" />
@@ -137,6 +142,7 @@ const App = () => {
               <Route path="/food/breakfast" element={<Breakfast />} />
               <Route path="/food/hot" element={<Hot />} />
               <Route path="/food/salad" element={<Salad />} />
+              <Route path="/food/snack" element={<Snack />} />
               <Route path="/food/soup" element={<Soup />} />
               <Route path="/food/dessert" element={<Dessert />} />
               {/* BAR  */}

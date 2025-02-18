@@ -4,6 +4,7 @@ import Rolls from "../assets/iconfood/sushi.svg";
 import Breakfast from "../assets/iconfood/breakfast.svg";
 import Hot from "../assets/iconfood/hot.svg";
 import Salad from "../assets/iconfood/salad.svg";
+import Snack from "../assets/iconfood/snack.svg"
 import Soup from "../assets/iconfood/soup.svg";
 import Dessert from "../assets/iconfood/dessert.svg";
 
@@ -25,6 +26,7 @@ export const Icons = {
   breakfast: Breakfast,
   hot: Hot,
   salad: Salad,
+  snack: Snack,
   soup: Soup,
   dessert: Dessert,
   cocktail: Cocktail,
