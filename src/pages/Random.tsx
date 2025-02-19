@@ -2,17 +2,22 @@ import { useState, useEffect } from "react";
 import "./Random.scss";
 import { useTranslation } from 'react-i18next';
 
+import puerlogo from './../assets/puerlogo.svg';
+const getImagePath = (image: string) => {
+  return image.startsWith("http") ? image : puerlogo;
+};
+
 interface DataType {
   bar: {
     cocktail: Array<{ name: string; description: string }>;
   };
   product: {
-    asia: Array<{ name: string; description: string }>;
-    rolls: Array<{ name: string; description: string }>;
-    salad: Array<{ name: string; description: string }>;
+    asia: Array<{image: string; name: string; description: string }>;
+    rolls: Array<{image: string; name: string; description: string }>;
+    salad: Array<{image: string; name: string; description: string }>;
   };
   hookah: {
-    flavour: Array<{ name: string; description: string }>;
+    flavour: Array<{name: string; description: string }>;
   };
 }
 
@@ -20,7 +25,7 @@ const Random = () => {
   const { t, i18n } = useTranslation();
   const [data, setData] = useState<DataType | null>(null);
   const [positions, setPositions] = useState([-1, -1, -1]);
-  const [selectedItem, setSelectedItem] = useState<{ name: string; description: string } | null>(null);
+  const [selectedItem, setSelectedItem] = useState<{image?: string; name: string; description: string } | null>(null);
   const [hasSpun, setHasSpun] = useState([false, false, false]);
 
   useEffect(() => {
@@ -142,6 +147,13 @@ const Random = () => {
       {selectedItem && (
         <div className="popup" onClick={() => setSelectedItem(null)}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+          {selectedItem.image && (
+  <img
+    src={getImagePath(selectedItem.image)}
+    alt={selectedItem.name}
+    className="popup-image"
+  />
+)}
             <h2>{selectedItem.name}</h2>
             <p>{selectedItem.description}</p>
 

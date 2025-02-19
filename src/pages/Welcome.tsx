@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Welcome.scss";
-import Logo from "../assets/whitelogo.svg";
+// import Logo from "../assets/whitelogo.svg";
+import Logo from "../assets/demoversionpuerlogo.svg";
 
 
 const Welcome = () => {
@@ -16,6 +17,7 @@ const Welcome = () => {
   return (
     <div className="welcome">
       <svg className="hello-text" viewBox="0 0 500 100">
+        
         <text x="50%" y="50%" textAnchor="middle" dy=".3em">Welcome to</text>
       </svg>
       <img className={showLogo ? "slide-in" : ""} src={Logo} alt="Puer Logo" />
