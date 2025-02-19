@@ -1,17 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
 
 .welcome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  z-index: 10000;
   background: #000;
   text-align: center;
+  transition: opacity 1s ease-out;
 
-  
+  &.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-  // Анимация текста
   .hello-text {
     font-size: 64px;
     font-weight: 700;
@@ -37,14 +45,12 @@
   }
 }
 
-// Анимация написания текста
 @keyframes drawText {
   to {
     stroke-dashoffset: 0;
   }
 }
 
-// Плавное исчезновение обводки и появление заливки
 @keyframes fadeText {
   0% {
     fill: transparent;
