@@ -1,110 +1,89 @@
 body {
-  background-color: #000000;
-  color: aliceblue;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(
+    --app-background-color,
+    #000
+  ); // Используем CSS-переменную
+  color: var(--app-text-color, #fff); // Используем CSS-переменную
   height: 100vh;
   display: flex;
-  margin: 0 auto; // Добавить
-  justify-content: center; // Добавить центрирование по горизонтали
-  width: 95%; // Добавить
+  justify-content: center;
+  width: 95%;
 }
-.app {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
- 
 
+.app {
   &::before {
     content: "";
-    position: fixed; // Делаем фон фиксированным
-    top: 0;
+    position: fixed;
+    top: 5vh; // Смещаем вниз, чтобы центр оставался видимым
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background: url("/src/assets/whitepuer.svg") no-repeat center;
-    background-size: 100vw;
-    z-index: -1; // Чтобы не мешал контенту
+    height: 90vh; // Всегда 90% экрана
+    background: var(--app-background-image, none) no-repeat center;
+    background-size: contain; // Сохраняем пропорции
+    background-position: center;
+    z-index: -1;
   }
 }
+
 @media (min-width: 768px) {
   .app {
     &::before {
       background-size: 60vw;
-      background-position: center; // или right, в зависимости от желаемого положения
-      opacity: 0.5; // добавьте прозрачность если нужно
+      background-position: center;
     }
   }
 }
-@media (min-width: 2550px) {
+@media (min-width: 1500px) {
   .app {
     &::before {
       background-size: 20vw;
-      background-position: center; // или right, в зависимости от желаемого положения
-      opacity: 0.5; // добавьте прозрачность если нужно
+      background-position: center;
     }
   }
 }
-  
 
-.language-switcher {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.595);
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
-  z-index: 1000;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.9);
+@media (min-width: 2500px) {
+  .app {
+    &::before {
+      background-size: 20vw;
+      background-position: center;
+    }
   }
 }
 
 .content {
   flex: 1;
-  padding-bottom: 120px; // Отступ, чтобы контент не перекрывался навигацией
-
-
+  padding-bottom: 120px;
 }
 
 .sub-nav {
   position: fixed;
-  bottom: 60px; /* Поднимаем подменю, чтобы оно не перекрывало основную навигацию */
+  bottom: 60px;
   left: 0;
   width: 100%;
   display: flex;
-justify-content: center;
-  overflow-x: auto; /* Добавляем горизонтальный скролл */
-  background: #000000;
+  justify-content: center;
+  overflow-x: auto;
+  background: var(--navbar-color, #000); // Используем CSS-переменную
   padding: 10px 0;
 
   @media (max-width: 767px) {
-    justify-content: flex-start; // Выравнивание в начало контейнера
-    padding: 15px 0px; // Отступ слева для первого элемента
-    scroll-padding-left: 15px; // Для корректного скролла на iOS
+    justify-content: flex-start;
+    padding: 15px 0px;
+    scroll-padding-left: 15px;
   }
 }
 
-
-
-
 .sub-nav .nav-item {
-  color: white;
+  color: var(--app-text-color, #fff); // Используем CSS-переменную
   text-decoration: none;
   font-size: 16px;
   padding: 8px;
-  flex-shrink: 0; /* Не позволяет элементам уменьшаться */
+  flex-shrink: 0;
   transition: 0.3s;
 }
-
 
 .sub-nav .nav-item:hover {
   opacity: 0.8;
@@ -117,12 +96,12 @@ justify-content: center;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background: #000000;
+  background: var(--navbar-color, #000); // Используем CSS-переменную
   padding: 10px 0;
 }
 
 .nav-item {
-  color: white;
+  color: var(--app-text-color, #fff); // Используем CSS-переменную
   text-decoration: none;
   font-size: 18px;
   padding: 10px;
@@ -142,9 +121,7 @@ justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-
   justify-content: center;
-
 }
 
 .product-card {
@@ -154,15 +131,7 @@ justify-content: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 200px;
-
 }
-
-// .product-image {
-//   width: 100%;
-//   max-height: 160px;
-//   object-fit: cover;
-//   border-radius: 10px;
-// }
 
 .product-name {
   font-size: 18px;
@@ -174,8 +143,6 @@ justify-content: center;
   color: #ffffff;
 }
 
-
-// ICON 
 .icon {
   width: 25px;
   height: 25px;
@@ -193,7 +160,7 @@ justify-content: center;
   font-size: 22px;
   text-transform: uppercase;
   margin-top: 10px;
-  margin-bottom: 30px; // Отступ сверху
+  margin-bottom: 30px;
   display: block;
   width: 100%;
   text-align: center;

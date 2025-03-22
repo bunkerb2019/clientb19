@@ -11,13 +11,23 @@
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  background: #000;
+  background-color: var(--welcome-bg-color, #000); // Используем CSS-переменную
   text-align: center;
   transition: opacity 1s ease-out;
 
   &.fade-out {
     opacity: 0;
     pointer-events: none;
+  }
+
+  .welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px; // Максимальная ширина контента
+    padding: 20px;
   }
 
   .hello-text {
@@ -30,13 +40,24 @@
     stroke-dasharray: 500;
     stroke-dashoffset: 500;
     animation: drawText 3s ease-in-out forwards, fadeText 1s ease-in-out 2.5s forwards;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+
+    &.visible {
+      opacity: 1;
+    }
   }
 
-  img {
-    width: 400px;
+  .logo {
+    width: 100%;
+    max-width: 400px; // Фиксированный максимальный размер логотипа
+    height: auto;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+    margin-top: 20px; // Отступ между текстом и логотипом
   }
 
   .slide-in {
@@ -59,5 +80,30 @@
   100% {
     fill: white;
     stroke: transparent;
+  }
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+  .welcome {
+    .hello-text {
+      font-size: 48px; // Уменьшаем размер текста для мобильных устройств
+    }
+
+    .logo {
+      max-width: 300px; // Уменьшаем размер логотипа для мобильных устройств
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome {
+    .hello-text {
+      font-size: 36px; // Еще меньше для очень маленьких экранов
+    }
+
+    .logo {
+      max-width: 200px; // Еще меньше для очень маленьких экранов
+    }
   }
 }

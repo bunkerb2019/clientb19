@@ -2,48 +2,53 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .product-card {
-  background: rgba(0, 0, 0, 0.88) !important;
+  background: var(--card-background-color, rgba(0, 0, 0, 0.88)) !important;
+  border: 1px solid var(--card-border-color, #ffffff89);
   border-radius: 10px;
   padding: 7px;
   display: flex;
   flex-direction: column;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ffffff89;
   text-align: center;
   cursor: pointer;
-
-  
+  color: var(--card-text-color, #fff);
+  opacity: var(--card-background-opacity, 1);
+  backdrop-filter: blur(var(--card-blur, 0px));
 }
-
-
 
 .product-image {
   width: 100%;
-  height: 165px;
+  height: 250px;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .product-name {
-  min-height: 50px; // Фиксированная высота для названия
   margin: 10px 0;
+  font-size: 1.2rem;
+  word-wrap: break-word; // Перенос текста на следующую строку
 }
 
 .product-description {
-  flex: 1; // Занимает всё доступное пространство
-
+  flex: 1;
   margin: 10px 0;
+  font-size: 1rem;
+  word-wrap: break-word; // Перенос текста на следующую строку
+  display: -webkit-box; // Для многострочного обрезания
+  -webkit-line-clamp: 1; // Ограничиваем текст до 3 строк
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; // Добавляем многоточие
 }
 
 .product-weight,
 .product-price {
-  margin-top: auto; // Прижимаем к низу
-
+  margin-top: auto;
+  font-size: 1rem;
 }
 
 /* ====== Попап ====== */
@@ -55,19 +60,15 @@ margin-bottom: 20px;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
   z-index: 1000;
 }
 
-
-
 .popup-content {
   justify-content: center;
-  background: rgba(0, 0, 0, 0.9);
-  border: 1px solid #ffffff89;
-  margin: 30px;
-  backdrop-filter: blur(10px);
+  background: var(--card-background-color, rgba(0, 0, 0, 0.9));
+  border: 1px solid var(--card-border-color, #ffffff89);
+  margin: 35px;
   border-radius: 10px;
   max-width: 95vw;
   width: 100%;
@@ -77,11 +78,13 @@ margin-bottom: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   padding: 0;
+  color: var(--card-text-color, #fff);
+  opacity: var(--card-background-opacity, 1);
 }
 
 .popup-image {
   width: 100%;
-  height: 45vh;
+  height: 50vh;
   padding-top: 10px;
   object-fit: contain;
   border-radius: 10px 10px 0 0;
@@ -91,14 +94,23 @@ margin-bottom: 20px;
 .popup-name {
   font-size: 1.5rem;
   margin: 12px 15px;
+  word-wrap: break-word; // Перенос текста на следующую строку
 }
 
 .popup-description,
 .popup-weight,
 .popup-price {
   font-size: 1.1rem;
-  color: #f8f8f8;
   margin: 6px 15px;
+  word-wrap: break-word; // Перенос текста на следующую строку
+}
+
+.popup-description {
+  display: -webkit-box; // Для многострочного обрезания
+  // -webkit-line-clamp: 2; // Ограничиваем текст до 5 строк
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; // Добавляем многоточие
 }
 
 /* Кнопка закрытия */
