@@ -1,108 +1,143 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./ProductCard.scss";
 import { useTranslation } from "react-i18next";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import useSettings from "../modules/useSettings"; // Импортируем хук для настроек
+import useSettings from "../modules/useSettings";
 
 interface ProductProps {
-  image: string;
+  id: string;
   name: string;
   description: string;
-  weight?: string;
+  weight?: number; // Сделал необязательным, так как в коде есть проверка на его наличие
   price: number;
+  image?: string;
+  category: string;
+  type: string;
+  // Убрал key, так как он не используется в компоненте (key используется React при маппинге списков)
 }
 
-const ProductCard = ({
+const ProductCard: React.FC<ProductProps> = ({
   image,
   name,
   description,
   weight,
   price,
-}: ProductProps) => {
+  id,
+}) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const { t } = useTranslation();
   const [imageUrl, setImageUrl] = useState<string>("");
-  const { data: settings } = useSettings(); // Загружаем настройки
+  const { t } = useTranslation();
+  const { data: settings } = useSettings();
 
-  const fetchImageUrl = async (imagePath: string) => {
-    const storage = getStorage();
-    const imageRef = ref(storage, imagePath);
-    return await getDownloadURL(imageRef);
-  };
+  const handleCardClick = useCallback((e) => {
+    console.log("Card clicked", e);
+    e.stopPropagation(); // предотвращаем всплытие
+    setIsPopupOpen(true);
+  }, []);
 
-  // Загружаем URL изображения при монтировании компонента
-  useEffect(() => {
-    if (image) {
-      fetchImageUrl(image)
-        .then((url) => setImageUrl(url))
-        .catch((error) => console.error("Error fetching image URL:", error));
+  const handleClosePopup = useCallback(() => {
+    setIsPopupOpen(false);
+  }, []);
+
+  const handleImageError = useCallback(
+    (e: React.SyntheticEvent<HTMLImageElement>) => {
+      const target = e.target as HTMLImageElement;
+      target.src = settings?.placeholderImage || "";
+    },
+    [settings?.placeholderImage]
+  );
+
+  const loadImage = useCallback(async () => {
+    if (!image) {
+      setImageUrl(settings?.placeholderImage || "");
+      return;
     }
-  }, [image]);
 
-  // Стили для карточки товара
-  const cardStyle = {
-    backgroundColor: settings?.cardBackgroundColor || "rgba(0, 0, 0, 0.88)",
-    borderColor: settings?.cardBorderColor || "#ffffff89",
-    color: settings?.cardTextColor || "#fff",
-    opacity: settings?.cardBackgroundOpacity || 1,
-    backdropFilter: `blur(${settings?.cardBlur || 0}px)`,
-  };
+    try {
+      const storage = getStorage();
+      const imageRef = ref(storage, image);
+      const url = await getDownloadURL(imageRef);
+      setImageUrl(url);
 
-  // Стили для попапа
-  const popupStyle = {
-    backgroundColor: settings?.cardBackgroundColor || "rgba(0, 0, 0, 0.9)",
-    borderColor: settings?.cardBorderColor || "#ffffff89",
-    color: settings?.cardTextColor || "#fff",
-    opacity: settings?.cardBackgroundOpacity || 1,
-    backdropFilter: `blur(${settings?.cardBlur || 0}px)`,
-  };
+      const img = document.getElementById(`${id}-img`);
+      if (img) img.setAttribute("src", url);
+    } catch (error) {
+      console.error("Error loading image:", error);
+      setImageUrl(settings?.placeholderImage || "");
+    }
+  }, [image, id, settings?.placeholderImage]);
+
+  useEffect(() => {
+    loadImage();
+  }, [loadImage]);
 
   return (
     <>
-      <div
-        className="product-card"
-        style={cardStyle}
-        onClick={() => setIsPopupOpen(true)}
-      >
-        <img
-          src={imageUrl || settings?.placeholderImage || "/default-image.png"} // Заглушка из настроек или локальная
-          alt={name}
-          className="product-image"
-        />
+      {/* Product Card */}
+      <div className="product-card" onClick={handleCardClick} role="button" tabIndex={0}>
+        <div className="image-container">
+          <img
+            src={settings?.placeholderImage}
+            id={`${id}-img`}
+            alt={name}
+            className="product-image"
+            onError={handleImageError}
+            loading="lazy"
+          />
+        </div>
         <h3 className="product-name">{name}</h3>
         <p className="product-description">{description}</p>
-        {weight && (
-          <p className="product-weight">
-            {t("product.weight")}: {weight} {t("product.gram")}
+        <div className="product-footer">
+          {weight && (
+            <p className="product-weight">
+              {t("product.weight")}: {weight} {t("product.gram")}
+            </p>
+          )}
+          <p className="product-price">
+            {t("product.price")}: {price} {t("product.currency")}
           </p>
-        )}
-        <p className="product-price">
-          {t("product.price")}: {price} {t("product.currency")}
-        </p>
+        </div>
       </div>
 
+      {/* Popup */}
       {isPopupOpen && (
-        <div className="popup-overlay" onClick={() => setIsPopupOpen(false)}>
-          <div
-            className="popup-content"
-            style={popupStyle}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={imageUrl || settings?.placeholderImage || "/default-image.png"} // Заглушка из настроек или локальная
-              alt={name}
-              className="popup-image"
-            />
-            <h3 className="popup-name">{name}</h3>
-            <p className="popup-description">{description}</p>
-            {weight && (
-              <p className="popup-weight">
-                {t("product.weight")}: {weight} {t("product.gram")}
-              </p>
-            )}
-            <p className="popup-price">
-              {t("product.price")}: {price} {t("product.currency")}
-            </p>
+        <div 
+        className={`popup-overlay ${isPopupOpen ? "visible" : ""}`}
+        onClick={handleClosePopup}
+      >
+           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <div className="popup-image-container">
+              <img
+                src={imageUrl || settings?.placeholderImage}
+                alt={name}
+                className="popup-image"
+                onError={handleImageError}
+              />
+            </div>
+            
+            <div className="popup-text-content">
+              <h3 id="popup-title" className="popup-name">{name}</h3>
+              <p className="popup-description">{description}</p>
+              
+              <div className="popup-details">
+                {weight && (
+                  <p className="popup-weight">
+                    {t("product.weight")}: {weight} {t("product.gram")}
+                  </p>
+                )}
+                <p className="popup-price">
+                  {t("product.price")}: {price} {t("product.currency")}
+                </p>
+              </div>
+            </div>
+            
+            <button
+              className="close-button"
+              onClick={handleClosePopup}
+              aria-label={t("product.closePopup")}
+            >
+              ×
+            </button>
           </div>
         </div>
       )}

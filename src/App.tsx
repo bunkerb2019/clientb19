@@ -10,6 +10,10 @@ import { useTelegram } from "./components/useTelegram";
 import useSettings from "./modules/useSettings"; // Импортируем хук для настроек
 import "./App.scss";
 
+// перевод
+import { I18nextProvider } from 'react-i18next';
+
+
 // Firebase хуки
 import useCategories from "./modules/useCategories";
 import useNavigationConfig from "./modules/useNavigationConfig";
@@ -19,6 +23,8 @@ import Welcome from "./pages/Welcome";
 import Random from "./pages/Random";
 import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
+import LanguageSwitcher from "./components/LanguageSwitcher";
+import i18n from "./utils/i18n";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -61,39 +67,34 @@ const App = () => {
   console.log({ categories });
 
   return (
+    <I18nextProvider i18n={i18n}>
     <Router>
       <ScrollToTop />
       <div
         className="app"
-        style={{
-          backgroundColor: settings?.backgroundColor || "#000", // Фон приложения
-          color: settings?.textColor || "#fff", // Цвет текста
-          "--app-background-color": settings?.backgroundColor || "#000", // CSS-переменная для фона
-          "--app-text-color": settings?.textColor || "#fff", // CSS-переменная для текста
-          "--navbar-color": settings?.navbarColor || "#000", // CSS-переменная для панели навигации
-          "--app-background-image": settings?.backgroundImage
-            ? `url(${settings.backgroundImage})`
-            : "none", // CSS-переменная для фоновой картинки
-        }as React.CSSProperties}
-      >
-        <div
-          className="content"
-          style={{
-            backgroundImage: settings?.backgroundImage
+        style={
+          {
+            "--app-background-color": settings?.backgroundColor || "#000",
+            "--app-text-color": settings?.textColor || "#fff",
+            "--navbar-color": settings?.navbarColor || "#000",
+            "--app-background-image": settings?.backgroundImage
               ? `url(${settings.backgroundImage})`
-              : "none", // Фоновая картинка
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
+              : "none",
+          } as React.CSSProperties
+        }
+      >
+        <LanguageSwitcher/>
+
+        <div className="content">
           <Routes>
+
             <Route path="/" element={<Welcome />} />
-            <Route path="/random" element={<Random />} />
+            <Route path="/3" element={<Random />} />
             {navItems.map((nav) => (
               <Route
                 key={nav.id}
                 path={`/${nav.id}`}
-                element={<CategoryList navId={nav.id} />}
+                element={<CategoryList navId={nav.id}/>}
               />
             ))}
             <Route path="/category/:categoryId" element={<CategoryPage />} />
@@ -103,6 +104,7 @@ const App = () => {
         <NavItems />
       </div>
     </Router>
+    </I18nextProvider>
   );
 };
 

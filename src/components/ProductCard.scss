@@ -1,16 +1,20 @@
+/* ====== Карточки товаров ====== */
 .product-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Обе колонки одинаковой ширины */
+  gap: 15px; /* Увеличим gap для лучшего визуального разделения */
+  padding: 20px; /* Используем padding вместо margin для контейнера */
+  box-sizing: border-box;
+  max-width: 100%; /* Ограничиваем максимальную ширину */
 }
 
 .product-card {
   background: var(--card-background-color, rgba(0, 0, 0, 0.88)) !important;
   border: 1px solid var(--card-border-color, #ffffff89);
   border-radius: 10px;
-  padding: 7px;
   display: flex;
+  min-width: 0;
+  overflow: hidden;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -18,113 +22,216 @@
   color: var(--card-text-color, #fff);
   opacity: var(--card-background-opacity, 1);
   backdrop-filter: blur(var(--card-blur, 0px));
+  /* Убираем width: 100vw - это было причиной проблемы */
+  width: 100%; /* Занимаем всю доступную ширину ячейки grid */
+  min-height: 350px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
+  padding: 15px; /* Добавляем внутренние отступы */
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
 }
 
 .product-image {
   width: 100%;
-  height: 250px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
 .product-name {
-  margin: 10px 0;
-  font-size: 1.2rem;
-  word-wrap: break-word; // Перенос текста на следующую строку
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  word-wrap: break-word;
+  flex-shrink: 0;
 }
 
 .product-description {
-  flex: 1;
-  margin: 10px 0;
-  font-size: 1rem;
-  word-wrap: break-word; // Перенос текста на следующую строку
-  display: -webkit-box; // Для многострочного обрезания
-  -webkit-line-clamp: 1; // Ограничиваем текст до 3 строк
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 12px 0;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis; // Добавляем многоточие
+  text-overflow: ellipsis;
+  flex-grow: 1;
 }
 
-.product-weight,
+.product-name, .product-weight, .product-price {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .product-price {
-  margin-top: auto;
-  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
 }
 
-/* ====== Попап ====== */
+/* ====== Оптимизированный попап ====== */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(5px);
+  padding: 15px;
+  box-sizing: border-box;
 }
 
 .popup-content {
-  justify-content: center;
-  background: var(--card-background-color, rgba(0, 0, 0, 0.9));
+  background: var(--card-background-color, rgba(0, 0, 0, 0.95));
   border: 1px solid var(--card-border-color, #ffffff89);
-  margin: 35px;
-  border-radius: 10px;
-  max-width: 95vw;
+  border-radius: 12px;
   width: 100%;
-  height: 75vh;
+  max-width: 400px;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  padding: 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 20px 20px 60px; /* Увеличиваем нижний padding для кнопки */
   color: var(--card-text-color, #fff);
-  opacity: var(--card-background-opacity, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.popup-image-container {
+  width: calc(100% + 40px);
+  margin: -20px -20px 15px -20px;
+  flex-shrink: 0;
 }
 
 .popup-image {
   width: 100%;
-  height: 50vh;
-  padding-top: 10px;
+  height: auto;
+  max-height: 50vh;
   object-fit: contain;
-  border-radius: 10px 10px 0 0;
-  flex-shrink: 0;
+  display: block;
+  border-radius: 0;
+}
+
+.popup-text-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 5px;
+  margin-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.popup-text-content::-webkit-scrollbar {
+  display: none;
 }
 
 .popup-name {
-  font-size: 1.5rem;
-  margin: 12px 15px;
-  word-wrap: break-word; // Перенос текста на следующую строку
-}
-
-.popup-description,
-.popup-weight,
-.popup-price {
-  font-size: 1.1rem;
-  margin: 6px 15px;
-  word-wrap: break-word; // Перенос текста на следующую строку
+  font-size: 1.3rem;
+  margin: 0 0 12px 0;
+  word-wrap: break-word;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .popup-description {
-  display: -webkit-box; // Для многострочного обрезания
-  // -webkit-line-clamp: 2; // Ограничиваем текст до 5 строк
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis; // Добавляем многоточие
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 15px 0;
+  word-wrap: break-word;
+  line-height: 1.5;
 }
 
-/* Кнопка закрытия */
+.popup-weight {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 5px 0;
+}
+
+.popup-price {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #fff;
+  text-align: center;
+}
+
+/* Кнопка закрытия (сохранен оригинальный стиль) */
 .close-button {
   position: absolute;
-  top: -10px;
-  right: -13px;
-  background: none;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
-  font-size: 1px;
+  padding: 0;
+  width: 90%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
   cursor: pointer;
   color: #ffffff;
+  transition: all 0.2s ease;
+  border-radius: 5px;
 }
 
 .close-button:hover {
-  color: black;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* Адаптация для маленьких экранов (iPhone SE) */
+@media (max-width: 320px) {
+  .popup-content {
+    padding: 15px 15px 55px;
+    max-height: 85vh;
+  }
+  
+  .popup-image-container {
+    width: calc(100% + 30px);
+    margin: -15px -15px 10px -15px;
+  }
+  
+  .popup-image {
+    max-height: 45vh;
+  }
+  
+  .popup-name {
+    font-size: 1.1rem;
+  }
+  
+  .popup-description,
+  .popup-weight {
+    font-size: 0.85rem;
+  }
+  
+  .popup-price {
+    font-size: 1.1rem;
+  }
+  
+  .close-button {
+    height: 36px;
+    font-size: 26px;
+  }
+}
+
+/* Адаптация для средних экранов */
+@media (min-width: 768px) {
+  .popup-content {
+    max-width: 450px;
+  }
+  
+  .popup-image {
+    max-height: 55vh;
+  }
 }

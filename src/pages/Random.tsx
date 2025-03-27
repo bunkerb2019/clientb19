@@ -1,211 +1,228 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import "./Random.scss";
-import { useTranslation } from "react-i18next";
-
-
-import puerlogo from "./../assets/puerlogo.svg";
+import { useRandomSettings } from "../hooks/useRandomSettings";
 import useMenuItems from "../modules/useMenuItems";
 import useCategories from "../modules/useCategories";
-import { Order } from "../utils/types";
-const getImagePath = (image: string) => {
-  return image.startsWith("http") ? image : puerlogo;
-};
-
-interface DataType {
-  bar: {
-    cocktail: Array<{ name: string; description: string }>;
-  };
-  product: {
-    asia: Array<{ image: string; name: string; description: string }>;
-    rolls: Array<{ image: string; name: string; description: string }>;
-    salad: Array<{ image: string; name: string; description: string }>;
-  };
-  hookah: {
-    flavour: Array<{ name: string; description: string }>;
-  };
-}
+import { Order, RandomizerConfig } from "../utils/types";
+import puerlogo from "../assets/puerlogo.svg";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { useTranslation } from "react-i18next";
+import useSettings from "../modules/useSettings";
 
 const Random = () => {
-  const { t, i18n } = useTranslation();
-  const [data, setData] = useState<DataType | null>(null);
-  const [positions, setPositions] = useState([-1, -1, -1]);
-  const [selectedItem, setSelectedItem] = useState<{
-    image?: string;
-    name: string;
-    description: string;
-  } | null>(null);
-  const [hasSpun, setHasSpun] = useState([false, false, false]);
+  const { t } = useTranslation();
+  const [positions, setPositions] = useState<number[]>([]);
+  const [selectedItem, setSelectedItem] = useState<Order | null>(null);
+  const [hasSpun, setHasSpun] = useState<boolean[]>([]);
+  const [isSpinning, setIsSpinning] = useState<boolean>(false);
+  const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
+  const [popupImageUrl, setPopupImageUrl] = useState<string>("");
+  const { data: settings } = useSettings();
 
+  const { data: randomSettings, isLoading, error } = useRandomSettings();
+  const { data: wholeMenu = [] } = useMenuItems();
+  const { data: categories = [] } = useCategories();
+
+  // Загрузка изображения для попапа
   useEffect(() => {
-    const loadData = async (lang: string) => {
-      try {
-        const localizedData = await import(`../../src/locales/${lang}.json`);
-        setData({
-          bar: localizedData.default.bar,
-          product: localizedData.default.product,
-          hookah: localizedData.default.hookah,
-        });
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (e) {
-        const defaultData = await import(`../../src/locales/en.json`);
-        setData({
-          bar: defaultData.default.bar,
-          product: defaultData.default.product,
-          hookah: defaultData.default.hookah,
-        });
+    if (selectedItem?.image) {
+      const fetchImage = async () => {
+        try {
+          const storage = getStorage();
+          const imageRef = ref(storage, selectedItem.image);
+          const url = await getDownloadURL(imageRef);
+          setPopupImageUrl(url);
+        } catch (error) {
+          console.error("Error loading image:", error);
+          setPopupImageUrl(settings?.placeholderImage || puerlogo);
+        }
+      };
+      fetchImage();
+    }
+  }, [selectedItem, settings?.placeholderImage]);
+
+  // Карта соответствия ID категорий их названиям
+  const categoryIdToNameMap = useMemo(() => {
+    const map = new Map<string, string>();
+    categories.forEach(category => {
+      map.set(category.id, category.ru);
+    });
+    return map;
+  }, [categories]);
+
+  // Инициализация позиций
+  useEffect(() => {
+    if (randomSettings?.randomizers) {
+      const activeRandomizers = randomSettings.randomizers.filter(r => r.active);
+      setPositions(Array(activeRandomizers.length).fill(-1));
+      setHasSpun(Array(activeRandomizers.length).fill(false));
+    }
+  }, [randomSettings]);
+
+  // Получение товаров для рандомайзера
+  const getItemsForRandomizer = useCallback((randomizer: RandomizerConfig): Order[] => {
+    if (!randomizer.categoryIds?.length) return [];
+
+    const categoryNames = randomizer.categoryIds
+      .map(id => categoryIdToNameMap.get(id))
+      .filter(Boolean);
+    
+    return wholeMenu.filter(item => 
+      categoryNames.includes(item.category)
+    );
+  }, [wholeMenu, categoryIdToNameMap]);
+
+  // Вращение с плавной анимацией
+  const spinSingle = async (index: number, randomizerId: string) => {
+    if (isSpinning) return;
+    
+    const randomizer = randomSettings?.randomizers?.find(r => r.id === randomizerId);
+    if (!randomizer) return;
+  
+    const items = getItemsForRandomizer(randomizer);
+    if (items.length === 0) {
+      alert(t("random.no_items"));
+      return;
+    }
+  
+    setIsSpinning(true);
+    setHasSpun(prev => prev.map((val, i) => i === index ? true : val));
+  
+    // Параметры анимации
+    const spinDuration = 2500;
+    const startTime = performance.now();
+    const spins = Math.floor(Math.random() * 10) + 20; // Случайное количество полных вращений
+    let animationFrameId: number;
+  
+    const animate = (time: number) => {
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / spinDuration, 1);
+      
+      // Сложная функция замедления в конце
+      const easing = progress < 0.9 
+        ? Math.pow(progress / 0.9, 2)  // Быстрое начало
+        : 1 - Math.pow((1 - progress) / 0.1, 4);  // Медленная остановка
+      
+      if (progress < 1) {
+        // Случайное перемещение по элементам
+        const tempPos = Math.floor(easing * items.length * spins) % items.length;
+        setPositions(prev => prev.map((pos, i) => 
+          i === index ? tempPos : pos
+        ));
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        // Финальная случайная позиция
+        const finalPos = Math.floor(Math.random() * items.length);
+        
+        // Точная остановка
+        setPositions(prev => prev.map((pos, i) => 
+          i === index ? finalPos : pos
+        ));
+        
+        // Задержка для визуального эффекта остановки
+        setTimeout(() => {
+          setIsSpinning(false);
+          setSelectedItem(items[finalPos]);
+          setIsPopupVisible(true);
+        }, 400);
       }
     };
-
-    loadData(i18n.language);
-  }, [i18n.language]);
-
-  const { data: wholeMenu } = useMenuItems();
-  const { data: categories } = useCategories();
-
-  const { foodItems, barItems } = useMemo(() => {
-    const foodItems: Order[] = [];
-    const barItems: Order[] = [];
-
-    wholeMenu?.forEach((menuItem) => {
-      const category = menuItem.category;
-      const foundCategory = categories?.find((cat) => cat.id === category);
-      if (foundCategory?.parentId === "1") {
-        foodItems.push(menuItem);
-      } else if (foundCategory?.parentId === "2") {
-        barItems.push(menuItem);
-      }
-    });
-
-    return { foodItems, barItems };
-  }, [categories, wholeMenu]);
-
-  if (!data || !foodItems) return <div>Loading...</div>;
-
-  // Получаем данные из локализованного JSON
-
-  const hookahItems = data.hookah.flavour;
-
-  const spinSingle = (index: number, category: string) => {
-    const items =
-      category === "bar"
-        ? barItems
-        : category === "food"
-        ? foodItems
-        : hookahItems;
-
-    setHasSpun((prev) => prev.map((val, i) => (i === index ? true : val)));
-    setPositions((prev) =>
-      prev.map((pos, i) =>
-        i === index ? Math.floor(Math.random() * items.length) : pos
-      )
-    );
+  
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
   };
+
+  const closePopup = useCallback(() => {
+    if (isSpinning) return; // Блокируем закрытие во время анимации
+    setIsPopupVisible(false);
+    setTimeout(() => setSelectedItem(null), 300);
+  }, [isSpinning]);
+
+  if (isLoading) return <div className="loading">{t("common.loading")}</div>;
+  if (error) return <div className="error">{t("random.load_error")}</div>;
+  if (!categories.length) return <div className="error">{t("categories.load_error")}</div>;
+
+  const activeRandomizers = randomSettings?.randomizers?.filter(r => r.active) || [];
 
   return (
     <div className="slot-machine">
-      <h1>🎰 {t("random.slotmachine")} </h1>
-      <p> {t("random.rules")}</p>
+      <h1>🎰 {t("random.slotmachine")}</h1>
+      <p>{t("random.rules")}</p>
 
       <div className="slots">
-        {/* BAR Slot */}
-        <div className="slot">
-          <h2 className="slot-title"> {t("navigation.bar")}</h2>
-          <div className="slot-row">
-            <div className="reel">
-              {!hasSpun[0] && <div className="question-mark">?</div>}
-              <div
-                className="reelInner"
-                style={{ transform: `translateY(-${positions[0] * 80}px)` }}
-              >
-                {barItems.map((item, i) => (
+        {activeRandomizers.map((randomizer, index) => {
+          const items = getItemsForRandomizer(randomizer);
+          
+          return (
+            <div className="slot" key={randomizer.id}>
+              <h2 className="slot-title">{randomizer.slotTitle}</h2>
+              <div className="slot-row">
+                <div className="reel">
+                  {!hasSpun[index] && <div className="question-mark">?</div>}
                   <div
-                    key={i}
-                    className="symbol"
-                    onClick={() => setSelectedItem(item)}
+                    className="reelInner"
+                    style={{ transform: `translateY(-${positions[index] * 70}px)` }}
                   >
-                    {item.name}
+                    {items.map((item, i) => (
+                      <div
+                        key={`${randomizer.id}-${i}`}
+                        className="symbol"
+                        onClick={() => {
+                          setSelectedItem(item);
+                          setIsPopupVisible(true);
+                        }}
+                      >
+                        {item.name}
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+                <button 
+                  onClick={() => spinSingle(index, randomizer.id)}
+                  disabled={items.length === 0 || isSpinning}
+                  className={isSpinning ? "spinning" : ""}
+                >
+                  {isSpinning ? "..." : t("random.spin")}
+                </button>
               </div>
             </div>
-            <button onClick={() => spinSingle(0, "bar")}>
-              {" "}
-              {t("random.spin")} 🎲
-            </button>
-          </div>
-        </div>
-
-        {/* FOOD Slot */}
-        <div className="slot">
-          <h2 className="slot-title">{t("navigation.food")}</h2>
-          <div className="slot-row">
-            <div className="reel">
-              {!hasSpun[1] && <div className="question-mark">?</div>}
-              <div
-                className="reelInner"
-                style={{ transform: `translateY(-${positions[1] * 80}px)` }}
-              >
-                {foodItems.map((item, i) => (
-                  <div
-                    key={i}
-                    className="symbol"
-                    onClick={() => setSelectedItem(item)}
-                  >
-                    {item.name}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button onClick={() => spinSingle(1, "food")}>
-              {" "}
-              {t("random.spin")} 🎲
-            </button>
-          </div>
-        </div>
-
-        {/* HOOKAH Slot */}
-        <div className="slot">
-          <h2 className="slot-title">{t("navigation.hookah")}</h2>
-          <div className="slot-row">
-            <div className="reel">
-              {!hasSpun[2] && <div className="question-mark">?</div>}
-              <div
-                className="reelInner"
-                style={{ transform: `translateY(-${positions[2] * 80}px)` }}
-              >
-                {hookahItems.map((item, i) => (
-                  <div
-                    key={i}
-                    className="symbol"
-                    onClick={() => setSelectedItem(item)}
-                  >
-                    {item.name}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button onClick={() => spinSingle(2, "hookah")}>
-              {" "}
-              {t("random.spin")} 🎲
-            </button>
-          </div>
-        </div>
+          );
+        })}
       </div>
 
       {selectedItem && (
-        <div className="popup" onClick={() => setSelectedItem(null)}>
+        <div className={`popup-overlay ${isPopupVisible ? "visible" : ""}`} onClick={closePopup}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            {selectedItem.image && (
+            <div className="popup-image-container">
               <img
-                src={getImagePath(selectedItem.image)}
+                src={popupImageUrl || settings?.placeholderImage || puerlogo}
                 alt={selectedItem.name}
                 className="popup-image"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = settings?.placeholderImage || puerlogo;
+                }}
               />
-            )}
-            <h2>{selectedItem.name}</h2>
-            <p>{selectedItem.description}</p>
-
-            <button onClick={() => setSelectedItem(null)}>Close</button>
+            </div>
+            
+            <div className="popup-text-content">
+              <h3 className="popup-name">{selectedItem.name}</h3>
+              <p className="popup-description">{selectedItem.description}</p>
+              
+              <div className="popup-details">
+                {selectedItem.weight && (
+                  <p className="popup-weight">
+                    {t("product.weight")}: {selectedItem.weight} {t("product.gram")}
+                  </p>
+                )}
+                <p className="popup-price">
+                  {t("product.price")}: {selectedItem.price} {t("product.currency")}
+                </p>
+              </div>
+            </div>
+            
+            <button className="close-button" onClick={closePopup}>
+              ×
+            </button>
           </div>
         </div>
       )}

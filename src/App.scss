@@ -1,55 +1,29 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(
-    --app-background-color,
-    #000
-  ); // Используем CSS-переменную
-  color: var(--app-text-color, #fff); // Используем CSS-переменную
+  background-color: var(--app-background-color, #000);
+  color: var(--app-text-color, #fff);
   height: 100vh;
   display: flex;
   justify-content: center;
-  width: 95%;
+  width: 100%;
 }
 
 .app {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
   &::before {
     content: "";
     position: fixed;
-    top: 5vh; // Смещаем вниз, чтобы центр оставался видимым
+    top: 0;
     left: 0;
     width: 100vw;
-    height: 90vh; // Всегда 90% экрана
+    height: 100vh;
     background: var(--app-background-image, none) no-repeat center;
-    background-size: contain; // Сохраняем пропорции
-    background-position: center;
+    background-size: cover;
     z-index: -1;
-  }
-}
-
-@media (min-width: 768px) {
-  .app {
-    &::before {
-      background-size: 60vw;
-      background-position: center;
-    }
-  }
-}
-@media (min-width: 1500px) {
-  .app {
-    &::before {
-      background-size: 20vw;
-      background-position: center;
-    }
-  }
-}
-
-@media (min-width: 2500px) {
-  .app {
-    &::before {
-      background-size: 20vw;
-      background-position: center;
-    }
   }
 }
 
@@ -66,7 +40,7 @@ body {
   display: flex;
   justify-content: center;
   overflow-x: auto;
-  background: var(--navbar-color, #000); // Используем CSS-переменную
+  background: var(--navbar-color, #000);
   padding: 10px 0;
 
   @media (max-width: 767px) {
@@ -77,7 +51,7 @@ body {
 }
 
 .sub-nav .nav-item {
-  color: var(--app-text-color, #fff); // Используем CSS-переменную
+  color: var(--app-text-color, #fff);
   text-decoration: none;
   font-size: 16px;
   padding: 8px;
@@ -96,19 +70,19 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background: var(--navbar-color, #000); // Используем CSS-переменную
+  background: var(--navbar-color, #000);
   padding: 10px 0;
 }
 
 .nav-item {
-  color: var(--app-text-color, #fff); // Используем CSS-переменную
+  color: var(--app-text-color, #fff);
   text-decoration: none;
   font-size: 18px;
   padding: 10px;
   transition: 0.3s;
 
   &.active {
-    color: #ff6347;
+    color: #FF6347;
     font-weight: bold;
   }
 

@@ -6,21 +6,15 @@ import useCategories from "../modules/useCategories";
 import { useEffect, useState } from "react";
 import useMenuItems from "../modules/useMenuItems";
 
-interface Category {
-  id: string;
-  parentId: string;
-  en: string;
-  ru: string;
-  ro: string;
-  icon?: string;
-}
+
 
 interface CategoryListProps {
   navId: string;
 }
 
 const CategoryList: React.FC<CategoryListProps> = ({ navId }: CategoryListProps) => {
-  const { t } = useTranslation();
+  // const { t } = 
+  useTranslation();
   const { data: categories } = useCategories();
   const { data: dishes, isLoading, error } = useMenuItems();
 
@@ -55,20 +49,20 @@ const CategoryList: React.FC<CategoryListProps> = ({ navId }: CategoryListProps)
 
   return (
     <div>
-      {/* Динамический заголовок с иконкой */}
-      <span className="category-header">
-        <img
-          src={selectedCategoryIcon || Icons.asia} // Иконка категории или fallback
-          alt={selectedCategory || "Категория"}
-          className="icon"
-        />
-        {selectedCategory || "Категория"}
-      </span>
+    {/* Динамический заголовок с иконкой */}
+    <span className="category-header">
+      <img
+        src={selectedCategoryIcon || Icons.asia}
+        alt={selectedCategory || "Категория"}
+        className="icon"
+      />
+      <span className="active-category">{selectedCategory || "Категория"}</span>
+    </span>
 
       <div className="product-container">
         <Outlet />
         {filteredDishes?.length === 0 ? (
-          <div>В этой категории пока нет товаров.</div>
+          <p>В этой категории пока нет товаров.</p>
         ) : (
           filteredDishes?.map((dish, index) => <ProductCard key={index} {...dish} />)
         )}
@@ -77,9 +71,10 @@ const CategoryList: React.FC<CategoryListProps> = ({ navId }: CategoryListProps)
       <div className="sub-nav">
         {filteredCategories?.map((category) => (
           <div
-            className="nav-item"
+            className={`nav-item ${selectedCategory === category.ru ? 'active' : ''}`}
             key={category.id}
-            onClick={() => setSelectedCategory(category.ru)} // Обновляем состояние при клике
+            onClick={() => setSelectedCategory(category.ru)}
+            style={{ cursor: 'pointer' }} // Добавляем указатель при наведении
           >
             <img
               src={category.icon || "/default-icon.png"}

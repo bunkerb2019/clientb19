@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 const languages = ["ru", "ro", "en"];
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const {t, i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState(() => {
     return localStorage.getItem("lang") || "ru";
   });
@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
     const savedLang = localStorage.getItem("lang") || "ru";
     i18n.changeLanguage(savedLang); // Устанавливаем язык в i18n
     setCurrentLang(savedLang);
-  }, []);
+  }, [i18n]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

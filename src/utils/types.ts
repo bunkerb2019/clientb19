@@ -1,4 +1,5 @@
 export interface Category {
+  items: never[];
   id: string;
   parentId: string;
   ru: string;
@@ -8,6 +9,7 @@ export interface Category {
 }
 
 export interface NavigationItem {
+  categories: unknown;
   id: string;
   ru: string;
   ro: string;
@@ -28,7 +30,7 @@ export interface Order {
 
 // Интерфейс для структуры настроек
 export interface SettingsData {
-  [key: string]: any;
+  [key: string]: unknown;
   // Шаг 1: Настройки приветствия
   welcomeText: string;
   welcomeBackground: string;
@@ -48,4 +50,18 @@ export interface SettingsData {
   cardBackgroundOpacity: number;
   cardBlur: number;
   placeholderImage: string | null;
+}
+
+
+export interface RandomizerConfig {
+  id: string;
+  name: string;
+  slotTitle: string;
+  navigation: string;
+  categoryIds: string[];
+  active: boolean;
+}
+
+export interface RandomSettings {
+  randomizers: RandomizerConfig[];
 }

@@ -6,7 +6,7 @@ import { Category } from "../utils/types";
 
 
 const CategoryPage = () => {
-  const { categoryId, productId } = useParams<{ categoryId: string; productId: string }>(); // Явно указываем тип параметра
+  const { categoryId } = useParams<{ categoryId: string; productId: string }>(); // Явно указываем тип параметра
   const [category, setCategory] = useState<Category | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +36,7 @@ const CategoryPage = () => {
 
   return (
     <div className="category-page">
-      <h1>{category.ru}</h1>
+      <h1 className="active-category">{category.ru}</h1> {/* Добавлен класс */}
       {category.icon && <img src={category.icon} alt={category.ru} />}
       <div className="translations">
         <p>RO: {category.ro}</p>

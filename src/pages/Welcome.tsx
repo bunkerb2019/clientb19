@@ -18,7 +18,7 @@ const Welcome = () => {
 
     setTimeout(() => {
       setHideScreen(true); // Запуск анимации исчезновения
-      setTimeout(() => navigate("/food/rolls"), 1000); // Переход через 1 секунду после начала скрытия
+      setTimeout(() => navigate("/1"), 1000); // Переход через 1 секунду после начала скрытия
     }, 3000);
   }, [navigate]);
 

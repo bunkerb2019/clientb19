@@ -6,17 +6,14 @@ import { Order } from "../utils/types";
 const useMenuItems = () => {
   const fetchMenuItems = async () => {
     const menuCollection = collection(db, "menu");
-    const querySnapshot = await getDocs(menuCollection);
-    const menuItems: Order[] = [];
-    querySnapshot.forEach((doc) => {
-      menuItems.push({ id: doc.id, ...doc.data() } as Order);
-    });
-    return menuItems;
+    const snapshot = await getDocs(menuCollection);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Order));
   };
 
   return useQuery({
-    queryKey: ["menuItems"],
+    queryKey: ['menuItems'],
     queryFn: fetchMenuItems,
+    staleTime: 60 * 60 * 1000, // 1 час кэширования
   });
 };
 

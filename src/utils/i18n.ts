@@ -1,32 +1,31 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-
-// Импортируем файлы с переводами
-import ru from "../locales/ru.json";
-import ro from "../locales/ro.json";
-import en from "../locales/en.json";
-
-// Проверяем сохранённый язык в localStorage
-const savedLang = localStorage.getItem('i18nextLng');
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
 i18n
   .use(initReactI18next)
   .init({
-    resources: {
-      ru: { translation: ru },
-      ro: { translation: ro },
-      en: { translation: en }
-    },
-    lng: savedLang || "ru", // Используем сохранённый язык или русский по умолчанию
-    fallbackLng: "ru",
+    fallbackLng: 'ru',
+    debug: false, // Включите для разработки
     interpolation: {
       escapeValue: false,
     },
+    resources: {
+      ru: {
+        translation: {
+          // Ваши переводы для русского
+        }
+      },
+      en: {
+        translation: {
+          // Ваши переводы для английского
+        }
+      },
+      ro: {
+        translation: {
+          // Ваши переводы для румынского
+        }
+      }
+    }
   });
-
-// Сохраняем язык при его изменении
-i18n.on('languageChanged', (lng) => {
-  localStorage.setItem('i18nextLng', lng);
-});
 
 export default i18n;
