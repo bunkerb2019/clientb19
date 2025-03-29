@@ -1,7 +1,10 @@
 /* ====== Карточки товаров ====== */
 .product-container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Обе колонки одинаковой ширины */
+  grid-template-columns: repeat(
+    2,
+    minmax(0, 1fr)
+  ); /* Обе колонки одинаковой ширины */
   gap: 15px; /* Увеличим gap для лучшего визуального разделения */
   padding: 20px; /* Используем padding вместо margin для контейнера */
   box-sizing: border-box;
@@ -9,8 +12,15 @@
 }
 
 .product-card {
-  background: var(--card-background-color, rgba(0, 0, 0, 0.88)) !important;
+  background-color: rgba(
+    var(--card-background-color, 0, 0, 0),
+    var(--card-background-opacity, 0.88)
+  ) !important;
+  backdrop-filter: blur(var(--card-blur, 0px));
   border: 1px solid var(--card-border-color, #ffffff89);
+  color: var(--card-text-color, #fff);
+
+
   border-radius: 10px;
   display: flex;
   min-width: 0;
@@ -19,9 +29,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer;
-  color: var(--card-text-color, #fff);
-  opacity: var(--card-background-opacity, 1);
-  backdrop-filter: blur(var(--card-blur, 0px));
   /* Убираем width: 100vw - это было причиной проблемы */
   width: 100%; /* Занимаем всю доступную ширину ячейки grid */
   min-height: 350px;
@@ -63,7 +70,9 @@
   flex-grow: 1;
 }
 
-.product-name, .product-weight, .product-price {
+.product-name,
+.product-weight,
+.product-price {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -92,8 +101,13 @@
 }
 
 .popup-content {
-  background: var(--card-background-color, rgba(0, 0, 0, 0.95));
+  background-color: rgba(
+    var(--card-background-color, 0, 0, 0),
+    var(--card-background-opacity, 0.88)
+  ) !important;
+  backdrop-filter: blur(var(--card-blur, 0px));
   border: 1px solid var(--card-border-color, #ffffff89);
+  color: var(--card-text-color, #fff);
   border-radius: 12px;
   width: 100%;
   max-width: 400px;
@@ -102,7 +116,6 @@
   flex-direction: column;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   padding: 20px 20px 60px; /* Увеличиваем нижний padding для кнопки */
-  color: var(--card-text-color, #fff);
   position: relative;
   overflow: hidden;
 }
@@ -115,6 +128,7 @@
 
 .popup-image {
   width: 100%;
+  padding-top: 20px;
   height: auto;
   max-height: 50vh;
   object-fit: contain;
@@ -196,29 +210,29 @@
     padding: 15px 15px 55px;
     max-height: 85vh;
   }
-  
+
   .popup-image-container {
     width: calc(100% + 30px);
     margin: -15px -15px 10px -15px;
   }
-  
+
   .popup-image {
     max-height: 45vh;
   }
-  
+
   .popup-name {
     font-size: 1.1rem;
   }
-  
+
   .popup-description,
   .popup-weight {
     font-size: 0.85rem;
   }
-  
+
   .popup-price {
     font-size: 1.1rem;
   }
-  
+
   .close-button {
     height: 36px;
     font-size: 26px;
@@ -230,7 +244,7 @@
   .popup-content {
     max-width: 450px;
   }
-  
+
   .popup-image {
     max-height: 55vh;
   }

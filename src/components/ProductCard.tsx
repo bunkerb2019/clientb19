@@ -3,6 +3,7 @@ import "./ProductCard.scss";
 import { useTranslation } from "react-i18next";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import useSettings from "../modules/useSettings";
+import { hexToRgb } from "../utils/hexToRGB";
 
 interface ProductProps {
   id: string;
@@ -70,11 +71,27 @@ const ProductCard: React.FC<ProductProps> = ({
   useEffect(() => {
     loadImage();
   }, [loadImage]);
-
+  const RGB = hexToRgb(settings?.cardBackgroundColor);
   return (
     <>
       {/* Product Card */}
-      <div className="product-card" onClick={handleCardClick} role="button" tabIndex={0}>
+      <div
+        className="product-card"
+        onClick={handleCardClick}
+        role="button"
+        tabIndex={0}
+        style={
+          {
+            "--card-background-color": `${RGB?.r}, ${RGB?.g},${RGB?.b}`,
+            "--card-background-opacity": settings?.cardBackgroundOpacity || 1,
+            "--card-blur": settings?.cardBlur
+              ? `${settings.cardBlur}px`
+              : "0px",
+            "--card-border-color": settings?.cardBorderColor || "#ffffff89",
+            "--card-text-color": settings?.cardTextColor || "#fff",
+          } as React.CSSProperties
+        }
+      >
         <div className="image-container">
           <img
             src={settings?.placeholderImage}
@@ -101,11 +118,25 @@ const ProductCard: React.FC<ProductProps> = ({
 
       {/* Popup */}
       {isPopupOpen && (
-        <div 
-        className={`popup-overlay ${isPopupOpen ? "visible" : ""}`}
-        onClick={handleClosePopup}
-      >
-           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+        <div
+          className={`popup-overlay ${isPopupOpen ? "visible" : ""}`}
+          onClick={handleClosePopup}
+        >
+          <div
+            className="popup-content"
+            onClick={(e) => e.stopPropagation()}
+            style={
+              {
+                "--card-background-color": `${RGB?.r}, ${RGB?.g},${RGB?.b}`,
+                "--card-background-opacity": settings?.cardBackgroundOpacity || 1,
+                "--card-blur": settings?.cardBlur
+                  ? `${settings.cardBlur}px`
+                  : "0px",
+                "--card-border-color": settings?.cardBorderColor || "#ffffff89",
+                "--card-text-color": settings?.cardTextColor || "#fff",
+              } as React.CSSProperties
+            }
+          >
             <div className="popup-image-container">
               <img
                 src={imageUrl || settings?.placeholderImage}
@@ -114,11 +145,13 @@ const ProductCard: React.FC<ProductProps> = ({
                 onError={handleImageError}
               />
             </div>
-            
+
             <div className="popup-text-content">
-              <h3 id="popup-title" className="popup-name">{name}</h3>
+              <h3 id="popup-title" className="popup-name">
+                {name}
+              </h3>
               <p className="popup-description">{description}</p>
-              
+
               <div className="popup-details">
                 {weight && (
                   <p className="popup-weight">
@@ -130,7 +163,7 @@ const ProductCard: React.FC<ProductProps> = ({
                 </p>
               </div>
             </div>
-            
+
             <button
               className="close-button"
               onClick={handleClosePopup}
