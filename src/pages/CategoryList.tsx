@@ -29,12 +29,15 @@ const CategoryList: React.FC<CategoryListProps> = ({ navId }: CategoryListProps)
 
   // Устанавливаем первую категорию как выбранную по умолчанию
   useEffect(() => {
-    if (!selectedCategory && filteredCategories) {
-      const defaultCategory = filteredCategories[0];
-      setSelectedCategory(defaultCategory?.ru); // Используем ru для выбора категории
-      setSelectedCategoryIcon(defaultCategory?.icon); // Устанавливаем иконку категории
+    if (Array.isArray(filteredCategories) && filteredCategories.length > 0) {
+      const defaultCategory = filteredCategories[0]?.ru;
+  
+      setSelectedCategory((prev) =>
+        prev && filteredCategories.some((cat) => cat.ru === prev) ? prev : defaultCategory
+      );
+      setSelectedCategoryIcon(filteredCategories[0]?.icon);
     }
-  }, [filteredCategories, selectedCategory]);
+  }, [filteredCategories, navId]);
 
   // Обновляем иконку при изменении выбранной категории
   useEffect(() => {

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useSettings from "../modules/useSettings.ts"; // Укажите правильный путь к хуку
-import Logo from "../assets/demoversionpuerlogo.svg"; // Логотип по умолчанию
 import "./Welcome.scss";
 
 const Welcome = () => {
@@ -10,6 +9,28 @@ const Welcome = () => {
   const [showText, setShowText] = useState(false); // Новое состояние для текста
   const [hideScreen, setHideScreen] = useState(false);
   const navigate = useNavigate();
+
+  // Функция для разбиения текста на строки
+  const wrapText = (text: string, maxChars: number) => {
+    if (!text) return [];
+    const words = text.split(" ");
+    let line = "";
+    const lines = [];
+
+    for (const word of words) {
+      if ((line + word).length > maxChars) {
+        lines.push(line.trim());
+        line = word + " ";
+      } else {
+        line += word + " ";
+      }
+    }
+    if (line) lines.push(line.trim());
+
+    return lines;
+  };
+
+  const wrappedText = wrapText(settings?.welcomeText || "Welcome to", 15);
 
   // Анимация появления текста и логотипа
   useEffect(() => {
@@ -28,9 +49,6 @@ const Welcome = () => {
   // Если произошла ошибка, показываем сообщение об ошибке
   if (error) return <div>Error loading settings</div>;
 
-  // Логируем настройки для отладки
-  console.log("Settings:", settings);
-
   return (
     <div
       className={`welcome ${hideScreen ? "fade-out" : ""}`}
@@ -39,19 +57,23 @@ const Welcome = () => {
       }}
     >
       <div className="welcome-content">
-        <svg
+        <svg 
           className={`hello-text ${showText ? "visible" : ""}`} // Добавляем класс для анимации текста
           viewBox="0 0 500 100"
         >
-          <text x="50%" y="50%" textAnchor="middle" dy=".3em">
-            {settings?.welcomeText || "Welcome to"} {/* Текст приветствия из настроек или по умолчанию */}
+          <text x="50%" y="40%" textAnchor="middle">
+            {wrappedText.map((line, index) => (
+              <tspan key={index} x="50%" dy={`${index * 1.2}em`}>
+                {line}
+              </tspan>
+            ))}
           </text>
         </svg>
-        <img
+        {settings?.companyLogo && <img
           className={`logo ${showLogo ? "slide-in" : ""}`} // Добавляем класс для анимации логотипа
-          src={settings?.companyLogo || Logo} // Логотип из настроек или по умолчанию
+          src={settings?.companyLogo } // Логотип из настроек или по умолчанию
           alt="Company Logo"
-        />
+        />}
       </div>
     </div>
   );

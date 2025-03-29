@@ -1,7 +1,6 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--app-background-color, #000);
   color: var(--app-text-color, #fff);
   height: 100vh;
   display: flex;
@@ -13,6 +12,7 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  
 
   &::before {
     content: "";
@@ -24,6 +24,7 @@ body {
     background: var(--app-background-image, none) no-repeat center;
     background-size: cover;
     z-index: -1;
+    background-color: var(--app-background-color, #000);
   }
 }
 

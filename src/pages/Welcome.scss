@@ -21,6 +21,7 @@
   }
 
   .welcome-content {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,6 +30,7 @@
     max-width: 1200px; // Максимальная ширина контента
     padding: 20px;
   }
+  
 
   .hello-text {
     font-size: 64px;
