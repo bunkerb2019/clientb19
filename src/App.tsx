@@ -11,7 +11,7 @@ import useSettings from "./modules/useSettings"; // Импортируем ху�
 import "./App.scss";
 
 // перевод
-import { I18nextProvider } from 'react-i18next';
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 
 // Firebase хуки
@@ -24,7 +24,8 @@ import Random from "./pages/Random";
 import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import i18n from "./utils/i18n";
+
+
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -67,7 +68,7 @@ const App = () => {
   console.log({ categories });
 
   return (
-    <I18nextProvider i18n={i18n}>
+    <LanguageProvider>
     <Router>
       <ScrollToTop />
       <div
@@ -104,7 +105,7 @@ const App = () => {
         <NavItems />
       </div>
     </Router>
-    </I18nextProvider>
+    </LanguageProvider>
   );
 };
 

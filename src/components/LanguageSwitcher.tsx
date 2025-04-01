@@ -1,26 +1,17 @@
 import { useState, useEffect, useRef } from "react";
 import "./LanguageSwitcher.scss";
-import { useTranslation } from 'react-i18next';
+import { useLanguage } from "../contexts/LanguageContext";
 
-const languages = ["ru", "ro", "en"];
+const languages = [
+  { code: 'ru', label: 'RU' }, // Изменили на сокращения
+  { code: 'ro', label: 'RO' },
+  { code: 'en', label: 'EN' }
+];
 
 const LanguageSwitcher = () => {
-  const {t, i18n } = useTranslation();
-  const [currentLang, setCurrentLang] = useState(() => {
-    return localStorage.getItem("lang") || "ru";
-  });
+  const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    localStorage.setItem("lang", currentLang);
-  }, [currentLang]);
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("lang") || "ru";
-    i18n.changeLanguage(savedLang); // Устанавливаем язык в i18n
-    setCurrentLang(savedLang);
-  }, [i18n]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -33,12 +24,7 @@ const LanguageSwitcher = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang); // Это самое важное изменение!
-    setCurrentLang(lang);
-    localStorage.setItem('lang', lang);
-  };
+  const currentLang = languages.find(l => l.code === language) || languages[0];
 
   return (
     <div className="lang-container" ref={containerRef}>
@@ -46,21 +32,20 @@ const LanguageSwitcher = () => {
         className={`main-lang ${isOpen ? "active" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {currentLang}
+        {currentLang.label}
       </div>
       
       <div className={`lang-list ${isOpen ? "open" : ""}`}>
-        {languages.filter(l => l !== currentLang).map((lang) => (
+        {languages.filter(l => l.code !== language).map((lang) => (
           <div
-            key={lang}
+            key={lang.code}
             className="lang-item"
             onClick={() => {
-              setCurrentLang(lang);
+              setLanguage(lang.code as any);
               setIsOpen(false);
-              changeLanguage(lang);
             }}
           >
-            {lang}
+            {lang.label}
           </div>
         ))}
       </div>

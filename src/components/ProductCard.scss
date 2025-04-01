@@ -1,17 +1,16 @@
 /* ====== Карточки товаров ====== */
 .product-container {
   display: grid;
-  grid-template-columns: repeat(
-    2,
-    minmax(0, 1fr)
-  ); /* Обе колонки одинаковой ширины */
-  gap: 15px; /* Увеличим gap для лучшего визуального разделения */
-  padding: 20px; /* Используем padding вместо margin для контейнера */
+  grid-template-columns: repeat(2, minmax(182px, 1fr));
+  gap: 15px;
+  padding: 20px;
   box-sizing: border-box;
-  max-width: 100%; /* Ограничиваем максимальную ширину */
+  width: 100%;
 }
 
 .product-card {
+  min-height: 350px;
+  width: 100%;
   background-color: rgba(
     var(--card-background-color, 0, 0, 0),
     var(--card-background-opacity, 0.88)
@@ -19,23 +18,17 @@
   backdrop-filter: blur(var(--card-blur, 0px));
   border: 1px solid var(--card-border-color, #ffffff89);
   color: var(--card-text-color, #fff);
-
-
   border-radius: 10px;
   display: flex;
-  min-width: 0;
-  overflow: hidden;
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer;
-  /* Убираем width: 100vw - это было причиной проблемы */
-  width: 100%; /* Занимаем всю доступную ширину ячейки grid */
-  min-height: 350px;
   box-sizing: border-box;
   transition: transform 0.2s ease;
-  padding: 15px; /* Добавляем внутренние отступы */
+  padding: 15px;
 }
+
 
 .product-card:hover {
   transform: translateY(-5px);
@@ -118,6 +111,7 @@
   padding: 20px 20px 60px; /* Увеличиваем нижний padding для кнопки */
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .popup-image-container {
