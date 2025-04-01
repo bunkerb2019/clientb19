@@ -19,13 +19,13 @@ export interface NavigationItem {
 
 export interface Order {
   id: string;
-  name: string;
-  description: string;
-  weight: number; // У вас weight — это число
-  price: number;
+  name: string | { ru: string; ro?: string; en?: string };
+  description: string | { ru: string; ro?: string; en?: string };
+  weight?: number;
+  price?: number;
   image?: string;
-  category: string; // Поле для связи с категорией
-  type: string; // Добавьте поле type, если оно используется
+  category: string;
+  type?: string;
 }
 
 // Интерфейс для структуры настроек
@@ -53,15 +53,34 @@ export interface SettingsData {
 }
 
 
+// types.ts
 export interface RandomizerConfig {
   id: string;
-  name: string;
-  slotTitle: string;
+  slotTitle: {  // основное поле для отображаемого названия
+    ru: string;
+    ro: string;
+    en: string;
+  };
+  name?: {  // делаем необязательным, если не используется
+    ru: string;
+    ro: string;
+    en: string;
+  };
   navigation: string;
   categoryIds: string[];
   active: boolean;
 }
 
 export interface RandomSettings {
+  pageTitle: {
+    ru: string;
+    ro: string;
+    en: string;
+  };
+  pageDescription: {
+    ru: string;
+    ro: string;
+    en: string;
+  };
   randomizers: RandomizerConfig[];
 }

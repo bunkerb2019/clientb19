@@ -11,7 +11,7 @@ import useSettings from "./modules/useSettings"; // Импортируем ху�
 import "./App.scss";
 
 // перевод
-import { LanguageProvider } from "./contexts/LanguageContext";
+import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
 
 // Firebase хуки
@@ -39,6 +39,7 @@ const ScrollToTop = () => {
 
 const NavItems = () => {
   const { data: navItems = [] } = useNavigationConfig();
+  const { getText } = useLanguage();
 
   return (
     <nav className="bottom-nav">
@@ -46,10 +47,10 @@ const NavItems = () => {
         <NavLink key={item.id} to={`/${item.id}`} className="nav-item">
           <img
             src={item.icon || "/default-icon.png"}
-            alt={item.en}
+            alt={getText(item)}
             className="icon"
           />
-          {item.en}
+          {getText(item)}
         </NavLink>
       ))}
     </nav>

@@ -3,12 +3,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { useEffect, useState } from "react";
 import { Category } from "../utils/types";
-
+import { useLanguage } from "../contexts/LanguageContext";
 
 const CategoryPage = () => {
-  const { categoryId } = useParams<{ categoryId: string; productId: string }>(); // Явно указываем тип параметра
+  const { categoryId } = useParams<{ categoryId: string; productId: string }>();
   const [category, setCategory] = useState<Category | null>(null);
   const [loading, setLoading] = useState(true);
+  const { getText } = useLanguage();
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -17,7 +18,7 @@ const CategoryPage = () => {
         const docSnap = await getDoc(categoriesRef);
 
         if (docSnap.exists()) {
-          const categoriesList = docSnap.data().list as Category[]; // Приводим к типу
+          const categoriesList = docSnap.data().list as Category[];
           const foundCategory = categoriesList.find((c) => c.id === categoryId) || null;
           setCategory(foundCategory);
         }
@@ -36,12 +37,8 @@ const CategoryPage = () => {
 
   return (
     <div className="category-page">
-      <h1 className="active-category">{category.ru}</h1> {/* Добавлен класс */}
-      {category.icon && <img src={category.icon} alt={category.ru} />}
-      <div className="translations">
-        <p>RO: {category.ro}</p>
-        <p>EN: {category.en}</p>
-      </div>
+      <h1 className="active-category">{getText(category)}</h1>
+      {category.icon && <img src={category.icon} alt={getText(category)} />}
     </div>
   );
 };

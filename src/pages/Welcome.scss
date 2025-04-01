@@ -42,6 +42,8 @@
     stroke-dasharray: 500;
     stroke-dashoffset: 500;
     animation: drawText 3s ease-in-out forwards, fadeText 1s ease-in-out 2.5s forwards;
+    max-width: 500px;
+    height: 300px;
     width: 100%;
     text-align: center;
     opacity: 0;
@@ -89,11 +91,13 @@
 @media (max-width: 768px) {
   .welcome {
     .hello-text {
-      font-size: 48px; // Уменьшаем размер текста для мобильных устройств
+      font-size: 48px;
+      max-height: 100px; 
     }
 
     .logo {
-      max-width: 300px; // Уменьшаем размер логотипа для мобильных устройств
+      max-width: 300px;
+     
     }
   }
 }
@@ -101,7 +105,8 @@
 @media (max-width: 480px) {
   .welcome {
     .hello-text {
-      font-size: 36px; // Еще меньше для очень маленьких экранов
+      font-size: 36px; 
+      max-height: 100px; 
     }
 
     .logo {
