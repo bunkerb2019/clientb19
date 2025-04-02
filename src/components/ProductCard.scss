@@ -1,16 +1,18 @@
 /* ====== Карточки товаров ====== */
 .product-container {
   display: grid;
-  grid-template-columns: repeat((2, 1fr)); 
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Фиксируем 2 колонки */
   gap: 15px;
   padding: 20px;
   box-sizing: border-box;
   width: 100%;
+  max-width: 800px; /* Ограничиваем максимальную ширину для больших экранов */
+  margin: 0 auto; /* Центрируем контейнер */
 }
 
 .product-card {
-  min-height: 350px;
-  width: 100%;
+  height: 350px; /* Фиксированная высота */
+  width: 100%; /* Ширина 100% от доступного пространства в колонке */
   background-color: rgba(
     var(--card-background-color, 0, 0, 0),
     var(--card-background-opacity, 0.88)
@@ -27,6 +29,7 @@
   box-sizing: border-box;
   transition: transform 0.2s ease;
   padding: 15px;
+  overflow: hidden; /* Скрываем переполнение содержимого */
 }
 
 
