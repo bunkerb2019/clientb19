@@ -33,7 +33,7 @@ const ProductCard: React.FC<ProductProps> = ({
   const { getText } = useLanguage();
   const { data: settings } = useSettings();
 
-  const handleCardClick = useCallback((e) => {
+  const handleCardClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
     setIsPopupOpen(true);
   }, []);
@@ -50,38 +50,34 @@ const ProductCard: React.FC<ProductProps> = ({
     [settings?.placeholderImage]
   );
 
-  const loadImage = useCallback(async () => {
-    if (!image) {
+  const loadImage = useCallback(async (currentImage: string | undefined) => {
+    if (!currentImage) {
       setImageUrl(settings?.placeholderImage || "");
       return;
     }
 
     try {
       const storage = getStorage();
-      const imageRef = ref(storage, image);
+      const imageRef = ref(storage, currentImage);
       const url = await getDownloadURL(imageRef);
       setImageUrl(url);
-
-      const img = document.getElementById(`${id}-img`);
-      if (img) img.setAttribute("src", url);
     } catch (error) {
       console.error("Error loading image:", error);
       setImageUrl(settings?.placeholderImage || "");
     }
-  }, [image, id, settings?.placeholderImage]);
+  }, [settings?.placeholderImage]);
 
   useEffect(() => {
-    loadImage();
-  }, [loadImage]);
+    setImageUrl(""); // Сбрасываем перед загрузкой нового изображения
+    loadImage(image);
+  }, [image, loadImage]);
 
   const RGB = hexToRgb(settings?.cardBackgroundColor);
   
-  // Получаем локализованные тексты
   const localizedName = getText(name);
   const localizedDescription = getText(description);
   const localizedWeightText = getText({ ru: "Вес", en: "Weight", ro: "Greutate" });
   
-  // Функция для получения локализованного текста единицы измерения
   const getWeightUnitText = () => {
     switch(weightUnit) {
       case 'g': return getText({ ru: "г", en: "g", ro: "g" });
@@ -114,12 +110,12 @@ const ProductCard: React.FC<ProductProps> = ({
       >
         <div className="image-container">
           <img
-            src={settings?.placeholderImage}
-            id={`${id}-img`}
+            src={imageUrl || settings?.placeholderImage}
             alt={localizedName}
             className="product-image"
             onError={handleImageError}
             loading="lazy"
+            key={`${id}-image`} // Уникальный ключ для каждого изображения
           />
         </div>
         <h3 className="product-name">{localizedName}</h3>
@@ -136,7 +132,6 @@ const ProductCard: React.FC<ProductProps> = ({
         </div>
       </div>
 
-      {/* Popup */}
       {isPopupOpen && (
         <div
           className={`popup-overlay ${isPopupOpen ? "visible" : ""}`}
@@ -163,6 +158,7 @@ const ProductCard: React.FC<ProductProps> = ({
                 alt={localizedName}
                 className="popup-image"
                 onError={handleImageError}
+                key={`${id}-popup-image`} // Уникальный ключ
               />
             </div>
 
