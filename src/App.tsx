@@ -13,7 +13,6 @@ import "./App.scss";
 // перевод
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
-
 // Firebase хуки
 import useCategories from "./modules/useCategories";
 import useNavigationConfig from "./modules/useNavigationConfig";
@@ -24,8 +23,7 @@ import Random from "./pages/Random";
 import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-
-
+import ImagesProvider from "./prviders/ImagesProvider";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -70,42 +68,46 @@ const App = () => {
 
   return (
     <LanguageProvider>
-    <Router>
-      <ScrollToTop />
-      <div
-        className="app"
-        style={
-          {
-            "--app-background-color": settings?.backgroundColor || "#000",
-            "--app-text-color": settings?.textColor || "#fff",
-            "--navbar-color": settings?.navbarColor || "#000",
-            "--app-background-image": settings?.backgroundImage
-              ? `url(${settings.backgroundImage})`
-              : "none",
-          } as React.CSSProperties
-        }
-      >
-        <LanguageSwitcher/>
+      <ImagesProvider>
+        <Router>
+          <ScrollToTop />
+          <div
+            className="app"
+            style={
+              {
+                "--app-background-color": settings?.backgroundColor || "#000",
+                "--app-text-color": settings?.textColor || "#fff",
+                "--navbar-color": settings?.navbarColor || "#000",
+                "--app-background-image": settings?.backgroundImage
+                  ? `url(${settings.backgroundImage})`
+                  : "none",
+              } as React.CSSProperties
+            }
+          >
+            <LanguageSwitcher />
 
-        <div className="content">
-          <Routes>
+            <div className="content">
+              <Routes>
+                <Route path="/" element={<Welcome />} />
+                <Route path="/3" element={<Random />} />
+                {navItems.map((nav) => (
+                  <Route
+                    key={nav.id}
+                    path={`/${nav.id}`}
+                    element={<CategoryList navId={nav.id} />}
+                  />
+                ))}
+                <Route
+                  path="/category/:categoryId"
+                  element={<CategoryPage />}
+                />
+              </Routes>
+            </div>
 
-            <Route path="/" element={<Welcome />} />
-            <Route path="/3" element={<Random />} />
-            {navItems.map((nav) => (
-              <Route
-                key={nav.id}
-                path={`/${nav.id}`}
-                element={<CategoryList navId={nav.id}/>}
-              />
-            ))}
-            <Route path="/category/:categoryId" element={<CategoryPage />} />
-          </Routes>
-        </div>
-
-        <NavItems />
-      </div>
-    </Router>
+            <NavItems />
+          </div>
+        </Router>
+      </ImagesProvider>
     </LanguageProvider>
   );
 };

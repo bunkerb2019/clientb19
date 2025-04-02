@@ -1,18 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
 import "./ProductCard.scss";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import useSettings from "../modules/useSettings";
 import { hexToRgb } from "../utils/hexToRGB";
 import { useLanguage } from "../contexts/LanguageContext";
+import useImageDownload from "../prviders/hooks/useImageDownload";
 
 interface ProductProps {
   id: string;
   name: string | { ru: string; ro?: string; en?: string };
   description: string | { ru: string; ro?: string; en?: string };
   weight?: number;
-  weightUnit?: 'g' | 'ml' | 'kg';
+  weightUnit?: "g" | "ml" | "kg";
   price?: number;
-  currency?: 'MDL' | '$' | '€';
+  currency?: "MDL" | "$" | "€";
   image?: string;
   category: string;
   type: string;
@@ -23,9 +23,9 @@ const ProductCard: React.FC<ProductProps> = ({
   name,
   description,
   weight,
-  weightUnit = 'g',
+  weightUnit = "g",
   price,
-  currency = '$',
+  currency = "$",
   id,
 }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -50,40 +50,51 @@ const ProductCard: React.FC<ProductProps> = ({
     [settings?.placeholderImage]
   );
 
-  const loadImage = useCallback(async (currentImage: string | undefined) => {
-    if (!currentImage) {
-      setImageUrl(settings?.placeholderImage || "");
-      return;
-    }
+  const { getDownloadUrl } = useImageDownload();
 
-    try {
-      const storage = getStorage();
-      const imageRef = ref(storage, currentImage);
-      const url = await getDownloadURL(imageRef);
-      setImageUrl(url);
-    } catch (error) {
-      console.error("Error loading image:", error);
-      setImageUrl(settings?.placeholderImage || "");
-    }
-  }, [settings?.placeholderImage]);
+  const loadImage = useCallback(
+    async (currentImage: string | undefined) => {
+      if (!currentImage) {
+        setImageUrl(settings?.placeholderImage || "");
+        return;
+      }
+
+      try {
+        const url = await getDownloadUrl(currentImage);
+        setImageUrl(url ?? settings?.placeholderImage ?? "");
+      } catch (error) {
+        console.error("Error loading image:", error);
+        setImageUrl(settings?.placeholderImage || "");
+      }
+    },
+    [getDownloadUrl, settings?.placeholderImage]
+  );
 
   useEffect(() => {
     setImageUrl(""); // Сбрасываем перед загрузкой нового изображения
     loadImage(image);
   }, [image, loadImage]);
 
-  const RGB = hexToRgb((settings?.cardBackgroundColor) || '#000000');
-  
+  const RGB = hexToRgb(settings?.cardBackgroundColor || "#000000");
+
   const localizedName = getText(name);
   const localizedDescription = getText(description);
-  const localizedWeightText = getText({ ru: "Вес", en: "Weight", ro: "Greutate" });
-  
+  const localizedWeightText = getText({
+    ru: "Вес",
+    en: "Weight",
+    ro: "Greutate",
+  });
+
   const getWeightUnitText = () => {
-    switch(weightUnit) {
-      case 'g': return getText({ ru: "г", en: "g", ro: "g" });
-      case 'ml': return getText({ ru: "мл", en: "ml", ro: "ml" });
-      case 'kg': return getText({ ru: "кг", en: "kg", ro: "kg" });
-      default: return getText({ ru: "г", en: "g", ro: "g" });
+    switch (weightUnit) {
+      case "g":
+        return getText({ ru: "г", en: "g", ro: "g" });
+      case "ml":
+        return getText({ ru: "мл", en: "ml", ro: "ml" });
+      case "kg":
+        return getText({ ru: "кг", en: "kg", ro: "kg" });
+      default:
+        return getText({ ru: "г", en: "g", ro: "g" });
     }
   };
 
@@ -110,7 +121,7 @@ const ProductCard: React.FC<ProductProps> = ({
       >
         <div className="image-container">
           <img
-            src={(imageUrl || settings?.placeholderImage || "")}
+            src={imageUrl || settings?.placeholderImage || ""}
             alt={localizedName}
             className="product-image"
             onError={handleImageError}
@@ -143,7 +154,8 @@ const ProductCard: React.FC<ProductProps> = ({
             style={
               {
                 "--card-background-color": `${RGB?.r}, ${RGB?.g},${RGB?.b}`,
-                "--card-background-opacity": settings?.cardBackgroundOpacity || 1,
+                "--card-background-opacity":
+                  settings?.cardBackgroundOpacity || 1,
                 "--card-blur": settings?.cardBlur
                   ? `${settings.cardBlur}px`
                   : "0px",
@@ -154,7 +166,7 @@ const ProductCard: React.FC<ProductProps> = ({
           >
             <div className="popup-image-container">
               <img
-                src={(imageUrl || settings?.placeholderImage || "")}
+                src={imageUrl || settings?.placeholderImage || ""}
                 alt={localizedName}
                 className="popup-image"
                 onError={handleImageError}
@@ -178,10 +190,7 @@ const ProductCard: React.FC<ProductProps> = ({
               </div>
             </div>
 
-            <button
-              className="close-button"
-              onClick={handleClosePopup}
-            >
+            <button className="close-button" onClick={handleClosePopup}>
               ×
             </button>
           </div>
