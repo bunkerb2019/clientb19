@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Icons } from "../components/Icons";
+
 import ProductCard from "../components/ProductCard";
 import useCategories from "../modules/useCategories";
 import { useEffect, useState } from "react";
@@ -70,7 +70,7 @@ const CategoryList: React.FC<CategoryListProps> = ({
   return (
     <span className="category-header">
       <img
-        src={selectedCategoryIcon || Icons.asia}
+        src={selectedCategoryIcon || "/default-icon.svg"}
         alt={currentCategory ? getText(currentCategory) : getText({ ru: "Категория", en: "Category" })}
         className="icon"
       />

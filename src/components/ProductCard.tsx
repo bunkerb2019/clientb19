@@ -11,7 +11,7 @@ interface ProductProps {
   description: string | { ru: string; ro?: string; en?: string };
   weight?: number;
   weightUnit?: 'g' | 'ml' | 'kg';
-  price: number;
+  price?: number;
   currency?: 'MDL' | '$' | '€';
   image?: string;
   category: string;
@@ -72,7 +72,7 @@ const ProductCard: React.FC<ProductProps> = ({
     loadImage(image);
   }, [image, loadImage]);
 
-  const RGB = hexToRgb(settings?.cardBackgroundColor);
+  const RGB = hexToRgb((settings?.cardBackgroundColor) || '#000000');
   
   const localizedName = getText(name);
   const localizedDescription = getText(description);
@@ -110,7 +110,7 @@ const ProductCard: React.FC<ProductProps> = ({
       >
         <div className="image-container">
           <img
-            src={imageUrl || settings?.placeholderImage}
+            src={(imageUrl || settings?.placeholderImage || "")}
             alt={localizedName}
             className="product-image"
             onError={handleImageError}
@@ -154,7 +154,7 @@ const ProductCard: React.FC<ProductProps> = ({
           >
             <div className="popup-image-container">
               <img
-                src={imageUrl || settings?.placeholderImage}
+                src={(imageUrl || settings?.placeholderImage || "")}
                 alt={localizedName}
                 className="popup-image"
                 onError={handleImageError}
