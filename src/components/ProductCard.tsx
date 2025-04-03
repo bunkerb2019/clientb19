@@ -4,6 +4,7 @@ import useSettings from "../modules/useSettings";
 import { hexToRgb } from "../utils/hexToRGB";
 import { useLanguage } from "../contexts/LanguageContext";
 import useImageDownload from "../prviders/hooks/useImageDownload";
+import React from "react";
 
 interface ProductProps {
   id: string;
@@ -200,4 +201,5 @@ const ProductCard: React.FC<ProductProps> = ({
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);
+
