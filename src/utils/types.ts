@@ -26,6 +26,8 @@ export interface Order {
   image?: string;
   category: string;
   type: string;
+  weightUnit?: "g" | "ml" | "kg";
+  currency?: "MDL" | "$" | "€";
 }
 
 // Интерфейс для структуры настроек

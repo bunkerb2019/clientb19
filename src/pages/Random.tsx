@@ -246,10 +246,28 @@ const Random = () => {
 
               <div className="popup-details">
                 {selectedItem?.weight && (
-                  <p className="popup-weight">Вес: {selectedItem.weight} г</p>
+                  <p className="popup-weight">
+                    {getText({ ru: "Вес", en: "Weight", ro: "Greutate" })}:{" "}
+                    {selectedItem.weight}
+                    {selectedItem.weightUnit &&
+                      getText({
+                        ru:
+                          selectedItem.weightUnit === "g"
+                            ? "г"
+                            : selectedItem.weightUnit === "ml"
+                            ? "мл"
+                            : "кг",
+                        en: selectedItem.weightUnit,
+                        ro: selectedItem.weightUnit,
+                      })}
+                  </p>
                 )}
                 {selectedItem?.price && (
-                  <p className="popup-price">Цена: {selectedItem.price} ₽</p>
+                  <p className="popup-price">
+                    {getText({ ru: "Цена", en: "Price", ro: "Preț" })}:{" "}
+                    {selectedItem.price}
+                    {selectedItem.currency || "$"}
+                  </p>
                 )}
               </div>
             </div>
