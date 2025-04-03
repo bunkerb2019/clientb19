@@ -3,8 +3,8 @@ import useCategories from "./modules/useCategories";
 import useNavigationConfig from "./modules/useNavigationConfig";
 
 const CategoryRoutes = () => {
-    const { data: categories = [], error: catError } = useCategories();
-    const { data: navItems = [], error: navError } = useNavigationConfig();
+    const { data: categories = [] } = useCategories();
+    const { data: navItems = [] } = useNavigationConfig();
     console.log("Categories:", categories);
     console.log("Navigation Items:", navItems);
     // if (catError) console.error("Categories Error:", catError);

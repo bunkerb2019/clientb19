@@ -201,7 +201,7 @@
 }
 
 /* Адаптация для маленьких экранов (iPhone SE) */
-@media (max-width: 320px) {
+@media (min-width: 320px) {
   .popup-content {
     padding: 15px 15px 55px;
     max-height: 85vh;

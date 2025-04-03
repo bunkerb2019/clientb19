@@ -25,7 +25,7 @@ export interface Order {
   price?: number;
   image?: string;
   category: string;
-  type?: string;
+  type: string;
 }
 
 // Интерфейс для структуры настроек

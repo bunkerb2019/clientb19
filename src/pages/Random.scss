@@ -145,21 +145,3 @@ button {
   }
 }
 
-/* Адаптация для мобильных */
-@media (max-width: 400px) {
-  .slot-machine {
-    width: 95%;
-    padding: 12px;
-    max-width: none;
-  }
-  
-  .slot-row {
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .reel, button {
-    max-width: 100%;
-    width: 100%;
-  }
-}
