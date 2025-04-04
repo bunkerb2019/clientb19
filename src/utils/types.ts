@@ -28,6 +28,7 @@ export interface Order {
   type: string;
   weightUnit?: "g" | "ml" | "kg";
   currency?: "MDL" | "$" | "€";
+  active?: boolean;
 }
 
 // Интерфейс для структуры настроек

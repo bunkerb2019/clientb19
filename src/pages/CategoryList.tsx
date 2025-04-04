@@ -32,9 +32,9 @@ const CategoryList: React.FC<CategoryListProps> = ({
 
   // Фильтруем блюда по выбранной категории
   const filteredDishes = dishes?.filter(
-    (dish) => dish.category === selectedCategory
+    (dish) => dish.category === selectedCategory && dish.active !== false
   );
-
+  console.log('folter');
   // Устанавливаем первую категорию как выбранную по умолчанию
   useEffect(() => {
     if (Array.isArray(filteredCategories) && filteredCategories.length > 0) {
