@@ -4,7 +4,7 @@ import { useRandomSettings } from "../hooks/useRandomSettings";
 import useMenuItems from "../modules/useMenuItems";
 import useCategories from "../modules/useCategories";
 import { Order, RandomizerConfig } from "../utils/types";
-import puerlogo from "../assets/puerlogo.svg";
+import logo from "../assets/logo.svg";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import useSettings from "../modules/useSettings";
 import { useLanguage } from "../contexts/LanguageContext";
@@ -47,7 +47,7 @@ const Random = () => {
           setPopupImageUrl(url);
         } catch (error) {
           console.error("Error loading image:", error);
-          setPopupImageUrl(settings?.placeholderImage || puerlogo);
+          setPopupImageUrl(settings?.placeholderImage || logo);
         }
       };
       fetchImage();
@@ -226,12 +226,12 @@ const Random = () => {
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
             <div className="popup-image-container">
               <img
-                src={popupImageUrl || settings?.placeholderImage || puerlogo}
+                src={popupImageUrl || settings?.placeholderImage || logo}
                 alt={getText(selectedItem?.name, "Без названия")}
                 className="popup-image"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
-                    settings?.placeholderImage || puerlogo;
+                    settings?.placeholderImage || logo;
                 }}
               />
             </div>
