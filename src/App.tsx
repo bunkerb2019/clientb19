@@ -7,23 +7,35 @@ import {
 } from "react-router-dom";
 import { useEffect } from "react";
 import { useTelegram } from "./components/useTelegram";
-import useSettings from "./modules/useSettings"; // Импортируем хук для настроек
+import useSettings from "./modules/useSettings";
 import "./App.scss";
 
-// перевод
+// Translation
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
-// Firebase хуки
+// Firebase hooks
 import useCategories from "./modules/useCategories";
 import useNavigationConfig from "./modules/useNavigationConfig";
 
-// Страницы
+// Pages
 import Welcome from "./pages/Welcome";
 import Random from "./pages/Random";
 import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import ImagesProvider from "./prviders/ImagesProvider";
+
+const hexToRgb = (hex: string) => {
+  // Remove # if present
+  hex = hex.replace("#", "");
+
+  // Parse r, g, b values
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  return `${r}, ${g}, ${b}`;
+};
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -42,7 +54,11 @@ const NavItems = () => {
   return (
     <nav className="bottom-nav">
       {navItems.map((item) => (
-        <NavLink key={item.id} to={`/${item.id}`} className="nav-item">
+        <NavLink
+          key={item.id}
+          to={`/${item.id}`}
+          className={({ isActive }) => `nav-item ${isActive ? "active" : ""}`}
+        >
           <img
             src={item.icon || "/default-icon.png"}
             alt={getText(item)}
@@ -59,12 +75,17 @@ const App = () => {
   const tg = useTelegram();
   console.log("Telegram Object:", tg);
 
-  // Получаем данные через хуки
+  // Get data through hooks
   const { data: categories = [] } = useCategories();
   const { data: navItems = [] } = useNavigationConfig();
-  const { data: settings } = useSettings(); // Загружаем настройки
+  const { data: settings } = useSettings();
 
   console.log({ categories });
+
+  // Convert navbar color to RGB format
+  const navbarColor = settings?.navbarColor || "#000000";
+  const navbarRgb = hexToRgb(navbarColor);
+  const navbarOpacity = settings?.navbarOpacity ?? 1;
 
   return (
     <LanguageProvider>
@@ -75,15 +96,22 @@ const App = () => {
             className="app"
             style={
               {
-                "--app-background-color": settings?.backgroundColor || "#000",
-                "--app-text-color": settings?.textColor || "#fff",
-                "--navbar-color": settings?.navbarColor || "#000",
+                "--app-background-color":
+                  settings?.backgroundColor || "#000000",
+                "--background-opacity": settings?.BackgroundOpacity ?? 1,
+                "--app-text-color": settings?.textColor || "#ffffff",
+                "--navbar-color": navbarColor,
+                "--navbar-color-rgb": navbarRgb,
+                "--navbar-opacity": navbarOpacity,
                 "--app-background-image": settings?.backgroundImage
                   ? `url(${settings.backgroundImage})`
                   : "none",
               } as React.CSSProperties
             }
           >
+            {typeof settings?.uiLogo === "string" && (
+              <img src={settings.uiLogo} alt="UI Logo" className="ui-logo" />
+            )}
             <LanguageSwitcher />
 
             <div className="content">

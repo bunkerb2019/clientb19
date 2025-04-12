@@ -12,7 +12,6 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  
 
   &::before {
     content: "";
@@ -21,11 +20,26 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: var(--app-background-image, none) no-repeat center;
+    background: var(--app-background-image, none);
     background-size: cover;
+    background-attachment: fixed;
     z-index: -1;
-    background-color: var(--app-background-color, #000);
+    background-color: rgba(
+      var(--background-color, 0, 0, 0),
+      var(--background-opacity, 0.88)
+    ) !important;
   }
+}
+
+.ui-logo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 200px;
+  max-height: 200px;
+  z-index: 0;
+  opacity: 0.8;
 }
 
 .content {
@@ -41,7 +55,8 @@ body {
   display: flex;
   justify-content: center;
   overflow-x: auto;
-  background: var(--navbar-color, #000);
+  background: rgba(var(--navbar-color-rgb, 0, 0, 0), var(--navbar-opacity, 1));
+
   padding: 10px 0;
 
   @media (max-width: 767px) {
@@ -71,7 +86,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background: var(--navbar-color, #000);
+  background: rgba(var(--navbar-color-rgb, 0, 0, 0), var(--navbar-opacity, 1));
   padding: 10px 0;
 }
 
@@ -83,7 +98,7 @@ body {
   transition: 0.3s;
 
   &.active {
-    color: #FF6347;
+    color: #f7b946;
     font-weight: bold;
   }
 

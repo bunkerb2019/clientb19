@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import "./Random.scss";
 import { useRandomSettings } from "../hooks/useRandomSettings";
 import useMenuItems from "../modules/useMenuItems";
@@ -8,6 +8,7 @@ import logo from "../assets/logo.svg";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import useSettings from "../modules/useSettings";
 import { useLanguage } from "../contexts/LanguageContext";
+import spinSound from "../assets/spin.wav"; // Импортируем звук напрямую
 
 const Random = () => {
   const { getText } = useLanguage();
@@ -18,13 +19,28 @@ const Random = () => {
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
   const [popupImageUrl, setPopupImageUrl] = useState<string>("");
   const { data: settings } = useSettings();
+  
+  // Создаем ref для аудио, чтобы он сохранялся между рендерами
+  const spinAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const { data: randomSettings, isLoading, error } = useRandomSettings();
-
   const { data: wholeMenu = [] } = useMenuItems();
   const { data: categories = [] } = useCategories();
 
-  // Инициализация дефолтных значений
+  // Инициализация аудио при первом рендере
+  useEffect(() => {
+    spinAudioRef.current = new Audio(spinSound);
+    spinAudioRef.current.volume = 0.5;
+    
+    // Очистка при размонтировании
+    return () => {
+      if (spinAudioRef.current) {
+        spinAudioRef.current.pause();
+        spinAudioRef.current = null;
+      }
+    };
+  }, []);
+
   const defaultSettings = useMemo(
     () => ({
       pageTitle: { ru: "Рандомайзер", ro: "Randomizator", en: "Randomizer" },
@@ -36,7 +52,6 @@ const Random = () => {
 
   const currentSettings = randomSettings || defaultSettings;
 
-  // Загрузка изображения для попапа
   useEffect(() => {
     if (selectedItem?.image) {
       const fetchImage = async () => {
@@ -54,7 +69,6 @@ const Random = () => {
     }
   }, [selectedItem, settings?.placeholderImage]);
 
-  // Карта соответствия ID категорий их названиям
   const categoryIdToNameMap = useMemo(() => {
     const map = new Map<string, string>();
     categories.forEach((category) => {
@@ -65,7 +79,6 @@ const Random = () => {
     return map;
   }, [categories]);
 
-  // Инициализация позиций
   useEffect(() => {
     if (currentSettings.randomizers) {
       const activeRandomizers = currentSettings.randomizers.filter(
@@ -74,9 +87,8 @@ const Random = () => {
       setPositions(new Array(activeRandomizers.length).fill(-1));
       setHasSpun(new Array(activeRandomizers.length).fill(false));
     }
-  }, [currentSettings.randomizers]); // Зависимость только от randomizers
+  }, [currentSettings.randomizers]);
 
-  // Получение товаров для рандомайзера
   const getItemsForRandomizer = useCallback(
     (randomizer: RandomizerConfig): Order[] => {
       if (!randomizer?.categoryIds?.length) return [];
@@ -92,7 +104,6 @@ const Random = () => {
     [wholeMenu, categoryIdToNameMap]
   );
 
-  // Вращение с плавной анимацией
   const spinSingle = async (index: number, randomizerId: string) => {
     if (isSpinning) return;
 
@@ -110,31 +121,50 @@ const Random = () => {
     setIsSpinning(true);
     setHasSpun((prev) => prev.map((val, i) => (i === index ? true : val)));
 
-    // Параметры анимации
-    const spinDuration = 2500;
+    // Воспроизводим звук
+    try {
+      if (spinAudioRef.current) {
+        spinAudioRef.current.currentTime = 0; // Перематываем на начало
+        await spinAudioRef.current.play().catch(e => 
+          console.log("Audio play failed:", e)
+        );
+      }
+    } catch (e) {
+      console.error("Audio error:", e);
+    }
+
+    // Улучшенные параметры анимации
+    const spinDuration = 4000;
     const startTime = performance.now();
-    const spins = Math.floor(Math.random() * 10) + 20;
+    const spins = Math.floor(Math.random() * 10) + 25;
+    const finalPos = Math.floor(Math.random() * items.length);
     let animationFrameId: number;
 
     const animate = (time: number) => {
       const elapsed = time - startTime;
       const progress = Math.min(elapsed / spinDuration, 1);
 
-      const easing =
-        progress < 0.9
-          ? Math.pow(progress / 0.9, 2)
-          : 1 - Math.pow((1 - progress) / 0.1, 4);
+      let easing;
+      if (progress < 0.5) {
+        easing = Math.pow(progress / 0.5, 1.5);
+      } else if (progress < 0.8) {
+        easing = 0.5 + 0.3 * ((progress - 0.5) / 0.3);
+      } else {
+        easing = 0.8 + 0.2 * (1 - Math.pow(1 - (progress - 0.8) / 0.2, 3));
+      }
 
       if (progress < 1) {
-        const tempPos =
-          Math.floor(easing * items.length * spins) % items.length;
+        const rotationFactor =
+          easing < 0.8
+            ? easing * items.length * spins
+            : 0.8 * items.length * spins + (easing - 0.8) * 10;
+
+        const tempPos = Math.floor(rotationFactor % items.length);
         setPositions((prev) =>
           prev.map((pos, i) => (i === index ? tempPos : pos))
         );
         animationFrameId = requestAnimationFrame(animate);
       } else {
-        const finalPos = Math.floor(Math.random() * items.length);
-
         setPositions((prev) =>
           prev.map((pos, i) => (i === index ? finalPos : pos))
         );
@@ -143,7 +173,7 @@ const Random = () => {
           setIsSpinning(false);
           setSelectedItem(items[finalPos]);
           setIsPopupVisible(true);
-        }, 400);
+        }, 500);
       }
     };
 
@@ -176,6 +206,8 @@ const Random = () => {
       <div className="slots">
         {activeRandomizers.map((randomizer, index) => {
           const items = getItemsForRandomizer(randomizer);
+          const currentPosition = positions[index];
+          const isCurrentSpinning = isSpinning && hasSpun[index];
 
           return (
             <div className="slot" key={randomizer?.id || index}>
@@ -186,9 +218,14 @@ const Random = () => {
                 <div className="reel">
                   {!hasSpun[index] && <div className="question-mark">?</div>}
                   <div
-                    className="reelInner"
+                    className={`reelInner ${
+                      isCurrentSpinning ? "spinning" : ""
+                    }`}
                     style={{
-                      transform: `translateY(-${positions[index] * 70}px)`,
+                      transform: `translateY(-${currentPosition * 70}px)`,
+                      transition: isCurrentSpinning
+                        ? "none"
+                        : "transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
                     }}
                   >
                     {items.map((item, i) => (
@@ -196,8 +233,10 @@ const Random = () => {
                         key={`${randomizer?.id || index}-${i}`}
                         className="symbol"
                         onClick={() => {
-                          setSelectedItem(item);
-                          setIsPopupVisible(true);
+                          if (!isSpinning) {
+                            setSelectedItem(item);
+                            setIsPopupVisible(true);
+                          }
                         }}
                       >
                         {getText(item.name, `Item ${i}`)}
