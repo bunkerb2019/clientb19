@@ -23,7 +23,7 @@ import Random from "./pages/Random";
 import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import ImagesProvider from "./prviders/ImagesProvider";
+import ImagesProvider from "./providers/ImagesProvider";
 
 const hexToRgb = (hex: string) => {
   // Remove # if present
@@ -100,7 +100,8 @@ const App = () => {
                   settings?.backgroundColor || "#000000",
                 "--background-opacity": settings?.BackgroundOpacity ?? 1,
                 "--app-text-color": settings?.textColor || "#ffffff",
-                "--navbar-text-active-color": settings?.navbarTextColor || "#f7b946",
+                "--navbar-text-active-color":
+                  settings?.navbarTextColor || "#f7b946",
                 "--navbar-color": navbarColor,
                 "--navbar-color-rgb": navbarRgb,
                 "--navbar-opacity": navbarOpacity,

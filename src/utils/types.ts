@@ -1,20 +1,21 @@
 export interface Category {
-  items: never[];
   id: string;
   parentId: string;
   ru: string;
   ro: string;
   en: string;
   icon: string;
+  views?: number;
+  lastViewed?: Date;
 }
 
 export interface NavigationItem {
-  categories: unknown;
   id: string;
   ru: string;
   ro: string;
   en: string;
   icon: string;
+  categories: string[];
 }
 
 export interface Order {
@@ -29,24 +30,20 @@ export interface Order {
   weightUnit?: "g" | "ml" | "kg";
   currency?: "MDL" | "$" | "€";
   active?: boolean;
+  views?: number;
+  lastViewed?: Date;
 }
 
-// Интерфейс для структуры настроек
 export interface SettingsData {
   [key: string]: unknown;
-  // Шаг 1: Настройки приветствия
   welcomeText: string;
   welcomeBackground: string;
   companyLogo: string | null;
   welcomeImage: string | null;
-
-  // Шаг 2: Настройки UI
   backgroundColor: string;
   textColor: string;
   navbarColor: string;
   backgroundImage: string | null;
-
-  // Шаг 3: Настройки карточки товара
   cardTextColor: string;
   cardBorderColor: string;
   cardBackgroundColor: string;
@@ -55,16 +52,14 @@ export interface SettingsData {
   placeholderImage: string | null;
 }
 
-
-// types.ts
 export interface RandomizerConfig {
   id: string;
-  slotTitle: {  // основное поле для отображаемого названия
+  slotTitle: {
     ru: string;
     ro: string;
     en: string;
   };
-  name?: {  // делаем необязательным, если не используется
+  name?: {
     ru: string;
     ro: string;
     en: string;
@@ -86,4 +81,18 @@ export interface RandomSettings {
     en: string;
   };
   randomizers: RandomizerConfig[];
+}
+
+export interface ViewEvent {
+  id?: string;
+  type: 'product_view' | 'category_view';
+  categoryId: string;
+  productId?: string;
+  userId?: string;
+  createdAt: Date;
+  deviceInfo?: {
+    userAgent: string;
+    screenWidth: number;
+    screenHeight: number;
+  };
 }
