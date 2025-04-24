@@ -34,13 +34,15 @@ const Welcome = () => {
 
   // Анимация появления текста и логотипа
   useEffect(() => {
-    setTimeout(() => setShowText(true), 500); // Текст появляется через 0.5 секунды
-    setTimeout(() => setShowLogo(true), 1000); // Логотип появляется через 1 секунду
+    setTimeout(() => setShowText(true), 200); // Текст появляется через 0.3 секунды
+    setTimeout(() => setShowText(false), 3000); // Текст исчезает через 1.5 секунды
+    setTimeout(() => setShowLogo(true), 200); // Логотип появляется через 1.6 секунды
+    setTimeout(() => setShowLogo(false), 3000);
 
     setTimeout(() => {
       setHideScreen(true); // Запуск анимации исчезновения
-      setTimeout(() => navigate("/1"), 1000); // Переход через 1 секунду после начала скрытия
-    }, 3000);
+      setTimeout(() => navigate("/1"), 4500); // Переход через 1 секунду после начала скрытия
+    }, 4600);
   }, [navigate]);
 
   // Если данные загружаются, показываем индикатор загрузки
@@ -57,7 +59,7 @@ const Welcome = () => {
       }}
     >
       <div className="welcome-content">
-        <svg 
+        <svg
           className={`hello-text ${showText ? "visible" : ""}`} // Добавляем класс для анимации текста
           viewBox="0 0 500 100"
         >
@@ -69,11 +71,14 @@ const Welcome = () => {
             ))}
           </text>
         </svg>
-        {settings?.companyLogo && <img
-          className={`logo ${showLogo ? "slide-in" : ""}`} // Добавляем класс для анимации логотипа
-          src={settings?.companyLogo } // Логотип из настроек или по умолчанию
-          alt="Company Logo"
-        />}
+
+        {settings?.companyLogo && (
+          <img
+            className={`logo ${showLogo ? "slide-in" : ""}`} // Добавляем класс для анимации логотипа
+            src={settings?.companyLogo} // Логотип из настроек или по умолчанию
+            alt="Company Logo"
+          />
+        )}
       </div>
     </div>
   );

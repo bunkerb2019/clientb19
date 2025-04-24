@@ -18,7 +18,6 @@ import useCategories from "./modules/useCategories";
 import useNavigationConfig from "./modules/useNavigationConfig";
 
 // Pages
-import Welcome from "./pages/Welcome";
 import Random from "./pages/Random";
 import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
@@ -118,7 +117,7 @@ const App = () => {
 
             <div className="content">
               <Routes>
-                <Route path="/" element={<Welcome />} />
+              <Route path="/" element={<CategoryList navId={navItems[0]?.id} />} />
                 <Route path="/3" element={<Random />} />
                 {navItems.map((nav) => (
                   <Route
