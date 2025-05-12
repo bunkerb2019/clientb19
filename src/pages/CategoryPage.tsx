@@ -1,27 +1,16 @@
-import  { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import useMenuItems from '../modules/useMenuItems';
-import ProductCard from '../components/ProductCard';
-import { saveClientCategoryView } from '../firebase/saveClientView';
-import { useLanguage } from '../contexts/LanguageContext';
-
+import { useParams } from "react-router-dom";
+import useMenuItems from "../modules/useMenuItems";
+import ProductCard from "../components/ProductCard";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const CategoryPage = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
   const { data: menuItems, isLoading, error } = useMenuItems();
   const { getText } = useLanguage();
 
-  // Трекинг просмотра категории
-  useEffect(() => {
-    if (categoryId) {
-      saveClientCategoryView(categoryId);
-    }
-  }, [categoryId]);
-
   // Фильтрация товаров по категории
-  const categoryProducts = menuItems?.filter(
-    item => item.category === categoryId
-  ) || [];
+  const categoryProducts =
+    menuItems?.filter((item) => item.category === categoryId) || [];
 
   if (isLoading) {
     return (
@@ -34,7 +23,11 @@ const CategoryPage = () => {
   if (error) {
     return (
       <div className="category-error">
-        {getText({ ru: 'Ошибка загрузки', en: 'Loading error', ro: 'Eroare de încărcare' })}
+        {getText({
+          ru: "Ошибка загрузки",
+          en: "Loading error",
+          ro: "Eroare de încărcare",
+        })}
       </div>
     );
   }
@@ -42,25 +35,25 @@ const CategoryPage = () => {
   return (
     <div className="category-page">
       <h1 className="category-title">
-        {getText({ 
-          ru: `Категория: ${categoryId}`, 
-          en: `Category: ${categoryId}`, 
-          ro: `Categoria: ${categoryId}` 
+        {getText({
+          ru: `Категория: ${categoryId}`,
+          en: `Category: ${categoryId}`,
+          ro: `Categoria: ${categoryId}`,
         })}
       </h1>
-      
+
       {categoryProducts.length === 0 ? (
         <p className="no-products">
-          {getText({ 
-            ru: 'Товары не найдены', 
-            en: 'No products found', 
-            ro: 'Nu s-au găsit produse' 
+          {getText({
+            ru: "Товары не найдены",
+            en: "No products found",
+            ro: "Nu s-au găsit produse",
           })}
         </p>
       ) : (
         <div className="products-grid">
-          {categoryProducts.map(product => (
-            <ProductCard 
+          {categoryProducts.map((product) => (
+            <ProductCard
               key={product.id}
               id={product.id}
               name={product.name}

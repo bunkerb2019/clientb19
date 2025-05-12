@@ -5,7 +5,7 @@ import { hexToRgb } from "../utils/hexToRGB";
 import { useLanguage } from "../contexts/LanguageContext";
 import useImageDownload from "../providers/hooks/useImageDownload";
 import React from "react";
-import { saveClientCategoryView } from "../firebase/saveClientView";
+
 
 interface ProductProps {
   id: string;
@@ -29,7 +29,6 @@ const ProductCard: React.FC<ProductProps> = ({
   price,
   currency = "$",
   id,
-  category,
 }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -72,17 +71,7 @@ const ProductCard: React.FC<ProductProps> = ({
     },
     [getDownloadUrl, settings?.placeholderImage]
   );
-  useEffect(() => {
-    const trackView = async () => {
-      try {
-        await saveClientCategoryView(category, id);
-      } catch (error) {
-        console.error("Ошибка при трекинге просмотра:", error);
-      }
-    };
 
-    trackView();
-  }, [category, id]);
   
   useEffect(() => {
     setImageUrl(""); // Сбрасываем перед загрузкой нового изображения

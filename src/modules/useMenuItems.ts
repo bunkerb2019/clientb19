@@ -4,7 +4,7 @@ import { db } from "../firebase/firebaseConfig";
 import { Order } from "../utils/types";
 
 const useMenuItems = (options: { onlyActive?: boolean, trackViews?: boolean } = {}) => {
-  const { onlyActive = true, trackViews = true } = options;
+  const { onlyActive = true, trackViews = false } = options;
 
   const fetchMenuItems = async () => {
     let menuQuery;
