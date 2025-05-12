@@ -5,66 +5,63 @@ $border: 1px solid rgba(255, 255, 255, 0.3);
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 1;
 }
 
-.main-lang {
+.lang-switcher {
   width: $size;
-  height: $size;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border: $border;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &.active {
-    background: rgba(255, 255, 255, 0.2);
-    z-index: -1;
-  }
-}
-
-.lang-list {
-  position: absolute;
-  top: 10px;
-  left: 1px;
-  width: $size;
-  padding-top: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border-radius:20px;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  transition: all 0.4s ease, border-radius 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   &.open {
-    transform: scaleY(1);
-    z-index: -1;
+    border-radius: 20px;
   }
 
-  .lang-item {
-    width: $size;
+  .main-lang {
+    width: 100%;
     height: $size;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    cursor: pointer;
+    font-weight: 500;
     transition: background 0.3s ease;
-    
-    &:hover {
-      background: rgba(255, 255, 255, 0.15);
+  }
+
+  .lang-list {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.4s ease;
+
+    &.open {
+      height: calc($size * 2); // 2 языка по 40px каждый
     }
-    
-    &:not(:last-child) {
-      border-bottom: $border;
+
+    .lang-item {
+      width: 100%;
+      height: $size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: background 0.3s ease;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      &:not(:last-child) {
+        border-bottom: $border;
+      }
     }
   }
 }

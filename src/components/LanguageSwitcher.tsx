@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import "./LanguageSwitcher.scss";
-import { useLanguage } from "../contexts/LanguageContext";
+import { Language, useLanguage } from "../contexts/LanguageContext";
 
 const languages = [
-  { code: 'ru', label: 'RU' }, // Изменили на сокращения
+  { code: 'ru', label: 'RU' },
   { code: 'ro', label: 'RO' },
   { code: 'en', label: 'EN' }
 ];
@@ -25,29 +25,32 @@ const LanguageSwitcher = () => {
   }, []);
 
   const currentLang = languages.find(l => l.code === language) || languages[0];
+  const otherLangs = languages.filter(l => l.code !== language);
 
   return (
     <div className="lang-container" ref={containerRef}>
       <div 
-        className={`main-lang ${isOpen ? "active" : ""}`}
+        className={`lang-switcher ${isOpen ? "open" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
       >
-        {currentLang.label}
-      </div>
-      
-      <div className={`lang-list ${isOpen ? "open" : ""}`}>
-        {languages.filter(l => l.code !== language).map((lang) => (
-          <div
-            key={lang.code}
-            className="lang-item"
-            onClick={() => {
-              setLanguage(lang.code as any);
-              setIsOpen(false);
-            }}
-          >
-            {lang.label}
-          </div>
-        ))}
+        <div className="main-lang">
+          {currentLang.label}
+        </div>
+        <div className={`lang-list ${isOpen ? "open" : ""}`}>
+          {otherLangs.map((lang) => (
+            <div
+              key={lang.code}
+              className="lang-item"
+              onClick={(e) => {
+                e.stopPropagation(); // чтобы не срабатывал клик по родителю
+                setLanguage(lang.code as Language);
+                setIsOpen(false);
+              }}
+            >
+              {lang.label}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

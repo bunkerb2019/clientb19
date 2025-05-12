@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-type Language = 'ru' | 'ro' | 'en';
+export type Language = 'ru' | 'ro' | 'en';
 
 type TextObject = { ru: string; ro?: string; en?: string };
 
