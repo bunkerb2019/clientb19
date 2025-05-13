@@ -56,7 +56,6 @@ body {
   justify-content: center;
   overflow-x: auto;
   background: rgba(var(--navbar-color-rgb, 0, 0, 0), var(--navbar-opacity, 1));
-
   padding: 10px 0;
 
   @media (max-width: 767px) {
@@ -64,19 +63,36 @@ body {
     padding: 15px 0px;
     scroll-padding-left: 15px;
   }
-}
 
-.sub-nav .nav-item {
-  color: var(--app-text-color, #fff);
-  text-decoration: none;
-  font-size: 16px;
-  padding: 8px;
-  flex-shrink: 0;
-  transition: 0.3s;
-}
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--app-text-color, #fff);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    line-height: 1.2;
 
-.sub-nav .nav-item:hover {
-  opacity: 0.8;
+    &.active {
+      color: var(--navbar-text-active-color, #f7b946);
+      font-weight: 600;
+    }
+
+    &:hover {
+      opacity: 0.8;
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+      fill: currentColor;
+    }
+  }
 }
 
 .bottom-nav {
@@ -88,22 +104,35 @@ body {
   justify-content: space-around;
   background: rgba(var(--navbar-color-rgb, 0, 0, 0), var(--navbar-opacity, 1));
   padding: 10px 0;
-}
 
-.nav-item {
-  color: var(--app-text-color, #fff);
-  text-decoration: none;
-  font-size: 18px;
-  padding: 10px;
-  transition: 0.3s;
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--app-text-color, #fff);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    line-height: 1.2;
 
-  &.active {
-    color: var(--navbar-text-active-color, #f7b946);
-    font-weight: bold;
-  }
+    &.active {
+      color: var(--navbar-text-active-color, #f7b946);
+      font-weight: 600;
+    }
 
-  &:hover {
-    opacity: 0.8;
+    &:hover {
+      opacity: 0.8;
+      transform: translateY(-2px);
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
+      fill: currentColor;
+    }
   }
 }
 
@@ -133,25 +162,19 @@ body {
   color: #ffffff;
 }
 
-.icon {
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  align-items: center;
-  fill: white;
-}
-
-.category-header .icon {
-  width: 30px;
-  height: 30px;
-}
-
 .category-header {
-  font-size: 22px;
-  text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 30px;
   display: block;
   width: 100%;
   text-align: center;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin: 10px 0 30px;
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    vertical-align: middle;
+    fill: currentColor;
+  }
 }
