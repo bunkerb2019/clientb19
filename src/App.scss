@@ -72,17 +72,24 @@ body {
     text-decoration: none;
     font-size: 14px;
     padding: 6px 10px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     font-weight: 500;
     line-height: 1.2;
+    opacity: 0.8; /* Слегка прозрачный по умолчанию */
 
     &.active {
       color: var(--navbar-text-active-color, #f7b946);
       font-weight: 600;
+      opacity: 1; /* Полностью видим при активации */
+      transform: translateY(-4px); /* Поднимем элемент немного вверх при активации */
+
+      .text {
+        display: block;
+      }
     }
 
     &:hover {
-      opacity: 0.8;
+      opacity: 1;
       transform: translateY(-2px);
     }
 
@@ -91,6 +98,12 @@ body {
       height: 24px;
       margin-bottom: 4px;
       fill: currentColor;
+      transition: transform 0.3s ease; /* Плавная анимация для иконок */
+    }
+
+    .text {
+      display: none;
+      font-size: 12px;
     }
   }
 }
@@ -113,17 +126,23 @@ body {
     text-decoration: none;
     font-size: 14px;
     padding: 6px 10px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     font-weight: 500;
     line-height: 1.2;
+    opacity: 0.8;
 
     &.active {
       color: var(--navbar-text-active-color, #f7b946);
       font-weight: 600;
+      opacity: 1;
+      transform: translateY(-4px); /* Поднимем элемент при активации */
+      .text {
+        display: block;
+      }
     }
 
     &:hover {
-      opacity: 0.8;
+      opacity: 1;
       transform: translateY(-2px);
     }
 
@@ -132,6 +151,12 @@ body {
       height: 24px;
       margin-bottom: 4px;
       fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    .text {
+      display: none;
+      font-size: 12px;
     }
   }
 }

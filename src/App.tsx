@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
+import { useTelegram } from "./components/useTelegram";
 import useSettings from "./modules/useSettings";
 import "./App.scss";
 
@@ -13,7 +14,7 @@ import "./App.scss";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
 // Firebase hooks
-
+import useCategories from "./modules/useCategories";
 import useNavigationConfig from "./modules/useNavigationConfig";
 
 // Pages
@@ -22,7 +23,7 @@ import CategoryPage from "./pages/CategoryPage";
 import CategoryList from "./pages/CategoryList";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import ImagesProvider from "./providers/ImagesProvider";
-import { useTrackView } from "./hooks/useTrackView";
+import Welcome from "./pages/Welcome";
 
 const hexToRgb = (hex: string) => {
   // Remove # if present
@@ -71,13 +72,15 @@ const NavItems = () => {
 };
 
 const App = () => {
+  const tg = useTelegram();
+  console.log("Telegram Object:", tg);
+
   // Get data through hooks
+  const { data: categories = [] } = useCategories();
   const { data: navItems = [] } = useNavigationConfig();
   const { data: settings } = useSettings();
 
-  const todayDate = new Date().toISOString().split("T")[0];
-
-  useTrackView(todayDate);
+  console.log({ categories });
 
   // Convert navbar color to RGB format
   const navbarColor = settings?.navbarColor || "#000000";
@@ -115,22 +118,22 @@ const App = () => {
 
             <div className="content">
               <Routes>
-                <Route
-                  path="/"
-                  element={<CategoryList navId={navItems[0]?.id} />}
-                />
+                <Route path="/" element={<Welcome />} />
                 <Route path="/3" element={<Random />} />
-                {navItems.map((nav) => (
-                  <Route
-                    key={nav.id}
-                    path={`/${nav.id}`}
-                    element={<CategoryList navId={nav.id} />}
-                  />
-                ))}
+                {navItems.length > 0 &&
+                  navItems.map((nav) => (
+                    <Route
+                      key={nav.id}
+                      path={`/${nav.id}`}
+                      element={<CategoryList navId={nav.id} />}
+                    />
+                  ))}
                 <Route
                   path="/category/:categoryId"
                   element={<CategoryPage />}
                 />
+                <Route path="*" element={<Welcome />} />{" "}
+                {/* fallback для любых неизвестных маршрутов */}
               </Routes>
             </div>
 

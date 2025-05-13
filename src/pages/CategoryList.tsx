@@ -105,9 +105,10 @@ const CategoryList: React.FC<CategoryListProps> = ({ navId }) => {
           <div className="product-container">
             <Outlet />
             {filteredDishes?.length === 0 ? (
-              <p>
+              <p className="no-product">
                 {getText({
                   ru: "В этой категории пока нет товаров.",
+                  ro: "Nu există încă produse în această categorie.",
                   en: "No products in this category yet.",
                 })}
               </p>

@@ -1,0 +1,38 @@
+.loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000; // Или подставь свою переменную
+  }
+  
+  .ios-spinner {
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+  
+  .ios-spinner::before,
+  .ios-spinner::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+  }
+  
+  .ios-spinner::before {
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  .ios-spinner::after {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }

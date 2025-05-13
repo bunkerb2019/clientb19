@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useSettings from "../modules/useSettings.ts"; // Укажите правильный путь к хуку
+import useSettings from "../modules/useSettings.ts";
+import useNavigationConfig from "../modules/useNavigationConfig.ts";
 import "./Welcome.scss";
+import LoadingScreen from "../components/LoadingScreen.tsx";
 
 const Welcome = () => {
-  const { data: settings, isLoading, error } = useSettings(); // Получаем настройки
+  const { data: settings, isLoading: loadingSettings, error } = useSettings();
+  const { data: navItems, isLoading: loadingNav } = useNavigationConfig();
   const [showLogo, setShowLogo] = useState(false);
-  const [showText, setShowText] = useState(false); // Новое состояние для текста
+  const [showText, setShowText] = useState(false);
   const [hideScreen, setHideScreen] = useState(false);
   const navigate = useNavigate();
 
-  // Функция для разбиения текста на строки
   const wrapText = (text: string, maxChars: number) => {
     if (!text) return [];
     const words = text.split(" ");
@@ -32,35 +34,42 @@ const Welcome = () => {
 
   const wrappedText = wrapText(settings?.welcomeText || "Welcome to", 15);
 
-  // Анимация появления текста и логотипа
   useEffect(() => {
-    setTimeout(() => setShowText(true), 200); // Текст появляется через 0.3 секунды
-    setTimeout(() => setShowText(false), 3000); // Текст исчезает через 1.5 секунды
-    setTimeout(() => setShowLogo(true), 200); // Логотип появляется через 1.6 секунды
-    setTimeout(() => setShowLogo(false), 3000);
+    if (loadingNav || !navItems?.length) return; // ⛔ ничего не делать, пока грузится
 
-    setTimeout(() => {
-      setHideScreen(true); // Запуск анимации исчезновения
-      setTimeout(() => navigate("/1"), 4500); // Переход через 1 секунду после начала скрытия
-    }, 4600);
-  }, [navigate]);
+    const timer = setTimeout(() => {
+      setShowText(true);
+      setShowLogo(true);
+    }, 200);
 
-  // Если данные загружаются, показываем индикатор загрузки
-  if (isLoading) return <div>Loading...</div>;
+    const redirectTimer = setTimeout(() => {
+      setHideScreen(true);
 
-  // Если произошла ошибка, показываем сообщение об ошибке
+      // 🧠 только после этого — навигация
+      setTimeout(() => {
+        navigate(`/${navItems[0].id}`); // ✅ сюда только когда точно есть navItems
+      }, 1000);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(redirectTimer);
+    };
+  }, [loadingNav, navItems, navigate]);
+
+  if (loadingSettings || loadingNav) return <LoadingScreen />;
   if (error) return <div>Error loading settings</div>;
 
   return (
     <div
       className={`welcome ${hideScreen ? "fade-out" : ""}`}
       style={{
-        backgroundColor: settings?.welcomeBackground || "#000", // Цвет фона из настроек или по умолчанию
+        backgroundColor: settings?.welcomeBackground || "#000",
       }}
     >
       <div className="welcome-content">
         <svg
-          className={`hello-text ${showText ? "visible" : ""}`} // Добавляем класс для анимации текста
+          className={`hello-text ${showText ? "visible" : ""}`}
           viewBox="0 0 500 100"
         >
           <text x="50%" y="40%" textAnchor="middle">
@@ -74,8 +83,8 @@ const Welcome = () => {
 
         {settings?.companyLogo && (
           <img
-            className={`logo ${showLogo ? "slide-in" : ""}`} // Добавляем класс для анимации логотипа
-            src={settings?.companyLogo} // Логотип из настроек или по умолчанию
+            className={`logo ${showLogo ? "slide-in" : ""}`}
+            src={settings?.companyLogo}
             alt="Company Logo"
           />
         )}
