@@ -6,7 +6,7 @@ import ProductCard from "../components/ProductCard";
 import useCategories from "../modules/useCategories";
 import useMenuItems from "../modules/useMenuItems";
 import { useLanguage } from "../contexts/LanguageContext";
-import Welcome from "../pages/Welcome.tsx"; // импорт приветственного экрана
+import LoadingScreen from "../components/LoadingScreen.tsx"; // импорт приветственного экрана
 
 interface CategoryListProps {
   navId: string;
@@ -62,14 +62,13 @@ const CategoryList: React.FC<CategoryListProps> = ({ navId }) => {
       <AnimatePresence>
         {showWelcome && (
           <motion.div
-            key="welcome"
             initial={{ opacity: 1 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             style={{ position: "absolute", inset: 0, zIndex: 50 }}
           >
-            <Welcome />
+            <LoadingScreen/>
           </motion.div>
         )}
       </AnimatePresence>

@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import useSettings from "../modules/useSettings.ts";
 import useNavigationConfig from "../modules/useNavigationConfig.ts";
 import "./Welcome.scss";
-import LoadingScreen from "../components/LoadingScreen.tsx";
 
 const Welcome = () => {
-  const { data: settings, isLoading: loadingSettings, error } = useSettings();
+  const { data: settings, error } = useSettings();
   const { data: navItems, isLoading: loadingNav } = useNavigationConfig();
   const [showLogo, setShowLogo] = useState(false);
   const [showText, setShowText] = useState(false);
@@ -57,7 +56,6 @@ const Welcome = () => {
     };
   }, [loadingNav, navItems, navigate]);
 
-  if (loadingSettings || loadingNav) return <LoadingScreen />;
   if (error) return <div>Error loading settings</div>;
 
   return (
