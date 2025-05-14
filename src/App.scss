@@ -70,27 +70,52 @@ body {
     align-items: center;
     color: var(--app-text-color, #fff);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px; // Уменьшенный размер текста для sub-nav
     padding: 6px 10px;
     transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     font-weight: 500;
     line-height: 1.2;
-    opacity: 0.8; /* Слегка прозрачный по умолчанию */
+    opacity: 0.8;
+    position: relative;
 
-    &.active {
-      color: var(--navbar-text-active-color, #f7b946);
-      font-weight: 600;
-      opacity: 1; /* Полностью видим при активации */
-      transform: translateY(-4px); /* Поднимем элемент немного вверх при активации */
-
-      .text {
-        display: block;
-      }
+    // Псевдо-элемент для линии под элементом
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px; // Высота линии
+      background-color: var(--navbar-text-active-color, #f7b946);
+      transition: width 0.5s ease; // Более плавная анимация линии
     }
 
     &:hover {
       opacity: 1;
       transform: translateY(-2px);
+
+      .icon {
+        transform: scale(1.1);
+      }
+    }
+
+    &.active {
+      color: var(--navbar-text-active-color, #f7b946);
+      font-weight: 600;
+      opacity: 1;
+      transform: translateY(-4px);
+
+      // Анимация линии под активным элементом
+      &::after {
+        width: 100%;
+      }
+
+      .text {
+        max-height: 20px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
     }
 
     .icon {
@@ -98,12 +123,20 @@ body {
       height: 24px;
       margin-bottom: 4px;
       fill: currentColor;
-      transition: transform 0.3s ease; /* Плавная анимация для иконок */
+      transition: transform 0.3s ease;
     }
 
     .text {
-      display: none;
+      display: block;
       font-size: 12px;
+      margin-top: 2px;
+      color: inherit;
+      transition: all 0.3s ease;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(5px);
+      pointer-events: none;
     }
   }
 }
@@ -117,6 +150,7 @@ body {
   justify-content: space-around;
   background: rgba(var(--navbar-color-rgb, 0, 0, 0), var(--navbar-opacity, 1));
   padding: 10px 0;
+  z-index: 1000;
 
   .nav-item {
     display: flex;
@@ -127,23 +161,50 @@ body {
     font-size: 14px;
     padding: 6px 10px;
     transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.2;
     opacity: 0.8;
+    position: relative;
 
-    &.active {
-      color: var(--navbar-text-active-color, #f7b946);
-      font-weight: 600;
-      opacity: 1;
-      transform: translateY(-4px); /* Поднимем элемент при активации */
-      .text {
-        display: block;
-      }
+    // Псевдо-элемент для линии под элементом
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+
+      height: 2px; // Высота линии
+      background-color: var(--navbar-text-active-color, #f7b946);
+      transition: width 0.5s ease; // Более плавная анимация линии
     }
 
     &:hover {
       opacity: 1;
       transform: translateY(-2px);
+
+      .icon {
+        transform: scale(1.1);
+      }
+    }
+
+    &.active {
+      color: var(--navbar-text-active-color, #f7b946);
+      font-weight: 600;
+      opacity: 1;
+      transform: translateY(-4px);
+
+      // Анимация линии под активным элементом
+      &::after {
+        width: 100%;
+      }
+
+      .text {
+        max-height: 20px;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
     }
 
     .icon {
@@ -155,8 +216,16 @@ body {
     }
 
     .text {
-      display: none;
+      display: block;
       font-size: 12px;
+      margin-top: 2px;
+      color: inherit;
+      transition: all 0.3s ease;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transform: translateY(5px);
+      pointer-events: none;
     }
   }
 }

@@ -64,7 +64,7 @@ const NavItems = () => {
             alt={getText(item)}
             className="icon"
           />
-          {getText(item)}
+          <span className="text">{getText(item)}</span> {/* Добавлено */}
         </NavLink>
       ))}
     </nav>

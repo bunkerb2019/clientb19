@@ -152,7 +152,7 @@ const ProductCard: React.FC<ProductProps> = ({
           onClick={handleClosePopup}
         >
           <div
-            className="popup-content"
+            className="popup-content popup-opened"
             onClick={(e) => e.stopPropagation()}
             style={
               {
