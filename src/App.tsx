@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
-// import { useTelegram } from "./components/useTelegram";
+import { useTelegram } from "./components/useTelegram";
 import useSettings from "./modules/useSettings";
 import "./App.scss";
 
@@ -72,13 +72,7 @@ const NavItems = () => {
 };
 
 const App = () => {
-
-
-  useEffect(() => {
-  if (window?.Telegram?.WebApp) {
-    window.Telegram.WebApp.expand();
-  }
-}, []);
+  useTelegram();
 
   // Get data through hooks
   const { data: categories = [] } = useCategories();
