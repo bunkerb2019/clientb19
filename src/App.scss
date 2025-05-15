@@ -61,7 +61,7 @@ body {
 
   @media (max-width: 767px) {
     justify-content: flex-start;
-    padding: 15px 0px;
+    padding: 10px 0 20px 0px;
     scroll-padding-left: 15px;
   }
 
@@ -71,7 +71,7 @@ body {
     align-items: center;
     color: var(--app-text-color, #fff);
     text-decoration: none;
-    font-size: 12px; // Уменьшенный размер текста для sub-nav
+    font-size: 13px; // Уменьшенный размер текста для sub-nav
     padding: 6px 10px;
     transition: all 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     font-weight: 500;
@@ -150,7 +150,7 @@ body {
   display: flex;
   justify-content: space-around;
   background: rgba(var(--navbar-color-rgb, 0, 0, 0), var(--navbar-opacity, 1));
-  padding: 10px 0;
+  padding: 10px 0 15px 0;
   z-index: 1000;
 
   .nav-item {
@@ -209,8 +209,8 @@ body {
     }
 
     .icon {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       margin-bottom: 4px;
       fill: currentColor;
       transition: transform 0.3s ease;
@@ -218,7 +218,7 @@ body {
 
     .text {
       display: block;
-      font-size: 12px;
+      font-size: 13px;
       margin-top: 2px;
       color: inherit;
       transition: all 0.3s ease;
