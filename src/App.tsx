@@ -75,6 +75,13 @@ const App = () => {
   const tg = useTelegram();
   console.log("Telegram Object:", tg);
 
+  useEffect(() => {
+  if (tg?.WebApp) {
+    tg.WebApp.expand(); // Разворачиваем на весь экран
+    tg.WebApp.enableClosingConfirmation(); // Включаем подтверждение закрытия
+  }
+}, [tg.WebApp]);
+
   // Get data through hooks
   const { data: categories = [] } = useCategories();
   const { data: navItems = [] } = useNavigationConfig();
