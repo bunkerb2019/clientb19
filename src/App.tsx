@@ -6,7 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { useTelegram } from "./components/useTelegram";
+// import { useTelegram } from "./components/useTelegram";
 import useSettings from "./modules/useSettings";
 import "./App.scss";
 
@@ -72,15 +72,13 @@ const NavItems = () => {
 };
 
 const App = () => {
-  const tg = useTelegram();
-  console.log("Telegram Object:", tg);
+
 
   useEffect(() => {
-  if (tg?.WebApp) {
-    tg.WebApp.expand(); // Разворачиваем на весь экран
-    tg.WebApp.enableClosingConfirmation(); // Включаем подтверждение закрытия
+  if (window?.Telegram?.WebApp) {
+    window.Telegram.WebApp.expand();
   }
-}, [tg.WebApp]);
+}, []);
 
   // Get data through hooks
   const { data: categories = [] } = useCategories();
