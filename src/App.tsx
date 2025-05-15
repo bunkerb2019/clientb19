@@ -24,6 +24,7 @@ import CategoryList from "./pages/CategoryList";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import ImagesProvider from "./providers/ImagesProvider";
 import Welcome from "./pages/Welcome";
+import { useTrackView } from "./hooks/useTrackView.ts";
 
 const hexToRgb = (hex: string) => {
   // Remove # if present
@@ -72,7 +73,10 @@ const NavItems = () => {
 };
 
 const App = () => {
-  // если надо редактировать клиент просто закоменти эту строку! 
+  const todayDate = new Date().toISOString().split("T")[0];
+
+  useTrackView(todayDate);
+  // если надо редактировать клиент просто закоменти эту строку!
   useTelegram();
 
   // Get data through hooks
