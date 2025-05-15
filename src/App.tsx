@@ -72,6 +72,7 @@ const NavItems = () => {
 };
 
 const App = () => {
+  // если надо редактировать клиент просто закоменти эту строку! 
   useTelegram();
 
   // Get data through hooks
