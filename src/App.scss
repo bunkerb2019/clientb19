@@ -1,5 +1,4 @@
 body {
-  padding-top: 22%;
   margin: 0;
   font-family: Arial, sans-serif;
   color: var(--app-text-color, #fff);
@@ -13,6 +12,7 @@ body {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  
 
   &::before {
     content: "";
@@ -45,7 +45,8 @@ body {
 
 .content {
   flex: 1;
-  padding-bottom: 120px;
+  padding-bottom: 155px;
+  padding-top: 12vh;
 }
 
 .sub-nav {
@@ -272,4 +273,14 @@ body {
     vertical-align: middle;
     fill: currentColor;
   }
+}
+
+
+// блокировка скролла в открытом попапе
+// Альтернативный вариант с :has (менее поддерживаемый)
+body:has(.popup-overlay.visible) {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }

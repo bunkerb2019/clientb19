@@ -19,7 +19,7 @@ const Random = () => {
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
   const [popupImageUrl, setPopupImageUrl] = useState<string>("");
   const { data: settings } = useSettings();
-  
+
   // Создаем ref для аудио, чтобы он сохранялся между рендерами
   const spinAudioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -31,7 +31,7 @@ const Random = () => {
   useEffect(() => {
     spinAudioRef.current = new Audio(spinSound);
     spinAudioRef.current.volume = 0.5;
-    
+
     // Очистка при размонтировании
     return () => {
       if (spinAudioRef.current) {
@@ -125,9 +125,9 @@ const Random = () => {
     try {
       if (spinAudioRef.current) {
         spinAudioRef.current.currentTime = 0; // Перематываем на начало
-        await spinAudioRef.current.play().catch(e => 
-          console.log("Audio play failed:", e)
-        );
+        await spinAudioRef.current
+          .play()
+          .catch((e) => console.log("Audio play failed:", e));
       }
     } catch (e) {
       console.error("Audio error:", e);
@@ -249,7 +249,7 @@ const Random = () => {
                   disabled={items.length === 0 || isSpinning}
                   className={isSpinning ? "spinning" : ""}
                 >
-                  {isSpinning ? "..." : "Spin 🎲"}
+                  <span>Spin 🎲</span>
                 </button>
               </div>
             </div>
