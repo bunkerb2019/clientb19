@@ -80,7 +80,7 @@ const App = () => {
 
   useTrackView(todayDate);
   // если надо редактировать клиент просто закоменти эту строку!
-  useTelegram();
+  // useTelegram();
 
   // Get data through hooks
   const { data: categories = [] } = useCategories();
@@ -90,6 +90,7 @@ const App = () => {
   console.log({ categories });
 
   // Convert navbar color to RGB format
+  const backgroundColorRgb = hexToRgb(settings?.backgroundColor || "#000000");
   const navbarColor = settings?.navbarColor || "#000000";
   const navbarRgb = hexToRgb(navbarColor);
   const navbarOpacity = settings?.navbarOpacity ?? 1;
@@ -103,9 +104,8 @@ const App = () => {
             className="app"
             style={
               {
-                "--app-background-color":
-                  settings?.backgroundColor || "#000000",
-                "--background-opacity": settings?.BackgroundOpacity ?? 1,
+               "--app-background-color-rgb": backgroundColorRgb,
+                "--background-opacity": settings?.BackgroundOpacity ?? 0.88,
                 "--app-text-color": settings?.textColor || "#ffffff",
                 "--navbar-text-active-color":
                   settings?.navbarTextColor || "#f7b946",
