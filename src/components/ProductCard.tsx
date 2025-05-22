@@ -11,7 +11,7 @@ interface ProductProps {
   id: string;
   name: string | { ru: string; ro?: string; en?: string };
   description: string | { ru: string; ro?: string; en?: string };
-  weight?: number;
+ weight?: string;
   weightUnit?: "g" | "ml" | "kg";
   price?: number;
   currency?: "MDL" | "$" | "€";
@@ -19,6 +19,8 @@ interface ProductProps {
   category: string;
   type: string;
 }
+
+
 
 const ProductCard: React.FC<ProductProps> = ({
   image,
@@ -34,6 +36,23 @@ const ProductCard: React.FC<ProductProps> = ({
   const [imageUrl, setImageUrl] = useState<string>("");
   const { getText } = useLanguage();
   const { data: settings } = useSettings();
+
+  useEffect(() => {
+  if (isPopupOpen) {
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+
+    return () => {
+      const scrollY = parseInt(document.body.style.top || '0');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, -scrollY);
+    };
+  }
+}, [isPopupOpen]);
 
   const handleCardClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();

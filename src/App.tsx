@@ -42,7 +42,10 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    // Не прокручиваем, если открыт попап
+    if (!document.querySelector('.popup-overlay.visible')) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }, [pathname]);
 
   return null;
@@ -77,7 +80,7 @@ const App = () => {
 
   useTrackView(todayDate);
   // если надо редактировать клиент просто закоменти эту строку!
-  useTelegram();
+  // useTelegram();
 
   // Get data through hooks
   const { data: categories = [] } = useCategories();

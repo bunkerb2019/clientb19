@@ -22,7 +22,7 @@ export interface Order {
   id: string;
   name: string | { ru: string; ro?: string; en?: string };
   description: string | { ru: string; ro?: string; en?: string };
-  weight?: number;
+  weight?: string;
   price?: number;
   image?: string;
   category: string;
@@ -85,7 +85,7 @@ export interface RandomSettings {
 
 export interface ViewEvent {
   id?: string;
-  type: 'product_view' | 'category_view';
+  type: "product_view" | "category_view";
   categoryId: string;
   productId?: string;
   userId?: string;
