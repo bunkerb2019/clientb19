@@ -80,7 +80,7 @@ const App = () => {
 
   useTrackView(todayDate);
   // если надо редактировать клиент просто закоменти эту строку!
-  useTelegram();
+  // useTelegram();
 
   // Get data through hooks
   const { data: categories = [] } = useCategories();

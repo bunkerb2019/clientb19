@@ -6,12 +6,11 @@ import { useLanguage } from "../contexts/LanguageContext";
 import useImageDownload from "../providers/hooks/useImageDownload";
 import React from "react";
 
-
 interface ProductProps {
   id: string;
   name: string | { ru: string; ro?: string; en?: string };
   description: string | { ru: string; ro?: string; en?: string };
- weight?: string;
+  weight?: string;
   weightUnit?: "g" | "ml" | "kg";
   price?: number;
   currency?: "MDL" | "$" | "€";
@@ -19,8 +18,6 @@ interface ProductProps {
   category: string;
   type: string;
 }
-
-
 
 const ProductCard: React.FC<ProductProps> = ({
   image,
@@ -34,25 +31,27 @@ const ProductCard: React.FC<ProductProps> = ({
 }) => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
+  const [hasImageError, setHasImageError] = useState<boolean>(false);
   const { getText } = useLanguage();
   const { data: settings } = useSettings();
 
   useEffect(() => {
-  if (isPopupOpen) {
-    const scrollY = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
+    if (isPopupOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
 
-    return () => {
-      const scrollY = parseInt(document.body.style.top || '0');
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      window.scrollTo(0, -scrollY);
-    };
-  }
-}, [isPopupOpen]);
+      return () => {
+        const scrollY = parseInt(document.body.style.top || '0');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, -scrollY);
+      };
+    }
+  }, [isPopupOpen]);
 
   const handleCardClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -67,9 +66,16 @@ const ProductCard: React.FC<ProductProps> = ({
     (e: React.SyntheticEvent<HTMLImageElement>) => {
       const target = e.target as HTMLImageElement;
       target.src = settings?.placeholderImage || "";
+      setHasImageError(true);
+      setIsImageLoading(false);
     },
     [settings?.placeholderImage]
   );
+
+  const handleImageLoad = useCallback(() => {
+    setIsImageLoading(false);
+    setHasImageError(false);
+  }, []);
 
   const { getDownloadUrl } = useImageDownload();
 
@@ -77,8 +83,13 @@ const ProductCard: React.FC<ProductProps> = ({
     async (currentImage: string | undefined) => {
       if (!currentImage) {
         setImageUrl(settings?.placeholderImage || "");
+        setIsImageLoading(false);
+        setHasImageError(false);
         return;
       }
+
+      setIsImageLoading(true);
+      setHasImageError(false);
 
       try {
         const url = await getDownloadUrl(currentImage);
@@ -86,14 +97,16 @@ const ProductCard: React.FC<ProductProps> = ({
       } catch (error) {
         console.error("Error loading image:", error);
         setImageUrl(settings?.placeholderImage || "");
+        setHasImageError(true);
+      } finally {
+        setIsImageLoading(false);
       }
     },
     [getDownloadUrl, settings?.placeholderImage]
   );
 
-  
   useEffect(() => {
-    setImageUrl(""); // Сбрасываем перед загрузкой нового изображения
+    setImageUrl("");
     loadImage(image);
   }, [image, loadImage]);
 
@@ -122,6 +135,10 @@ const ProductCard: React.FC<ProductProps> = ({
 
   const localizedPriceText = getText({ ru: "Цена", en: "Price", ro: "Preț" });
 
+  // Определяем, нужно ли вообще показывать изображение
+  const shouldShowImage = !!image && !hasImageError;
+  const finalImageUrl = shouldShowImage ? imageUrl : settings?.placeholderImage || "";
+
   return (
     <>
       <div
@@ -142,13 +159,21 @@ const ProductCard: React.FC<ProductProps> = ({
         }
       >
         <div className="image-container">
+          {isImageLoading && shouldShowImage && (
+            <div className="image-loading-animation">
+              {/* Здесь может быть ваш лоадер */}
+              <div className="spinner"></div>
+            </div>
+          )}
           <img
-            src={imageUrl || settings?.placeholderImage || ""}
+            src={finalImageUrl}
             alt={localizedName}
-            className="product-image"
+            className={`product-image ${isImageLoading ? 'loading' : ''} ${hasImageError ? 'error' : ''}`}
             onError={handleImageError}
+            onLoad={handleImageLoad}
             loading="lazy"
-            key={`${id}-image`} // Уникальный ключ для каждого изображения
+            key={`${id}-image`}
+            style={{ opacity: isImageLoading ? 0 : 1 }}
           />
         </div>
         <h3 className="product-name">{localizedName}</h3>
@@ -187,12 +212,20 @@ const ProductCard: React.FC<ProductProps> = ({
             }
           >
             <div className="popup-image-container">
+              {isImageLoading && shouldShowImage && (
+                <div className="image-loading-animation">
+                  {/* Здесь может быть ваш лоадер */}
+                  <div className="spinner"></div>
+                </div>
+              )}
               <img
-                src={imageUrl || settings?.placeholderImage || ""}
+                src={finalImageUrl}
                 alt={localizedName}
-                className="popup-image"
+                className={`popup-image ${isImageLoading ? 'loading' : ''} ${hasImageError ? 'error' : ''}`}
                 onError={handleImageError}
-                key={`${id}-popup-image`} // Уникальный ключ
+                onLoad={handleImageLoad}
+                key={`${id}-popup-image`}
+                style={{ opacity: isImageLoading ? 0 : 1 }}
               />
             </div>
 

@@ -8,7 +8,7 @@ import logo from "../assets/logo.svg";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import useSettings from "../modules/useSettings";
 import { useLanguage } from "../contexts/LanguageContext";
-import spinSound from "../assets/spin.wav"; // Импортируем звук напрямую
+import spinSound from "../assets/spin.wav";
 
 const Random = () => {
   const { getText } = useLanguage();
@@ -18,21 +18,20 @@ const Random = () => {
   const [isSpinning, setIsSpinning] = useState<boolean>(false);
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
   const [popupImageUrl, setPopupImageUrl] = useState<string>("");
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
+  const [hasImageError, setHasImageError] = useState<boolean>(false);
   const { data: settings } = useSettings();
 
-  // Создаем ref для аудио, чтобы он сохранялся между рендерами
   const spinAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const { data: randomSettings, isLoading, error } = useRandomSettings();
   const { data: wholeMenu = [] } = useMenuItems();
   const { data: categories = [] } = useCategories();
 
-  // Инициализация аудио при первом рендере
   useEffect(() => {
     spinAudioRef.current = new Audio(spinSound);
     spinAudioRef.current.volume = 0.5;
 
-    // Очистка при размонтировании
     return () => {
       if (spinAudioRef.current) {
         spinAudioRef.current.pause();
@@ -52,8 +51,22 @@ const Random = () => {
 
   const currentSettings = randomSettings || defaultSettings;
 
+  const handleImageError = useCallback(() => {
+    setHasImageError(true);
+    setIsImageLoading(false);
+    setPopupImageUrl(settings?.placeholderImage || logo);
+  }, [settings?.placeholderImage]);
+
+  const handleImageLoad = useCallback(() => {
+    setIsImageLoading(false);
+    setHasImageError(false);
+  }, []);
+
   useEffect(() => {
     if (selectedItem?.image) {
+      setIsImageLoading(true);
+      setHasImageError(false);
+      
       const fetchImage = async () => {
         try {
           const storage = getStorage();
@@ -62,12 +75,16 @@ const Random = () => {
           setPopupImageUrl(url);
         } catch (error) {
           console.error("Error loading image:", error);
-          setPopupImageUrl(settings?.placeholderImage || logo);
+          handleImageError();
         }
       };
       fetchImage();
+    } else {
+      setPopupImageUrl(settings?.placeholderImage || logo);
+      setIsImageLoading(false);
+      setHasImageError(false);
     }
-  }, [selectedItem, settings?.placeholderImage]);
+  }, [selectedItem, settings?.placeholderImage, handleImageError]);
 
   const categoryIdToNameMap = useMemo(() => {
     const map = new Map<string, string>();
@@ -121,19 +138,15 @@ const Random = () => {
     setIsSpinning(true);
     setHasSpun((prev) => prev.map((val, i) => (i === index ? true : val)));
 
-    // Воспроизводим звук
     try {
       if (spinAudioRef.current) {
-        spinAudioRef.current.currentTime = 0; // Перематываем на начало
-        await spinAudioRef.current
-          .play()
-          .catch((e) => console.log("Audio play failed:", e));
+        spinAudioRef.current.currentTime = 0;
+        await spinAudioRef.current.play().catch(console.error);
       }
     } catch (e) {
       console.error("Audio error:", e);
     }
 
-    // Улучшенные параметры анимации
     const spinDuration = 4000;
     const startTime = performance.now();
     const spins = Math.floor(Math.random() * 10) + 25;
@@ -195,6 +208,9 @@ const Random = () => {
 
   const activeRandomizers =
     currentSettings.randomizers?.filter((r) => r?.active) || [];
+
+  const shouldShowImage = !!selectedItem?.image && !hasImageError;
+  const finalImageUrl = shouldShowImage ? popupImageUrl : settings?.placeholderImage || logo;
 
   return (
     <div className="slot-machine">
@@ -264,14 +280,18 @@ const Random = () => {
         >
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
             <div className="popup-image-container">
+              {isImageLoading && shouldShowImage && (
+                <div className="image-loading-animation">
+                  <div className="spinner"></div>
+                </div>
+              )}
               <img
-                src={popupImageUrl || settings?.placeholderImage || logo}
+                src={finalImageUrl}
                 alt={getText(selectedItem?.name, "Без названия")}
-                className="popup-image"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src =
-                    settings?.placeholderImage || logo;
-                }}
+                className={`popup-image ${isImageLoading ? 'loading' : ''} ${hasImageError ? 'error' : ''}`}
+                onError={handleImageError}
+                onLoad={handleImageLoad}
+                style={{ opacity: isImageLoading ? 0 : 1 }}
               />
             </div>
 
