@@ -1,0 +1,253 @@
+$accent: #d9711c;
+
+.spin-page {
+  position: fixed;
+  top: calc(56px + 22px + var(--top-safe, 0px));
+  bottom: calc(86px + var(--bottom-safe, 0px));
+  left: 0;
+  right: 0;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 4px 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.spin-head {
+  width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  h1 {
+    flex: 1;
+    margin: 0;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+  }
+}
+
+.spin-round {
+  all: unset;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+
+  &.muted {
+    opacity: 0.6;
+  }
+}
+
+.spin-sub {
+  margin: 8px 0 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 1rem;
+}
+
+.spin-stage {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  margin: 4px 0 12px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent,
+    #000 16%,
+    #000 84%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent,
+    #000 16%,
+    #000 84%,
+    transparent
+  );
+}
+
+.wheel-anchor {
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 0;
+  height: 0;
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.wheel-tick {
+  width: 16px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.55);
+
+  &.major {
+    width: 30px;
+    background: #fff;
+  }
+}
+
+.wheel-marker {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--accent, $accent);
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
+  z-index: 20;
+}
+
+.spin-card {
+  box-sizing: border-box;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #151515;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  user-select: none;
+  will-change: transform, opacity;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    &.fallback {
+      object-fit: contain;
+      padding: 40px 36px 80px;
+      box-sizing: border-box;
+      opacity: 0.35;
+    }
+  }
+
+  &.active {
+    border-color: rgba(255, 255, 255, 0.85);
+    box-shadow:
+      0 0 0 4px rgba(255, 255, 255, 0.08),
+      0 16px 40px rgba(0, 0, 0, 0.65);
+  }
+}
+
+.spin-card-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.9));
+}
+
+.spin-card-name {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.spin-card-price {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent, $accent);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.spin-btn {
+  all: unset;
+  flex-shrink: 0;
+  cursor: pointer;
+  min-width: 200px;
+  height: 54px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(145deg, #f0a33a, var(--accent, $accent));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.45);
+  transition:
+    transform 0.15s,
+    opacity 0.2s;
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+}
+
+.spin-result-slot {
+  flex-shrink: 0;
+  height: 40px;
+  max-width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.spin-result {
+  all: unset;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  animation: spin-pop 0.4s ease;
+}
+
+@keyframes spin-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}

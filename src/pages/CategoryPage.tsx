@@ -65,6 +65,7 @@ const CategoryPage = () => {
               image={product.image}
               category={product.category}
               type={product.type}
+              viewMode={"grid"}
             />
           ))}
         </div>

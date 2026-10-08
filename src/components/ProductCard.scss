@@ -2,17 +2,30 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
-  box-sizing: border-box;
   width: 100%;
+  box-sizing: border-box;
+
   .no-product {
     padding-left: 50%;
     width: 100%;
     text-align: center;
   }
+
+  &.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min(560px, calc(100vw - 24px));
+    margin: 0 auto;
+
+    .no-product {
+      padding-left: 0;
+    }
+  }
 }
 
 .product-card {
-  height: 350px;
+  height: 380px;
   width: 180px;
   background-color: rgba(
     var(--card-background-color, 0, 0, 0),
@@ -28,231 +41,499 @@
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
-  transition: transform 0.2s ease;
-  padding: 15px;
+
+  will-change: transform, height, width;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
-}
-
-.product-image {
-  
+.image-loading-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.05);
+
+  .spinner {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====== Плитка (сетка) ====== */
+.product-container:not(.list) {
+  width: min(560px, calc(100vw - 24px));
+  gap: 12px;
+  margin: 0 auto;
+}
+
+.product-card.tile {
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--card-border-color, #ffffff2e);
+  background: #111 !important;
+  backdrop-filter: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  isolation: isolate;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: none;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.photo-backdrop {
+  position: absolute;
+  inset: -20px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(18px) brightness(0.6);
+  z-index: 0;
+}
+
+.tile-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 12px;
+  z-index: 1;
+  transition: opacity 0.3s ease;
 }
 
-.product-name {
-  margin: 0 0 8px 0;
-  font-size: 1.1rem;
-  font-weight: 500;
-  word-wrap: break-word;
-  flex-shrink: 0;
+.tile-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0) 32%
+    ),
+    linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 30%);
 }
 
-.product-description {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin: auto;
-  word-wrap: break-word;
+.tile-name {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 3;
+  margin: 0;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
   display: -webkit-box;
-  -webkit-line-clamp: 2;          /* две строки */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
-.product-name,
-.product-weight,
-.product-price {
+.tile-badges {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.tile-weight,
+.tile-price {
+  border-radius: 999px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.product-price {
-  font-weight: 600;
   color: #fff;
 }
 
-/* ====== Попап ====== */
-.popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(6px);
+.tile-weight {
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+.tile-price {
+  padding: 6px 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--accent, #d9711c);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ====== Список ====== */
+.list-row {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  padding: 15px;
+  gap: 14px;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #fff;
+  background: radial-gradient(120% 140% at 0% 0%, rgba(217, 113, 28, 0.22) 0%, rgba(217, 113, 28, 0) 55%),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease;
 
-  box-sizing: border-box;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-
-  &.visible {
-    opacity: 1;
-    pointer-events: all;
+  &:active {
+    transform: scale(0.98);
   }
 }
 
-.popup-content {
-  background-color: rgba(var(--card-background-color, 0, 0, 0), var(--card-background-opacity, 0.88));
-  border: 1px solid var(--card-border-color, #ffffff2e);
-  color: var(--card-text-color, #fff);
+.list-photo {
+  position: relative;
+  flex: 0 0 96px;
+  height: 120px;
   border-radius: 16px;
-  width: 100%;
-  max-width: 450px;
-  max-height: 90vh;
+  overflow: hidden;
+  background: #111;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+}
+
+.list-info {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  padding: 24px 24px 64px;
-  position: relative;
-  overflow: hidden;
-  animation: fadeInUp 0.35s ease;
+  gap: 6px;
+  padding: 4px 2px 2px 0;
 }
 
-.popup-image-container {
-  width: calc(100% + 48px);
-  margin: -24px -24px 20px;
-  overflow: hidden;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.popup-image {
-  width: 100%;
-  height: auto;
-  max-height: 48vh;
-  object-fit: cover;
-  display: block;
-}
-
-.popup-text-content {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0 4px;
-  text-align: center;
-  scrollbar-width: none;
-}
-
-.popup-text-content::-webkit-scrollbar {
-  display: none;
-}
-
-.popup-name {
-  font-size: 1.4rem;
+.list-name {
+  margin: 0;
+  font-size: 1.02rem;
   font-weight: 700;
-  margin: 0 0 10px;
-  line-height: 1.3;
-  word-break: break-word;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.popup-description {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 20px;
-  line-height: 1.5;
-  word-break: break-word;
+.list-desc {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.55);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* Детали товара */
-.popup-details {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  justify-content: center;
-  text-align: left;
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
-  font-size: 0.95rem;
-  max-width: 320px;
-  margin: 0 auto 20px;
-
-  .popup-weight,
-  .popup-price {
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
-  }
-}
-
-/* Кнопка закрытия */
-.close-button {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  width: 60%;
-  height: 42px;
+.list-badges {
+  margin-top: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  color: #ffffff;
-  transition: all 0.25s ease;
-  border-radius: 10px;
+  justify-content: space-between;
+  gap: 8px;
+}
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateX(-50%) scale(1.05);
+.list-weight {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.list-price {
+  margin-left: auto;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  background: var(--accent, #d9711c);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ====== Шторка товара ====== */
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: sheetFade 0.25s ease forwards;
+
+  &.closing {
+    animation: sheetFadeOut 0.25s ease forwards;
+
+    .sheet {
+      animation: sheetDown 0.25s ease-in forwards;
+    }
   }
 }
 
-/* Анимация */
-@keyframes fadeInUp {
+.sheet {
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100dvh - var(--top-safe, 0px) - 8px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+  background: #000;
+  color: #1c1c1c;
+  animation: sheetUp 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sheet-image {
+  position: relative;
+  flex: 1 1 auto;
+  aspect-ratio: 2 / 3;
+  min-height: 200px;
+  overflow: hidden;
+  background: #000;
+}
+
+.sheet-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: calc(100% - 24px);
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+.sheet-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sheet-body {
+  position: relative;
+  z-index: 2;
+  flex: 0 1 auto;
+  min-height: 0;
+  margin-top: -24px;
+  padding: 22px 20px 34px;
+  border-radius: 24px 24px 0 0;
+  background: #f4f1ec;
+  overflow-y: auto;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sheet-name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.sheet-pill {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #e6e0d8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sheet-section {
+  margin: 18px 0 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.sheet-ingredients {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    padding: 9px 0 9px 20px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      margin-top: -4px;
+      border-radius: 50%;
+      background: var(--accent, #d9711c);
+    }
+  }
+}
+
+.sheet-description {
+  margin: 14px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4a4a4a;
+  word-break: break-word;
+}
+
+.sheet-footer {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  margin-top: -20px;
+  padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+  border-radius: 24px 24px 0 0;
+  background: var(--accent, #d9711c);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size: 1rem;
+    opacity: 0.85;
+  }
+
+  strong {
+    font-size: 1.4rem;
+  }
+}
+
+@keyframes sheetUp {
   from {
-    opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(100%);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* === Адаптация === */
-@media (max-width: 600px) {
-  .popup-content {
-    padding: 16px 16px 50px;
-    max-height: 85vh;
+@keyframes sheetDown {
+  from {
+    transform: translateY(0);
   }
-
-  .popup-image-container {
-    width: calc(100% + 32px);
-    margin: -16px -16px 16px;
-  }
-
-  .popup-image {
-    max-height: 42vh;
-  }
-
-  .popup-name {
-    font-size: 1.2rem;
-  }
-
-  .popup-description,
-  .popup-weight,
-  .popup-price {
-    font-size: 0.85rem;
-  }
-
-  .close-button {
-    font-size: 24px;
-    height: 38px;
-    width: 70%;
+  to {
+    transform: translateY(100%);
   }
 }
 
+@keyframes sheetFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
+@keyframes sheetFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
+.product-card {
+  transition: opacity 0.7s ease;
+}
+
+.product-container.list .list-row {
+  opacity: 0;
+  animation: fadeInListMode 0.7s forwards;
+}
+
+.product-container:not(.list) .product-card {
+  opacity: 0;
+  animation: fadeInGridMode 0.7s forwards;
+}
+
+@keyframes fadeInListMode {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInGridMode {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

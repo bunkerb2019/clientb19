@@ -1,4 +1,7 @@
-
+@import url('https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX');
+* {
+   font-family: 'Binance PLEX', sans-serif;
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -1,9 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { createPortal } from "react-dom";
 import "./ProductCard.scss";
 import useSettings from "../modules/useSettings";
-import { hexToRgb } from "../utils/hexToRGB";
 import { useLanguage } from "../contexts/LanguageContext";
-import useImageDownload from "../providers/hooks/useImageDownload";
+import { storageImageUrl } from "../utils/storageImage";
 import React from "react";
 
 interface ProductProps {
@@ -15,12 +15,32 @@ interface ProductProps {
   price?: number;
   currency?: "MDL" | "$" | "€";
   image?: string;
+  imageVersion?: number;
   category: string;
   type: string;
+  viewMode: "grid" | "list"; // Добавлен новый пропс
 }
 
-const ProductCard: React.FC<ProductProps> = ({
-  image,
+interface ProductPopupProps {
+  imageUrl: string;
+  name: string | { ru: string; ro?: string; en?: string };
+  description: string | { ru: string; ro?: string; en?: string };
+  weight?: string;
+  weightUnit?: "g" | "ml" | "kg";
+  price?: number;
+  currency?: "MDL" | "$" | "€";
+  id: string;
+  isOpen: boolean;
+  onClose: () => void;
+  isImageLoading: boolean;
+  hasImageError: boolean;
+  onImageError: () => void;
+  onImageLoad: () => void;
+  hasImage: boolean;
+}
+
+export const ProductPopup: React.FC<ProductPopupProps> = ({
+  imageUrl,
   name,
   description,
   weight,
@@ -28,99 +48,33 @@ const ProductCard: React.FC<ProductProps> = ({
   price,
   currency = "$",
   id,
+  isOpen,
+  onClose,
+  isImageLoading,
+  hasImageError,
+  onImageError,
+  onImageLoad,
+  hasImage,
 }) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
-  const [hasImageError, setHasImageError] = useState<boolean>(false);
   const { getText } = useLanguage();
   const { data: settings } = useSettings();
 
-  useEffect(() => {
-    if (isPopupOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
-
-      return () => {
-        const scrollY = parseInt(document.body.style.top || '0');
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, -scrollY);
-      };
-    }
-  }, [isPopupOpen]);
-
-  const handleCardClick = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsPopupOpen(true);
-  }, []);
-
-  const handleClosePopup = useCallback(() => {
-    setIsPopupOpen(false);
-  }, []);
-
-  const handleImageError = useCallback(
-    (e: React.SyntheticEvent<HTMLImageElement>) => {
-      const target = e.target as HTMLImageElement;
-      target.src = settings?.placeholderImage || "";
-      setHasImageError(true);
-      setIsImageLoading(false);
-    },
-    [settings?.placeholderImage]
+  const localizedName = useMemo(() => getText(name), [getText, name]);
+  const localizedDescription = useMemo(
+    () => getText(description),
+    [getText, description]
+  );
+  const localizedWeightText = useMemo(
+    () =>
+      getText({
+        ru: "Вес",
+        en: "Weight",
+        ro: "Greutate",
+      }),
+    [getText]
   );
 
-  const handleImageLoad = useCallback(() => {
-    setIsImageLoading(false);
-    setHasImageError(false);
-  }, []);
-
-  const { getDownloadUrl } = useImageDownload();
-
-  const loadImage = useCallback(
-    async (currentImage: string | undefined) => {
-      if (!currentImage) {
-        setImageUrl(settings?.placeholderImage || "");
-        setIsImageLoading(false);
-        setHasImageError(false);
-        return;
-      }
-
-      setIsImageLoading(true);
-      setHasImageError(false);
-
-      try {
-        const url = await getDownloadUrl(currentImage);
-        setImageUrl(url ?? settings?.placeholderImage ?? "");
-      } catch (error) {
-        console.error("Error loading image:", error);
-        setImageUrl(settings?.placeholderImage || "");
-        setHasImageError(true);
-      } finally {
-        setIsImageLoading(false);
-      }
-    },
-    [getDownloadUrl, settings?.placeholderImage]
-  );
-
-  useEffect(() => {
-    setImageUrl("");
-    loadImage(image);
-  }, [image, loadImage]);
-
-  const RGB = hexToRgb(settings?.cardBackgroundColor || "#000000");
-
-  const localizedName = getText(name);
-  const localizedDescription = getText(description);
-  const localizedWeightText = getText({
-    ru: "Вес",
-    en: "Weight",
-    ro: "Greutate",
-  });
-
-  const getWeightUnitText = () => {
+  const getWeightUnitText = useCallback(() => {
     switch (weightUnit) {
       case "g":
         return getText({ ru: "г", en: "g", ro: "g" });
@@ -131,127 +85,332 @@ const ProductCard: React.FC<ProductProps> = ({
       default:
         return getText({ ru: "г", en: "g", ro: "g" });
     }
-  };
+  }, [getText, weightUnit]);
 
-  const localizedPriceText = getText({ ru: "Цена", en: "Price", ro: "Preț" });
+  const localizedPriceText = useMemo(
+    () => getText({ ru: "Цена", en: "Price", ro: "Preț" }),
+    [getText]
+  );
 
-  // Определяем, нужно ли вообще показывать изображение
-  const shouldShowImage = !!image && !hasImageError;
-  const finalImageUrl = shouldShowImage ? imageUrl : settings?.placeholderImage || "";
+  const displayImageUrl = useMemo(() => {
+    if (!hasImage || hasImageError) {
+      return settings?.placeholderImage || "";
+    }
+    return imageUrl;
+  }, [hasImage, hasImageError, imageUrl, settings?.placeholderImage]);
 
-  return (
-    <>
-      <div
-        className="product-card"
-        onClick={handleCardClick}
-        role="button"
-        tabIndex={0}
-        style={
-          {
-            "--card-background-color": `${RGB?.r}, ${RGB?.g},${RGB?.b}`,
-            "--card-background-opacity": settings?.cardBackgroundOpacity || 1,
-            "--card-blur": settings?.cardBlur
-              ? `${settings.cardBlur}px`
-              : "0px",
-            "--card-border-color": settings?.cardBorderColor || "#ffffff89",
-            "--card-text-color": settings?.cardTextColor || "#fff",
-          } as React.CSSProperties
-        }
-      >
-        <div className="image-container">
-          {isImageLoading && shouldShowImage && (
+  const showSpinner = isImageLoading;
+
+  const ingredients = useMemo(
+    () =>
+      localizedDescription
+        .split("/")
+        .map((s) => s.trim())
+        .filter(Boolean),
+    [localizedDescription]
+  );
+
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) setIsClosing(false);
+  }, [isOpen]);
+
+  const requestClose = useCallback(() => {
+    setIsClosing(true);
+    setTimeout(onClose, 250);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+
+      return () => {
+        const scrollY = parseInt(document.body.style.top || "0", 10);
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        window.scrollTo(0, -scrollY);
+      };
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return createPortal(
+    <div
+      className={`sheet-overlay ${isClosing ? "closing" : ""}`}
+      onClick={requestClose}
+    >
+      <div className="sheet" onClick={(e) => e.stopPropagation()}>
+        <div className="sheet-image">
+          {displayImageUrl && (
+            <div
+              className="photo-backdrop"
+              style={{ backgroundImage: `url("${displayImageUrl}")` }}
+            />
+          )}
+          {showSpinner && (
             <div className="image-loading-animation">
-              {/* Здесь может быть ваш лоадер */}
               <div className="spinner"></div>
             </div>
           )}
-          <img
-            src={finalImageUrl}
-            alt={localizedName}
-            className={`product-image ${isImageLoading ? 'loading' : ''} ${hasImageError ? 'error' : ''}`}
-            onError={handleImageError}
-            onLoad={handleImageLoad}
-            loading="lazy"
-            key={`${id}-image`}
-            style={{ opacity: isImageLoading ? 0 : 1 }}
-          />
-        </div>
-        <h3 className="product-name">{localizedName}</h3>
-        <p className="product-description">{localizedDescription}</p>
-        <div className="product-footer">
-          {weight && (
-            <p className="product-weight">
-              {localizedWeightText}: {weight} {getWeightUnitText()}
-            </p>
+          {displayImageUrl && (
+            <img
+              src={displayImageUrl}
+              alt={localizedName}
+              className="sheet-photo"
+              onError={onImageError}
+              onLoad={onImageLoad}
+              key={`${id}-popup-image`}
+              style={{ opacity: isImageLoading ? 0 : 1 }}
+            />
           )}
-          <p className="product-price">
-            {localizedPriceText}: {price} {currency}
-          </p>
+          <button
+            className="sheet-close"
+            onClick={requestClose}
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="sheet-body">
+          <div className="sheet-head">
+            <h3 className="sheet-name">{localizedName}</h3>
+            {weight && (
+              <span className="sheet-pill" title={localizedWeightText}>
+                {weight} {getWeightUnitText()}
+              </span>
+            )}
+          </div>
+
+          {ingredients.length > 1 ? (
+            <>
+              <h4 className="sheet-section">
+                {getText({ ru: "Состав", en: "Ingredients", ro: "Ingrediente" })}
+              </h4>
+              <ul className="sheet-ingredients">
+                {ingredients.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            localizedDescription && (
+              <p className="sheet-description">{localizedDescription}</p>
+            )
+          )}
+        </div>
+
+        <div className="sheet-footer">
+          <span>{localizedPriceText}</span>
+          <strong>
+            {price} {currency}
+          </strong>
         </div>
       </div>
+    </div>,
+    document.body
+  );
+};
 
-      {isPopupOpen && (
+const ProductCard: React.FC<ProductProps> = ({
+  image,
+  imageVersion,
+  name,
+  description,
+  weight,
+  weightUnit = "g",
+  price,
+  currency = "$",
+  id,
+  viewMode = "grid", // Значение по умолчанию
+}) => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const imageUrl = useMemo(
+    () => storageImageUrl(image, imageVersion) ?? "",
+    [image, imageVersion]
+  );
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(!!image);
+  const [hasImageError, setHasImageError] = useState<boolean>(!image);
+  const { getText } = useLanguage();
+  const { data: settings } = useSettings();
+
+  const hasImage = !!image;
+
+  const handleCardClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsPopupOpen(true);
+  }, []);
+
+  const handleClosePopup = useCallback(() => {
+    setIsPopupOpen(false);
+  }, []);
+
+  const handleImageError = useCallback(() => {
+    setHasImageError(true);
+    setIsImageLoading(false);
+  }, []);
+
+  const handleImageLoad = useCallback(() => {
+    setIsImageLoading(false);
+    setHasImageError(false);
+  }, []);
+
+  const localizedName = useMemo(() => getText(name), [getText, name]);
+  const localizedDescription = useMemo(
+    () => getText(description),
+    [getText, description]
+  );
+
+  const getWeightUnitText = useCallback(() => {
+    switch (weightUnit) {
+      case "g":
+        return getText({ ru: "г", en: "g", ro: "g" });
+      case "ml":
+        return getText({ ru: "мл", en: "ml", ro: "ml" });
+      case "kg":
+        return getText({ ru: "кг", en: "kg", ro: "kg" });
+      default:
+        return getText({ ru: "г", en: "g", ro: "g" });
+    }
+  }, [getText, weightUnit]);
+
+  const displayImageUrl = useMemo(() => {
+    if (!hasImage || hasImageError) {
+      return settings?.placeholderImage || "";
+    }
+    return imageUrl;
+  }, [hasImage, hasImageError, imageUrl, settings?.placeholderImage]);
+
+  const showSpinner = isImageLoading;
+  const showImage = !!displayImageUrl;
+
+  const popup = (
+    <ProductPopup
+      imageUrl={imageUrl}
+      name={name}
+      description={description}
+      weight={weight}
+      weightUnit={weightUnit}
+      price={price}
+      currency={currency}
+      id={id}
+      isOpen={isPopupOpen}
+      onClose={handleClosePopup}
+      isImageLoading={isImageLoading}
+      hasImageError={hasImageError}
+      onImageError={handleImageError}
+      onImageLoad={handleImageLoad}
+      hasImage={hasImage}
+    />
+  );
+
+  if (viewMode === "grid") {
+    return (
+      <div className="productCard-body">
         <div
-          className={`popup-overlay ${isPopupOpen ? "visible" : ""}`}
-          onClick={handleClosePopup}
+          className="product-card grid tile"
+          onClick={handleCardClick}
+          role="button"
+          tabIndex={0}
+          style={
+            {
+              "--card-border-color": settings?.cardBorderColor || "#ffffff2e",
+            } as React.CSSProperties
+          }
         >
-          <div
-            className="popup-content popup-opened"
-            onClick={(e) => e.stopPropagation()}
-            style={
-              {
-                "--card-background-color": `${RGB?.r}, ${RGB?.g},${RGB?.b}`,
-                "--card-background-opacity":
-                  settings?.cardBackgroundOpacity || 1,
-                "--card-blur": settings?.cardBlur
-                  ? `${settings.cardBlur}px`
-                  : "0px",
-                "--card-border-color": settings?.cardBorderColor || "#ffffff89",
-                "--card-text-color": settings?.cardTextColor || "#fff",
-              } as React.CSSProperties
-            }
-          >
-            <div className="popup-image-container">
-              {isImageLoading && shouldShowImage && (
-                <div className="image-loading-animation">
-                  {/* Здесь может быть ваш лоадер */}
-                  <div className="spinner"></div>
-                </div>
-              )}
-              <img
-                src={finalImageUrl}
-                alt={localizedName}
-                className={`popup-image ${isImageLoading ? 'loading' : ''} ${hasImageError ? 'error' : ''}`}
-                onError={handleImageError}
-                onLoad={handleImageLoad}
-                key={`${id}-popup-image`}
-                style={{ opacity: isImageLoading ? 0 : 1 }}
-              />
+          {showSpinner && (
+            <div className="image-loading-animation">
+              <div className="spinner"></div>
             </div>
-
-            <div className="popup-text-content">
-              <h3 className="popup-name">{localizedName}</h3>
-              <p className="popup-description">{localizedDescription}</p>
-
-              <div className="popup-details">
-                {weight && (
-                  <p className="popup-weight">
-                    {localizedWeightText}: {weight} {getWeightUnitText()}
-                  </p>
-                )}
-                <p className="popup-price">
-                  {localizedPriceText}: {price} {currency}
-                </p>
-              </div>
-            </div>
-
-            <button className="close-button" onClick={handleClosePopup}>
-              ×
-            </button>
+          )}
+          {showImage && (
+            <img
+              src={displayImageUrl}
+              alt={localizedName}
+              className="tile-photo"
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+              loading="lazy"
+              decoding="async"
+              key={`${id}-image`}
+              style={{ opacity: isImageLoading ? 0 : 1 }}
+            />
+          )}
+          <div className="tile-shade" />
+          <h3 className="tile-name">{localizedName}</h3>
+          <div className="tile-badges">
+            {weight && (
+              <span className="tile-weight">
+                {weight} {getWeightUnitText()}
+              </span>
+            )}
+            <span className="tile-price">
+              {price} {currency}
+            </span>
           </div>
         </div>
-      )}
-    </>
+        {popup}
+      </div>
+    );
+  }
+
+  const listDescription = localizedDescription
+    ?.split("/")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .join(", ");
+
+  return (
+    <div className="productCard-body">
+      <div
+        className="list-row"
+        onClick={handleCardClick}
+        role="button"
+        tabIndex={0}
+      >
+        <div className="list-photo">
+          {showSpinner && (
+            <div className="image-loading-animation">
+              <div className="spinner"></div>
+            </div>
+          )}
+          {showImage && (
+            <img
+              src={displayImageUrl}
+              alt={localizedName}
+              onError={handleImageError}
+              onLoad={handleImageLoad}
+              loading="lazy"
+              decoding="async"
+              key={`${id}-image`}
+              style={{ opacity: isImageLoading ? 0 : 1 }}
+            />
+          )}
+        </div>
+
+        <div className="list-info">
+          <h3 className="list-name">{localizedName}</h3>
+          {listDescription && <p className="list-desc">{listDescription}</p>}
+          <div className="list-badges">
+            {weight && (
+              <span className="list-weight">
+                {weight} {getWeightUnitText()}
+              </span>
+            )}
+            <span className="list-price">
+              {price} {currency}
+            </span>
+          </div>
+        </div>
+      </div>
+      {popup}
+    </div>
   );
 };
 

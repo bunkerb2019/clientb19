@@ -1,0 +1,171 @@
+.contacts {
+  width: min(560px, calc(100vw - 24px));
+  margin: 8px auto 0;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.contacts-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 0 4px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+}
+
+.contacts-logo {
+  width: 120px;
+  height: 120px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.contacts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contacts-link,
+.contacts-call {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.contacts-link {
+  background: radial-gradient(120% 140% at 0% 0%, rgba(217, 113, 28, 0.28) 0%, rgba(217, 113, 28, 0) 55%),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+}
+
+.contacts-icon,
+.contacts-call-icon {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  img,
+  svg {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+  }
+}
+
+.contacts-icon {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contacts-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contacts-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.contacts-host {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contacts-arrow {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.08);
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.contacts-call {
+  margin-top: 4px;
+  background: linear-gradient(135deg, #f0a33a, var(--accent, #d9711c));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 12px 30px rgba(217, 113, 28, 0.35);
+
+  .contacts-host {
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.contacts-call-icon {
+  background: rgba(255, 255, 255, 0.16);
+  animation: contactsRing 2s ease-out infinite;
+}
+
+@keyframes contactsRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.45);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+  }
+}

@@ -1,143 +1,222 @@
-import { Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-
+import { useMemo, useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import ProductCard from "../components/ProductCard";
 import useCategories from "../modules/useCategories";
 import useMenuItems from "../modules/useMenuItems";
 import { useLanguage } from "../contexts/LanguageContext";
-import LoadingScreen from "../components/LoadingScreen.tsx"; // импорт приветственного экрана
+import React from "react";
+import { useView } from "../hooks/useView";
+import defaultCategoryIcon from "../assets/logo.png";
+import { useTopBarTitle } from "../contexts/TopBarContext";
 
-interface CategoryListProps {
-  navId: string;
-}
-
-const CategoryList: React.FC<CategoryListProps> = ({ navId }) => {
+const CategoryList: React.FC<{ navId: string }> = ({ navId }) => {
   const { getText } = useLanguage();
   const { data: categories } = useCategories();
-  const { data: dishes, isLoading } = useMenuItems();
+  const { data: dishes } = useMenuItems();
+  const { viewMode } = useView();
 
-  const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
-  const [selectedCategoryIcon, setSelectedCategoryIcon] = useState<string | undefined>();
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string>();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
+  const subNavRef = useRef<HTMLDivElement>(null);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+  const [arrowVisible, setArrowVisible] = useState(false);
 
-  // Фильтруем категории по parentId (navId)
-  const filteredCategories = categories?.filter((category) => category.parentId === navId);
-
-  // Фильтруем блюда по выбранной категории
-  const filteredDishes = dishes?.filter(
-    (dish) => dish.category === selectedCategory && dish.active !== false
+  const filteredCategories = useMemo(
+    () => categories?.filter((c) => c.parentId === navId) || [],
+    [categories, navId]
   );
 
-  // Устанавливаем первую категорию как выбранную по умолчанию
-  useEffect(() => {
-    if (Array.isArray(filteredCategories) && filteredCategories.length > 0) {
-      const defaultCategory = filteredCategories[0]?.ru;
+  const filteredDishes = useMemo(
+    () =>
+      dishes?.filter(
+        (d) => d.category === selectedCategory && d.active !== false
+      ) || [],
+    [dishes, selectedCategory]
+  );
 
+  const currentCategory = useMemo(
+    () => filteredCategories.find((c) => c.ru === selectedCategory),
+    [filteredCategories, selectedCategory]
+  );
+
+  useEffect(() => {
+    if (filteredCategories.length > 0) {
       setSelectedCategory((prev) =>
-        prev && filteredCategories.some((cat) => cat.ru === prev) ? prev : defaultCategory
+        prev && filteredCategories.some((c) => c.ru === prev)
+          ? prev
+          : filteredCategories[0]?.ru
       );
-      setSelectedCategoryIcon(filteredCategories[0]?.icon);
     }
-  }, [filteredCategories, navId]);
+  }, [filteredCategories]);
 
-  // Обновляем иконку при изменении выбранной категории
   useEffect(() => {
-    if (selectedCategory && filteredCategories) {
-      const category = filteredCategories.find((cat) => cat.ru === selectedCategory);
-      setSelectedCategoryIcon(category?.icon);
-    }
-  }, [selectedCategory, filteredCategories]);
+    setIsTransitioning(true);
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [viewMode]);
 
-  // Welcome экран: исчезает после загрузки данных
   useEffect(() => {
-    if (!isLoading && dishes && categories) {
-      const timer = setTimeout(() => setShowWelcome(false), 800);
-      return () => clearTimeout(timer);
+    const checkScroll = () => {
+      const el = subNavRef.current;
+      if (!el) return;
+      setShowRightArrow(
+        el.scrollWidth > el.clientWidth &&
+          el.scrollLeft + el.clientWidth < el.scrollWidth - 5
+      );
+    };
+    checkScroll();
+    const el = subNavRef.current;
+    if (el) {
+      el.addEventListener("scroll", checkScroll);
+      window.addEventListener("resize", checkScroll);
     }
-  }, [isLoading, dishes, categories]);
+    return () => {
+      if (el) el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [filteredCategories]);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (showRightArrow) {
+      timeout = setTimeout(() => setArrowVisible(true), 400);
+    } else {
+      setArrowVisible(false);
+    }
+    return () => clearTimeout(timeout);
+  }, [showRightArrow]);
+
+  const handleArrowClick = () => {
+    const el = subNavRef.current;
+    if (el) {
+      el.scrollBy({ left: 120, behavior: "smooth" });
+    }
+  };
+
+  const categoryTitle = currentCategory ? getText(currentCategory) : "";
+
+  useTopBarTitle(
+    currentCategory && (
+      <motion.div
+        key={currentCategory.id}
+        className="category-header"
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        <img
+          src={currentCategory.icon || defaultCategoryIcon}
+          alt=""
+          className="icon"
+        />
+        <span className="active-category">{categoryTitle}</span>
+      </motion.div>
+    ),
+    [currentCategory?.id, currentCategory?.icon, categoryTitle]
+  );
 
   return (
-    <>
-      <AnimatePresence>
-        {showWelcome && (
-          <motion.div
-            initial={{ opacity: 1 }}
+    <div className="category-container">
+      <motion.div
+        className={`product-container ${viewMode} ${
+          isTransitioning ? "transitioning mode-transition" : ""
+        }`}
+        key={viewMode}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        {filteredDishes.length === 0 ? (
+          <motion.p
+            className="no-product"
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            style={{ position: "absolute", inset: 0, zIndex: 50 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <LoadingScreen/>
-          </motion.div>
+            {getText({
+              ru: "В этой категории пока нет товаров.",
+              en: "No products in this category yet.",
+              ro: "Nu există produse în această categorie.",
+            })}
+          </motion.p>
+        ) : (
+          filteredDishes.map((dish) => (
+            <ProductCard
+              key={`${dish.id}-${viewMode}`}
+              {...dish}
+              viewMode={viewMode}
+            />
+          ))
         )}
-      </AnimatePresence>
+      </motion.div>
 
-      {!showWelcome && (
-        <div>
-          {/* Заголовок с иконкой выбранной категории */}
-          {(() => {
-            const currentCategory = filteredCategories?.find(
-              (cat) => cat.ru === selectedCategory
-            );
+      <div className="sub-nav-wrapper" style={{ position: "relative" }}>
+        <motion.div
+          className="sub-nav"
+          ref={subNavRef}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          {filteredCategories.map((category) => {
+            const text = getText(category);
+            const isExpanded = expandedCategory === category.id;
+            const shouldTruncate = text.length > 12 && !isExpanded;
             return (
-              <span className="category-header">
-                <img
-                  src={selectedCategoryIcon || "/default-icon.svg"}
-                  alt={
-                    currentCategory
-                      ? getText(currentCategory)
-                      : getText({ ru: "Категория", en: "Category" })
-                  }
-                  className="icon"
-                />
-                <span className="active-category">
-                  {currentCategory
-                    ? getText(currentCategory)
-                    : getText({ ru: "Категория", en: "Category" })}
-                </span>
-              </span>
-            );
-          })()}
-
-          {/* Товары */}
-          <div className="product-container">
-            <Outlet />
-            {filteredDishes?.length === 0 ? (
-              <p className="no-product">
-                {getText({
-                  ru: "В этой категории пока нет товаров.",
-                  ro: "Nu există încă produse în această categorie.",
-                  en: "No products in this category yet.",
-                })}
-              </p>
-            ) : (
-              filteredDishes?.map((dish, index) => <ProductCard key={index} {...dish} />)
-            )}
-          </div>
-
-          {/* Навигация по подкатегориям */}
-          <div className="sub-nav">
-            {filteredCategories?.map((category) => (
-              <div
-                className={`nav-item ${selectedCategory === category.ru ? "active" : ""}`}
+              <motion.div
                 key={category.id}
-                onClick={() => setSelectedCategory(category.ru)}
+                className={`nav-item ${
+                  selectedCategory === category.ru ? "active" : ""
+                }${isExpanded ? " expanded" : ""}`}
+                onClick={() => {
+                  setSelectedCategory(category.ru);
+                  setExpandedCategory(isExpanded ? null : category.id);
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
                 style={{ cursor: "pointer" }}
               >
                 <img
-                  src={category.icon || "/default-icon.png"}
-                  alt={getText(category)}
+                  src={category.icon || defaultCategoryIcon}
+                  alt={text}
                   className="icon"
                 />
-                {getText(category)}
-              </div>
-            ))}
-          </div>
-        </div>
+                <span className="category-title">
+                  {shouldTruncate ? text.slice(0, 12) + "..." : text}
+                </span>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+      {arrowVisible && (
+        <motion.button
+          className="sub-nav-arrow-fixed"
+          onClick={handleArrowClick}
+          aria-label="Прокрутить вправо"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.85, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ color: "var(--navbar-text-active-color, #f7b946)" }}
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24">
+            <path
+              d="M8 4l8 8-8 8"
+              stroke="currentColor"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.button>
       )}
-    </>
+    </div>
   );
 };
 
-export default CategoryList;
+export default React.memo(CategoryList);

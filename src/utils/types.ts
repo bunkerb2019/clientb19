@@ -25,6 +25,7 @@ export interface Order {
   weight?: string;
   price?: number;
   image?: string;
+  imageVersion?: number;
   category: string;
   type: string;
   weightUnit?: "g" | "ml" | "kg";

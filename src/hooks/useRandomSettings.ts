@@ -3,7 +3,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 import { RandomSettings, RandomizerConfig } from "../utils/types";
 
-export const useRandomSettings = () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const useRandomSettings = (_p0: { onSuccess: () => void; }) => {
   return useQuery<RandomSettings>({
     queryKey: ['randomSettings'],
     queryFn: async () => {

@@ -2,13 +2,16 @@ $size: 40px;
 $border: 1px solid rgba(255, 255, 255, 0.3);
 
 .lang-container {
-  position: fixed;
-  top: 12vh;
-  right: 20px;
-  z-index: 1;
+  position: relative;
+  flex-shrink: 0;
+  width: $size;
+  height: $size;
 }
 
 .lang-switcher {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: $size;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
@@ -24,6 +27,7 @@ $border: 1px solid rgba(255, 255, 255, 0.3);
 
   &.open {
     border-radius: 20px;
+    background: rgba(20, 20, 20, 0.85);
   }
 
   .main-lang {
